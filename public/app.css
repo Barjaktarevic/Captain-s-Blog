@@ -1,0 +1,221 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Unica One', cursive;
+    letter-spacing: 1px;
+}
+
+:root {
+   --primary-color: #faebd7;
+   --secondary-color: #023e8a;
+   --tertiary-color: #141414;
+}
+
+/* TITLE PAGE START */
+.title-page {
+    background-image: url('image-1.jpg');
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.home-title-and-subtitle-div {
+    display: none;
+    margin-top: 40vmin;
+    margin-right: 10vmin;
+    text-align: right;
+    color: var(--primary-color);
+    font-size: 7vmin;
+}
+
+.home-subtitle {
+    text-align: right;
+    color: var(--primary-color);
+    font-size: 4vmin;
+    margin-top: 1.5vmin;
+}
+
+.home-link-div {
+    text-align: right;
+    margin-top: 2.5vmin;
+}
+
+.home-link {
+    text-decoration: none;
+    color: var(--primary-color);
+    opacity: 85%;
+    background-color: var(--secondary-color);
+    padding: 1vmin;
+    border-radius: 5%;
+    position: relative;
+}
+
+.home-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: 200ms ease-in-out;
+    border: 5px solid var(--secondary-color);
+}
+
+.home-link:hover::before, .home-link:focus::before  {
+    top: -10px;
+    right: -10px;
+    left: -10px;
+    bottom: -10px;
+}
+
+.home-stardate-div {
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 45vmin;
+}
+
+.home-stardate-title {
+    color: var(--primary-color);
+    font-size: 3vmin;
+    animation: stardate-loading 800ms infinite alternate;
+}
+
+.home-stardate-loader {
+    max-width: 30vmin;
+    max-height: 15vmin;
+}
+
+@keyframes stardate-loading {
+    0% {
+        opacity: 100%
+    }
+
+    100% {
+        opacity: 20%
+    }
+}
+
+@keyframes title-fade-in {
+    0% {
+        opacity: 0%
+    }
+
+    100% {
+        opacity: 100%
+    }
+}
+/* TITLE PAGE END */
+
+/* HOME PAGE START */
+.navbar {
+    width: 100%;
+    height: 8vmin;
+    padding: 1vmin 0;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    font-size: 5vmin;
+}
+
+.navbar-logo {
+    margin-left: 1vmin;
+}
+
+.navbar-list {
+    display: flex;
+    list-style: none;
+    margin-right: 1vmin;
+}
+
+.navbar-list-item {
+    margin-right: 3vmin;
+    padding-right: 1.5vmin;
+    border-right: 3.5px dotted var(--primary-color);
+}
+
+.home-blogs-section {
+    background-image: url('image-3.jpg');
+    background-size: cover;
+    overflow-x: hidden;
+    max-width: 100vw;
+    height: 90vh;
+}
+
+.home-blog {
+    border: 4px solid var(--secondary-color);
+    border-radius: 2vmin;
+    border-top-right-radius: 20vmin;
+    margin: 5vmin auto;
+    width: 70vw;
+    max-height: 82vh;
+    background-color: var(--tertiary-color);
+    padding: 5vmin;
+    color: var(--primary-color);
+    opacity: 80%;
+}
+
+.home-blog-fetch-button {
+    font-family: inherit;
+    font-size: 5vmin;
+    padding: 0.5vmin 1vmin;
+    border-radius: 1vmin;
+    outline: none;
+    border: none;
+    background-color: var(--tertiary-color);
+    color: var(--primary-color);
+    display: block;
+    margin: -2vmin auto;
+    opacity: 80%;
+}
+
+.home-blog-fetch-button:hover {
+    cursor: pointer;
+    animation: fetch-button-animation 400ms infinite alternate;
+}
+
+.home-blog-title {
+    text-align: center;
+}
+
+.home-author-and-stardate-div {
+    display: flex;
+    justify-content: center;
+    gap: 10%;
+    margin-top: 2vmin;
+}
+
+.home-blog-body {
+    margin-top: 2vmin;
+}
+
+.home-blog-likes {
+    margin-top: 2vmin;
+    text-align: right;
+}
+
+@keyframes fetch-button-animation {
+    0% {
+        background-color: var(--tertiary-color);
+    }
+
+    100% {
+        background-color: var(--secondary-color);
+    }
+}
+
+/* HOME PAGE END */
+
+
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 900px) {
+    .title-page {
+        background-image: url('image-2.jpg')
+    }
+}

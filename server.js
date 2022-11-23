@@ -16,7 +16,7 @@ app.listen(3000, () => {
 })
 
 app.get('/', (req, res) => {
-    res.render('title')
+    res.render('titlepage')
 })
 
 app.get('/home', async (req, res) => {

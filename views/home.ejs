@@ -15,10 +15,16 @@
 </nav>
 
 <section class="home-blogs-section">
+    <div class="home-loader-div" data-aos="fade-down">
+        <h1 class="home-loader-title">REASSEMBLING RANDOM BLOG ENTRY...</h1>
+        <img class="home-loader" src="/images/loader-1.svg">
+    </div>
+    
     <div class="home-blog">
+        <img src="/images/user-1.jpg" class="home-blog-user-img">
         <h2 class="home-blog-title">Into the void...</h2>
         <div class="home-author-and-stardate-div">
-        <h4 class="home-blog-author">Arthur Miller</h4>
+        <h4 class="home-blog-author">Cpt. Arthur Miller</h4>
         <h4 class="home-blog-stardate">Stardate: 15678.8</4>
         </div>
         <p class="home-blog-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime cumque eos consequatur veniam error, sapiente adipisci asperiores magnam, corporis quo eveniet consectetur, dolorum quibusdam corrupti inventore aliquam nisi fugit assumenda!
@@ -28,7 +34,20 @@
         Unde nam magni inventore velit accusamus ratione, facilis recusandae aut ipsum cupiditate ducimus debitis odio id vero esse nihil quis delectus soluta, voluptatibus dolore possimus. Esse praesentium id iste dolorem.</p>
         <p class="home-blog-likes">Likes: 52</p>
     </div>
-    <button class="home-blog-fetch-button">Probe for a different log entry</button>
+    <button class="home-blog-fetch-button">Probe for a different blog entry</button>
 </section>
+
+<script>
+    let stardateDiv = document.querySelector('.home-loader-div')
+    let homeBlogDiv = document.querySelector('.home-blog')
+    let homeBlogFetchButton = document.querySelector('.home-blog-fetch-button')
+
+    setTimeout(()  => {
+        stardateDiv.style.display = "none"
+        homeBlogDiv.style.display = "block"
+        homeBlogFetchButton.style.display = "block"
+    }, 3000)
+
+</script>
 
 <%- include('./partials/footer') %> 

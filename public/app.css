@@ -116,7 +116,7 @@ body {
     width: 100%;
     height: 8vmin;
     padding: 1vmin 0;
-    background-color: var(--secondary-color);
+    background: linear-gradient(to right, var(--secondary-color) 0%, var(--tertiary-color) 100%);
     color: var(--primary-color);
     display: flex;
     justify-content: space-between;
@@ -125,6 +125,7 @@ body {
 
 .navbar-logo {
     margin-left: 1vmin;
+    cursor: default;
 }
 
 .navbar-list {
@@ -136,7 +137,12 @@ body {
 .navbar-list-item {
     margin-right: 3vmin;
     padding-right: 1.5vmin;
-    border-right: 3.5px dotted var(--primary-color);
+}
+
+.navbar-list-item:hover {
+    opacity: 100%;
+    filter: brightness(120%);
+    cursor: pointer;
 }
 
 .home-blogs-section {

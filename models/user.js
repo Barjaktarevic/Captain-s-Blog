@@ -9,20 +9,32 @@ const userSchema = new mongoose.Schema({
     },
     age: {
         type: Number,
-        min: [10, 'You have to be older than 10 to join.']
+        min: [18, 'You have to be 18 or older to join.'],
+        max: [90, 'You have to be 90 or younger to join.']
     },
     isAdmin: false,
-    joinedAt: new Date(),
+    joinedAt: {
+        type: Date,
+        default: new Date().toDateString() 
+        },
+    shipName: {
+        type: String,
+        required: true
+    },
+    image: {
+        type: String,
+        default: '/images/default-profile-image-1.svg'
+    },
     rank: {
         type: String,
-        enum: ['Midshipman', 'Ensing', 'Liutenant', 'Commander', 'Captain', 'Fleet Captain', 'Commodore', 'Rear Admiral', 'Vice admiral', 'Admiral', 'Fleet Admiral', 'Admiral of Starfleet'],
+        enum: ['Midshipman', 'Ensing', 'Liutenant', 'Commander', 'Captain', 'Fleet Captain', 'Commodore', 'Rear Admiral', 'Vice Admiral', 'Admiral', 'Fleet Admiral', 'Admiral of Starfleet'],
         default: 'Midshipman'
     },
     blogEntries: {
-        type: mongoose.Schema.Types.ObjectId, ref: 'BlogEntry'
+        type: mongoose.Schema.Types.ObjectId, ref: 'Blog'
     },
-    systemsVisited: {
-        type: mongoose.Schema.Types.ObjectId, ref: 'System'
+    planetsVisited: {
+        type: mongoose.Schema.Types.ObjectId, ref: 'Planet'
     }
 })
 

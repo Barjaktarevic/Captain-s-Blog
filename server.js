@@ -50,3 +50,10 @@ app.get('/home', async (req, res) => {
     res.render('home')
 })
 
+app.get('/signup', async (req, res) => {
+    res.render('signup')
+})
+
+app.get('/login', async (req, res) => {
+    res.render('login')
+})

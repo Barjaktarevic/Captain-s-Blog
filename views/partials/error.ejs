@@ -1,0 +1,12 @@
+<% if (error && error.length) { %> 
+    <div class="error-partial">
+        <%= error %> 
+    </div>
+<% } %> 
+
+<script>
+    let errorPartial = document.querySelector('.error-partial')
+    setTimeout(() => {
+        errorPartial.style.display = 'none'
+    }, 4500)
+</script>

@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
         },
     shipName: {
         type: String,
-        required: true
+        default: 'Enterprise'
     },
     image: {
         type: String,
@@ -30,15 +30,16 @@ const userSchema = new mongoose.Schema({
         enum: ['Midshipman', 'Ensing', 'Liutenant', 'Commander', 'Captain', 'Fleet Captain', 'Commodore', 'Rear Admiral', 'Vice Admiral', 'Admiral', 'Fleet Admiral', 'Admiral of Starfleet'],
         default: 'Midshipman'
     },
-    blogEntries: {
+    blogEntries: [{
         type: mongoose.Schema.Types.ObjectId, ref: 'Blog'
-    },
-    planetsVisited: {
+    }],
+    planetsVisited: [{
         type: mongoose.Schema.Types.ObjectId, ref: 'Planet'
-    }
+    }]
 })
 
-const User = mongoose.model('User', userSchema)
 userSchema.plugin(passportLocalMongoose)
+const User = mongoose.model('User', userSchema)
+
 
 module.exports = User

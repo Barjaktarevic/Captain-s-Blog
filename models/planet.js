@@ -9,12 +9,12 @@ const planetSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    visitors: {
+    visitors: [{
         type: mongoose.Schema.Types.ObjectId, ref: 'User'
-    },
-    blogEntries: {
+    }],
+    blogEntries: [{
         type: mongoose.Schema.Types.ObjectId, ref: 'Blog'
-    }
+    }]
 })
 
 const Planet = mongoose.model('Planet', planetSchema)

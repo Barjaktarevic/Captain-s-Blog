@@ -2,21 +2,22 @@
 
 <div class="auth-signup-div">
     <%- include('./partials/navbar') %> 
+    <%- include('./partials/error') %> 
 
     <h2 class="auth-signup-title" data-aos="flip-up">Create a new account</h2>
     <div class="auth-signup-form-div">
     <form action="" method="POST" class="auth-signup-form">
         <label for="username" class="auth-label" data-aos="fade-left" data-aos-delay="500">Enter a username.</label>
-        <input type="text" name="username" class="auth-input" placeholder="e.g. Zach Pizzaz" data-aos="fade-left" data-aos-delay="500">
+        <input type="text" name="username" class="auth-input" placeholder="e.g. Zach Pizzaz" data-aos="fade-left" data-aos-delay="500" required>
 
         <label for="email" class="auth-label" data-aos="fade-left" data-aos-delay="600">Enter an email.</label>
-        <input type="email" name="email" class="auth-input" placeholder="e.g. spaceguy@gmail.com" data-aos="fade-left" data-aos-delay="600">
+        <input type="email" name="email" class="auth-input" placeholder="e.g. spaceguy@gmail.com" data-aos="fade-left" data-aos-delay="600" required pattern="\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b">
 
         <label for="password" class="auth-label" data-aos="fade-left" data-aos-delay="700">Enter a password.</label>
-        <input type="text" name="password" class="auth-input" placeholder="1 uppercase, 1 lowercase, 1 number" data-aos="fade-left" data-aos-delay="700">
+        <input type="password" name="password" class="auth-input" placeholder="1 uppercase, 1 lowercase, 1 number" data-aos="fade-left" data-aos-delay="700" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$" title="Please include at least 1 lowercase character, 1 uppercase character, 1 number">
 
         <label for="age" class="auth-label" data-aos="fade-left" data-aos-delay="800">Enter your age.</label>
-        <input type="number" name="age" class="auth-input" placeholder="Must be over 18." data-aos="fade-left" data-aos-delay="800" min="18" max="90">
+        <input type="number" name="age" class="auth-input" placeholder="Must be over 18." data-aos="fade-left" data-aos-delay="800" min="18" max="90" required>
 
         <label for="ship" class="auth-label" data-aos="fade-left" data-aos-delay="900">Choose a ship name.</label>
         <input type="text" name="ship" class="auth-input" placeholder="e.g. Venture" data-aos="fade-left" data-aos-delay="900">

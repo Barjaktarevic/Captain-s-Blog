@@ -1,11 +1,22 @@
 <nav class="navbar">
     <div class="navbar-logo">
-        <i class="fa-solid fa-shuttle-space"></i> Captain's Blog
+        <a class="navbar-home-link" href="/home"><i class="fa-solid fa-shuttle-space"></i> Captain's Blog</a>
     </div>
     <div class="navbar-list-div">
         <ul class="navbar-list">
+            <%  if (!login) { %>
             <a href="/signup" class="signup-link"><li class="navbar-list-item">Sign up</li></a>  
             <li class="navbar-list-item"><a href="login" class="login-link">Log in</a></li>
+            <% } else if (login) { %>
+                <li class="navbar-list-item login-info">
+                    <p>Greetings, <%= login.rank %> <%= login.username %></p>
+                </li>    
+                <li class="navbar-list-item">
+                <form action="/logout" method="POST">
+                    <a href="#"><button class="logout-button">Log out</button></a>
+                </form>
+                </li>
+            <%  } %> 
         </ul>
     </div>
 </nav>

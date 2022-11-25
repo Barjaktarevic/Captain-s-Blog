@@ -1,0 +1,12 @@
+<% if (success && success.length) { %> 
+    <div class="success-partial">
+        <%= success %> 
+    </div>
+<% } %> 
+
+<script>
+    let successPartial = document.querySelector('.success-partial')
+    setTimeout(() => {
+        successPartial.style.display = 'none'
+    }, 4500)
+</script>

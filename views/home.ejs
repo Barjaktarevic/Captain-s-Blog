@@ -2,7 +2,19 @@
 
 <%- include('./partials/navbar') %> 
 
-<section class="home-blogs-section">
+<div class="sticky-navbar">
+    <ul class="sticky-navbar-list">
+        <li class="sticky-navbar-list-item"><a href="/">Title page</a></li>
+        <li class="sticky-navbar-list-item"><a href="/starmaps">Star maps</a></li>
+        <li class="sticky-navbar-list-item"><a href="#random-blog-entry">Random blog entry</a></li>
+        <li class="sticky-navbar-list-item"><a href="#faq">FAQ</a></li>
+        <li class="sticky-navbar-list-item"><a href="#contact-us">Contact us</a></li>
+    </ul>
+</div>
+
+<%- include('./partials/success') %> 
+
+<section class="home-blogs-section" id="random-blog-entry">
     <div class="home-loader-div" data-aos="fade-down">
         <h1 class="home-loader-title">REASSEMBLING RANDOM BLOG ENTRY...</h1>
         <img class="home-loader" src="/images/loader-1.svg">
@@ -25,6 +37,13 @@
     <button class="home-blog-fetch-button">Probe for a different blog entry</button>
 </section>
 
+<div class="separator-div">
+</div>
+
+<section>
+
+</section>
+
 <script>
     let stardateDiv = document.querySelector('.home-loader-div')
     let homeBlogDiv = document.querySelector('.home-blog')
@@ -35,6 +54,17 @@
         homeBlogDiv.style.display = "block"
         homeBlogFetchButton.style.display = "block"
     }, 3000)
+
+const navbar = document.querySelector('.sticky-navbar');
+let topOffset = navbar.offsetTop;
+function stickynavbar() {
+  if (window.scrollY >= topOffset) {    
+    navbar.classList.add('sticky');
+  } else {
+    navbar.classList.remove('sticky');    
+  }
+}
+window.addEventListener('scroll', stickynavbar);
 
 </script>
 

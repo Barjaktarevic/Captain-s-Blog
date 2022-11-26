@@ -1,0 +1,68 @@
+<%- include('./partials/header') %> 
+<%- include('./partials/navbar') %> 
+
+<div class="userpage-container-div">
+
+    <div class="home-loader-div" data-aos="fade-down">
+        <h1 class="home-loader-title">FETCHING ACADEMY RECORDS ...</h1>
+        <img class="home-loader" src="/images/loader-1.svg" />
+    </div>
+
+    <div class="userpage-user-information" data-aos="fade-up-left" data-aos-delay="300">
+        <h1>STAR FLEET PASSPORT</h1>
+        <div class="image-and-info-container">
+            <div class="image-container">
+                <img src="/images/user-2.jpg" alt="profile image">
+            </div>
+            <div class="info-container">
+                <h3>Name: <%= login.username %> </h3>
+                <h3>Email: <%= login.email %> </h3>
+                <h3>Age: <%= login.age %> </h3>
+                <h3>Rank: <%= login.rank %> </h3>
+                <h3>Ship name: <%= login.shipName %> </h3>
+            </div>
+        </div>
+
+        <!-- <form action="/users/:id" method="POST">
+            <button class="update-button">UPDATE INFORMATION</button>
+        </form> -->
+        <!-- THIS HERE NEEDS A MAJOR REDESIGN, JUST LIKE THE H3S ABOVE MATE! INCLUDE AN EDIT BUTTON, AND THEN WHEN THE USER CLICKS EDIT, CHANGE EVERYTHING INTO A FORM WITH PRE-FILLED INPUTS...but that's for another day... -->
+
+        <div class="systems-visited-container"> 
+            <h3 class="systems-inspected-title">SYSTEMS INSPECTED</h3>
+            <div class="systems-inspected-div">
+                <p>Lorem, ipsum dolor.</p>
+                <p>Lorem, ipsum dolor.</p>
+                <p>Lorem, ipsum dolor.</p>
+                <p>Lorem, ipsum dolor.</p>
+                <p>Lorem, ipsum dolor.</p>
+                <p>Lorem, ipsum dolor.</p>
+                <p>Lorem, ipsum dolor.</p>
+                <p>Lorem, ipsum dolor.</p>
+                <p>Lorem, ipsum dolor.</p>
+                <p>Lorem, ipsum dolor.</p>
+                <p>Lorem, ipsum dolor.</p>
+                <p>Lorem, ipsum dolor.</p>
+                <p>Lorem, ipsum dolor.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="userpage-blog-information" data-aos="fade-up-left" data-aos-delay="500">
+        <h1>PLANETARY SURVEY RECORDS:</h1>
+    </div>
+</div>
+
+<script>
+    let mainDiv1 = document.querySelector('.userpage-user-information')
+    let mainDiv2 = document.querySelector('.userpage-blog-information')
+    let homeLoaderDiv = document.querySelector('.home-loader-div')
+
+    setTimeout(()  => {
+        homeLoaderDiv.style.display = "none"
+        mainDiv1.style.display = "block"
+        mainDiv2.style.display = "block"
+    }, 3500)
+</script>
+
+<%- include('./partials/footer') %> 

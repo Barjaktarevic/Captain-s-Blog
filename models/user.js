@@ -12,10 +12,13 @@ const userSchema = new mongoose.Schema({
         min: [18, 'You have to be 18 or older to join.'],
         max: [90, 'You have to be 90 or younger to join.']
     },
-    isAdmin: false,
+    isAdmin: {
+        type: Boolean,
+        default: false
+    },
     joinedAt: {
         type: Date,
-        default: new Date().toDateString() 
+        default: new Date()
         },
     shipName: {
         type: String,

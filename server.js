@@ -82,14 +82,14 @@ app.get('/signup', (req, res) => {
 
 app.post('/signup', async (req, res) => {
     try {
-        const { email, username, password } = req.body
-        const user = new User({ email, username })
+        const { email, username, password, age, shipName, rank } = req.body
+        const user = new User({ email, username, age, shipName, rank})
         const registeredUser = await User.register(user, password);
         req.login(registeredUser, err => {
          if(err) {
         return next(err)
          }  else {
-            req.flash('success', 'Welcome to GameWorld!')
+            req.flash('success', 'Safe travels, starseeker.')
             res.redirect('/home') 
             }
         })  
@@ -117,6 +117,11 @@ app.post('/logout', function(req, res, next){
       res.redirect('/home');
     });
   });
+
+  app.get('/users/:id', async (req, res) => {
+    const foundUser = await User.findById({ _id: req.params.id})
+    res.render('userpage', {foundUser})
+  })
 
 app.use('*', (req, res) => {
     res.render('404')

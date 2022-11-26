@@ -9,7 +9,7 @@
             <li class="navbar-list-item"><a href="login" class="login-link">Log in</a></li>
             <% } else if (login) { %>
                 <li class="navbar-list-item login-info">
-                    <p>Greetings, <%= login.rank %> <%= login.username %></p>
+                    <a class="link-to-userpage" href="/users/<%=login.id%>"><p>Greetings, <%= login.rank %> <%= login.username %></p></a>
                 </li>    
                 <li class="navbar-list-item">
                 <form action="/logout" method="POST">

@@ -7,6 +7,10 @@ const blogSchema = new mongoose.Schema({
     likes: {
         type: Number
     },
+    createdAt: {
+        type: String,
+        default: new Date()
+    },
     planet: {
         type: mongoose.Schema.Types.ObjectId, ref: 'Planet'
     },

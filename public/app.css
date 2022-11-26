@@ -13,6 +13,23 @@ body {
     letter-spacing: 1px;
 }
 
+::-webkit-scrollbar-track  {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb  {
+	border-radius: 10px;
+	background-image: -webkit-gradient(linear, left bottom, left top,color-stop(0.44, rgb(122,153,217)), color-stop(0.72, rgb(73,125,189)), color-stop(0.86, rgb(28,58,148)));
+}
+
 :root {
    --primary-color: #faebd7;
    --secondary-color: #023e8a;
@@ -470,10 +487,105 @@ body {
 
 /* 404 PAGE END */
 
+/* USERPAGE START */
+.link-to-userpage {
+    all: unset;
+}
+
+.userpage-container-div {
+    background: url('/images/image-7.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    min-width: 100%;
+    min-height: 120vh;
+    overflow-x: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5%;
+}
+
+.userpage-user-information {
+    min-width: 45vw;
+    color: var(--primary-color);
+    max-height: 82vmin;
+    margin: 10vmin 2vmin;
+    display: none;
+}
+
+.userpage-user-information h1 {
+    text-align: center;
+    padding-bottom: 5vmin;
+    font-size: 9vmin;
+}
+
+.userpage-blog-information {
+    min-width: 45%;
+    color: var(--primary-color);
+    min-height: 80vmin;
+    opacity: 75%;
+    margin: 10vmin auto;
+    display: none;
+}
+
+.userpage-blog-information h1 {
+    text-align: center;
+}
+
+.image-and-info-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.image-container {
+    min-width: 25vmin;
+    min-height: 25vmin;
+    border: 1px solid var(--secondary-color);
+    color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2vmin;
+}
+
+.image-container img {
+    object-fit: fill;
+    max-width: 30vmin;
+    max-height: 35vmin;
+    border-radius: 2vmin;
+}
+
+.info-container {
+    width: 60vmin;
+    text-align: left;
+    border: 1px solid var(--secondary-color);
+    padding: 2vmin;
+    border-radius: 2vmin;
+    background-color: var(--tertiary-color);
+    opacity: 85%;
+}
+
+.info-container h3 {
+    font-weight: normal;
+    margin-top: 1.5vmin;
+    font-size: 3.5vmin;
+}
+
+.systems-inspected-title {
+    text-align: center;
+    margin-top: 3vmin;
+    font-size: 6vmin;
+}
+
+.systems-inspected-div {
+    column-gap: 2vmin;
+    column-count: 3;
+}
+/* USERPAGE END */
+
 
 /* MEDIA QUERIES */
 @media screen and (max-width: 900px) {
     .title-page {
-        background-image: url('image-2.jpg')
+        background-image: url('/images/image-2.jpg')
     }
 }

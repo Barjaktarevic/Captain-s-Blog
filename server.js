@@ -8,6 +8,7 @@ const LocalStrategy = require('passport-local')
 const User = require('./models/user')
 const Planet = require('./models/planet')
 const Blog = require('./models/blog')
+const methodOverride = require('method-override')
 
 mongoose.connect('mongodb://localhost:27017/captains-blog')
     .then(console.log('Successfully connected to the database.'))
@@ -31,6 +32,7 @@ app.use(session({
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
 }))
+app.use(methodOverride('_method'))
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -118,10 +120,30 @@ app.post('/logout', function(req, res, next){
     });
   });
 
-  app.get('/users/:id', async (req, res) => {
-    const foundUser = await User.findById({ _id: req.params.id})
-    res.render('userpage', {foundUser})
+app.get('/users/:rank-:username', async (req, res) => {
+    const user = await User.findOne({ username: req.params.username})
+    if (user) {
+        res.render('userpage', {user})
+    } else {
+        req.flash('error', "That user doesn't exist")
+        res.redirect('/home')
+    }
   })
+
+  app.put('/users/:rank-:username', async (req, res) => {
+    try {
+    const { email, age, shipName, rank } = req.body
+    const user = await User.findOneAndUpdate({ username: req.params.username}, {email, age, shipName, rank} )
+    await user.save()  
+    req.flash('success', 'Successfully updated your information.')
+    res.redirect(`/users/${user.rank}-${user.username}`)
+    } catch(err) {
+        if (err.code === 11000) {
+        req.flash('error', 'That email address already exists.')
+        return res.redirect('back')
+        }
+    }
+  }) 
 
 app.use('*', (req, res) => {
     res.render('404')

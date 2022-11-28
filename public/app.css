@@ -211,10 +211,14 @@ body {
     z-index: 5;
   }
 
-.home-blogs-section {
+.home-background-div {
     background-image: url('/images/image-3.jpg');
     background-size: cover;
     overflow-x: hidden;
+    background-attachment: fixed;
+}
+
+.home-blogs-section {
     max-width: 100vw;
     min-height: 90vh;
 }
@@ -493,11 +497,12 @@ body {
 }
 
 .userpage-container-div {
-    background: url('/images/image-7.jpg');
+    background: url('/images/image-10.jpg');
     background-size: cover;
     background-attachment: fixed;
+    background-position-y: 60%;
     min-width: 100%;
-    min-height: 120vh;
+    min-height: 150vh;
     overflow-x: auto;
     display: flex;
     flex-wrap: wrap;
@@ -505,11 +510,11 @@ body {
 }
 
 .userpage-user-information {
-    min-width: 45vw;
     color: var(--primary-color);
-    max-height: 82vmin;
+    min-height: 90vmin;
     margin: 10vmin 2vmin;
     display: none;
+    flex-grow: 1;
 }
 
 .userpage-user-information h1 {
@@ -519,12 +524,12 @@ body {
 }
 
 .userpage-blog-information {
-    min-width: 45%;
     color: var(--primary-color);
     min-height: 80vmin;
     opacity: 75%;
     margin: 10vmin auto;
     display: none;
+    flex-grow: 1;
 }
 
 .userpage-blog-information h1 {
@@ -538,7 +543,7 @@ body {
 
 .image-container {
     min-width: 25vmin;
-    min-height: 25vmin;
+    max-height: 35vmin;
     border: 1px solid var(--secondary-color);
     color: var(--primary-color);
     display: flex;
@@ -562,6 +567,13 @@ body {
     border-radius: 2vmin;
     background-color: var(--tertiary-color);
     opacity: 85%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.info-label-span {
+    background: linear-gradient(to right, transparent 0%, var(--secondary-color) 20%, transparent 100%);
+    padding: 0 4vmin;
 }
 
 .info-container h3 {
@@ -570,15 +582,136 @@ body {
     font-size: 3.5vmin;
 }
 
+.systems-visited-container {
+    background-color: var(--tertiary-color);
+    opacity: 85%;
+    border: 1px solid var(--secondary-color);
+    border-radius: 2vmin;
+    margin: 2vmin auto;
+    max-width: 90vmin;
+}
+
 .systems-inspected-title {
     text-align: center;
     margin-top: 3vmin;
+    margin-bottom: 1.5vmin;
     font-size: 6vmin;
 }
 
 .systems-inspected-div {
-    column-gap: 2vmin;
+    text-align: center;
+    column-gap: -2vmin;
     column-count: 3;
+    font-size: 3.5vmin;
+    padding-bottom: 1vmin;
+}
+
+.systems-inspected-div p {
+    z-index: 1;
+    position: relative;
+    margin-top: 1vmin;
+}
+
+.systems-inspected-div p::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, transparent 0%, var(--secondary-color) 20%, var(--tertiary-color) 100%);
+    transform: scaleX(0);
+    transition: 150ms ease-in-out;
+    transform-origin: left;
+    z-index: -1;
+}
+
+.systems-inspected-div p:hover::before {
+    transform: scaleX(1);
+}
+
+.systems-inspected-div p:hover {
+    cursor: pointer;
+    filter: brightness(120%);
+    color: var(--primary-color);
+    transition: color 300ms ease-in-out;
+}
+
+.update-button, .update-form-button {
+    all: unset;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    padding: 1vmin;
+    display: block;
+    margin: 1vmin auto;
+    border-radius: 1vmin;
+    grid-column: span 2;
+}
+
+.update-button:hover, .update-form-button:hover {
+    cursor: pointer;
+    animation: fetch-button-animation 400ms alternate infinite;
+}
+
+.update-container {
+    display: none;
+    width: 60vmin;
+    text-align: left;
+    border: 1px solid var(--secondary-color);
+    padding: 2vmin;
+    border-radius: 2vmin;
+    background-color: var(--tertiary-color);
+    opacity: 85%;
+}
+
+.update-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.update-form h3 {
+    font-size: 3.5vmin;
+    font-weight: normal;
+}
+
+.update-input {
+    width: 30vmin;
+    background-color: var(--secondary-color);
+    text-align: center;
+    padding: 0.75vmin;
+    color: var(--primary-color);
+    font-family: inherit;
+    margin: 0.35vmin auto;
+}
+
+.first-update-input {
+    background-color: var(--error-color);
+}
+
+.update-label {
+    font-size: 3vmin;
+    margin: 0.35vmin auto;
+}
+
+.update-label:nth-of-type(1) {
+    margin-top: 3vmin;
+}
+
+.update-form-close {
+    font-size: 2vmin;
+    padding: 1vmin;
+    background-color: var(--error-color);
+    color: var(--primary-color);
+    width: 20vmin;
+    text-align: center;
+    display: block;
+    margin: 0.35vmin auto;
+    border-radius: 1vmin;
+}
+
+.update-form-close:hover {
+    cursor: pointer;
+    filter: brightness(120%);
 }
 /* USERPAGE END */
 

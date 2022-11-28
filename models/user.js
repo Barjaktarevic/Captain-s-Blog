@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
     email: {
         type: String,
         required: [true, "You have to provide an email."],
-        unique: true
+        unique: true,
     },
     age: {
         type: Number,
@@ -30,8 +30,8 @@ const userSchema = new mongoose.Schema({
     },
     rank: {
         type: String,
-        enum: ['Midshipman', 'Ensing', 'Liutenant', 'Commander', 'Captain', 'Fleet Captain', 'Commodore', 'Rear Admiral', 'Vice Admiral', 'Admiral', 'Fleet Admiral', 'Admiral of Starfleet'],
-        default: 'Midshipman'
+        enum: ['midshipman', 'ensing', 'liutenant', 'commander', 'captain', 'fleet captain', 'commodore', 'rear admiral', 'vice admiral', 'admiral', 'fleet admiral', 'admiral of starfleet'],
+        default: 'midshipman'
     },
     blogEntries: [{
         type: mongoose.Schema.Types.ObjectId, ref: 'Blog'

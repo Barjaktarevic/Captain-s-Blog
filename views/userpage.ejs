@@ -2,53 +2,98 @@
 <%- include('./partials/navbar') %> 
 
 <div class="userpage-container-div">
-
+    <%- include('./partials/success') %> 
+    <%- include('./partials/error') %> 
     <div class="home-loader-div" data-aos="fade-down">
         <h1 class="home-loader-title">FETCHING ACADEMY RECORDS ...</h1>
         <img class="home-loader" src="/images/loader-1.svg" />
     </div>
 
-    <div class="userpage-user-information" data-aos="fade-up-left" data-aos-delay="300">
+    <div class="userpage-user-information">
         <h1>STAR FLEET PASSPORT</h1>
         <div class="image-and-info-container">
             <div class="image-container">
-                <img src="/images/user-2.jpg" alt="profile image">
+                <img src="/images/user-2.png" alt="profile image">
             </div>
             <div class="info-container">
-                <h3>Name: <%= login.username %> </h3>
-                <h3>Email: <%= login.email %> </h3>
-                <h3>Age: <%= login.age %> </h3>
-                <h3>Rank: <%= login.rank %> </h3>
-                <h3>Ship name: <%= login.shipName %> </h3>
+                <div>
+                <h3><span class="info-label-span">Name:</span></h3>
+                <h3><span class="info-label-span">Email:</span></h3>
+                <h3><span class="info-label-span">Age:</span></h3>
+                <h3><span class="info-label-span">Rank:</span></h3>
+                <h3><span class="info-label-span">Ship name:</span></h3>
+                </div>
+                <div>
+                <h3><%= user.username %></h3>
+                <h3><%= user.email %></h3>
+                <h3><%= user.age %></h3>
+                <h3><%= user.rank %></h3>
+                <h3><%= user.shipName %></h3>
+                </div>
+                
+                <button class="update-button">EDIT INFORMATION</button>
             </div>
+
+            <div class="update-container">
+            <form action="/users/<%=user.rank%>-<%=user.username%>?_method=PUT" method="POST" class="update-form">
+                <!-- <label for="username" class="update-label" >Username cannot be changed.</label>
+                <input id="username" type="text" name="username" class="update-input first-update-input" placeholder="e.g. Zach Pizzaz" value=<%= user.username %> disabled> -->
+
+                <label for="email" class="update-label">Change your email.</label>
+                <input id="email" type="email" name="email" class="update-input" placeholder="e.g. spaceguy@gmail.com" required   pattern="\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b" value="<%= user.email %>">
+                
+                <label for="age" class="update-label">Update your age.</label>
+                <input id="age" type="number" name="age" class="update-input" placeholder="Must be over 18." min="18" max="90" required value="<%=user.age%>">
+        
+                <label for="shipName" class="update-label">Choose a new ship name.</label>
+                <input id="shipName" type="text" name="shipName" class="update-input" placeholder="e.g. Venture" value="<%=user.shipName%>">
+        
+                <label for="rank" class="update-label">Update your rank.</label>
+                <select id="rank" name="rank" class="update-input">
+                    <option value="midshipman">midshipman</option>
+                    <option value="ensing">ensing</option>
+                    <option value="liutenant">liutenant</option>
+                    <option value="commander">commander</option>
+                    <option value="captain">captain</option>
+                    <option value="fleet Captain">fleet captain</option>
+                    <option value="commodore">commodore</option>
+                    <option value="rear admiral">rear admiral</option>
+                    <option value="vice admiral">vice admiral</option>
+                    <option value="admiral">admiral</option>
+                    <option value="fleet admiral">fleet admiral</option>
+                    <option value="admiral of starfleet">admiral of starfleet</option>
+                  </select>
+                
+                  <div>
+                  <button class="update-form-button">Amend</button>
+                  <p class="update-form-close">Rescind request</p>
+                  </div>
+            </form>
         </div>
 
-        <!-- <form action="/users/:id" method="POST">
-            <button class="update-button">UPDATE INFORMATION</button>
-        </form> -->
-        <!-- THIS HERE NEEDS A MAJOR REDESIGN, JUST LIKE THE H3S ABOVE MATE! INCLUDE AN EDIT BUTTON, AND THEN WHEN THE USER CLICKS EDIT, CHANGE EVERYTHING INTO A FORM WITH PRE-FILLED INPUTS...but that's for another day... -->
-
+        </div>
+        
         <div class="systems-visited-container"> 
             <h3 class="systems-inspected-title">SYSTEMS INSPECTED</h3>
             <div class="systems-inspected-div">
-                <p>Lorem, ipsum dolor.</p>
-                <p>Lorem, ipsum dolor.</p>
-                <p>Lorem, ipsum dolor.</p>
-                <p>Lorem, ipsum dolor.</p>
-                <p>Lorem, ipsum dolor.</p>
-                <p>Lorem, ipsum dolor.</p>
-                <p>Lorem, ipsum dolor.</p>
-                <p>Lorem, ipsum dolor.</p>
-                <p>Lorem, ipsum dolor.</p>
-                <p>Lorem, ipsum dolor.</p>
-                <p>Lorem, ipsum dolor.</p>
-                <p>Lorem, ipsum dolor.</p>
-                <p>Lorem, ipsum dolor.</p>
+                <p>Chion JEQ</p>
+                <p>Anvoacury</p>
+                <p>Timeter</p>
+                <p>Kazuiclite</p>
+                <p>Elnaugantu</p>
+                <p>Ivides</p>
+                <p>Guzonoe</p>
+                <p>Zieter</p>
+                <p>Vuatis</p>
+                <p>Phanenov</p>
+                <p>Drocihiri</p>
+                <p>Brora 2S5</p>
+                <p>Lluna 20D</p>
             </div>
         </div>
     </div>
 
-    <div class="userpage-blog-information" data-aos="fade-up-left" data-aos-delay="500">
+    <div class="userpage-blog-information">
         <h1>PLANETARY SURVEY RECORDS:</h1>
     </div>
 </div>
@@ -62,7 +107,23 @@
         homeLoaderDiv.style.display = "none"
         mainDiv1.style.display = "block"
         mainDiv2.style.display = "block"
-    }, 3500)
+    }, 2500)
+
+    let updateButton = document.querySelector('.update-button')
+    let infoContainer = document.querySelector('.info-container')
+    let updateContainer = document.querySelector('.update-container')
+    let closeButton = document.querySelector('.update-form-close')
+
+    updateButton.addEventListener('click', () => {
+        infoContainer.style.display = "none"
+        updateContainer.style.display = "block"
+    })
+
+    closeButton.addEventListener('click', () => {
+        updateContainer.style.display = "none"
+        infoContainer.style.display = "grid"
+        
+    })
 </script>
 
 <%- include('./partials/footer') %> 

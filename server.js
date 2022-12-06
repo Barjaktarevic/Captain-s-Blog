@@ -134,7 +134,8 @@ app.get('/jump', async function(req, res) {
 
 app.get('/jump/:galaxy', async function(req, res) {
     try {
-        let galaxy = await Galaxy.findOne({name: req.params.galaxy})
+        let galaxy = await Galaxy.findOne({name: req.params.galaxy}).populate('event')
+        console.log(galaxy)
         res.render('galaxy', {galaxy} )
     } catch(err) {
         console.log(err)

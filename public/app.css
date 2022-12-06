@@ -1082,6 +1082,46 @@ body {
     border-radius: 1.5vmin;
 }
 
+.galaxy-event-container {
+    color: var(--primary-color);
+    border: 4px solid var(--secondary-color);
+    padding: 1vw;
+    border-radius: 1.5vmin;
+    margin-top: 4vw;
+}
+
+.galaxy-event-title {
+    text-align: center;
+    font-size: 5vmin;
+}
+
+.galaxy-event-container p {
+    margin-top: 2vmin;
+}
+
+.galaxy-event-image {
+    width: 100%;
+    height: 50%;
+}
+
+.galaxy-compose-log-link {
+    all: unset;
+    padding: 0.5vmin 2vmin;
+    background-color: var(--secondary-color);
+    text-align: center;
+    display: block;
+    width: 40%;
+    margin: 2vmin auto;
+    font-size: 2.5vmin;
+    border-radius: 0.5vmin;
+}
+
+.galaxy-compose-log-link:hover {
+    animation: fetch-button-animation 400ms infinite alternate;
+    cursor: pointer;
+}
+
+
 /* GALAXY PAGE END */
 
 

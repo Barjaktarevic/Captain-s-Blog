@@ -4,6 +4,9 @@ const eventSchema = new mongoose.Schema({
     name: {
         type: String
     },
+    image: {
+        type: String
+    },
     location: {
         type: String
     },

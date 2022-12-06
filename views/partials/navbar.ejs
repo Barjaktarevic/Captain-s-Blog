@@ -2,6 +2,11 @@
     <div class="navbar-logo">
         <a class="navbar-home-link" href="/home"><i class="fa-solid fa-shuttle-space"></i> Captain's Blog</a>
     </div>
+        <%  if (login) { %>
+        <div class="jump-button">
+        JUMP
+        </div>
+        <%  } %> 
     <div class="navbar-list-div">
         <ul class="navbar-list">
             <%  if (!login) { %>

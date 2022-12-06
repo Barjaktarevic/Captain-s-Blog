@@ -5,10 +5,10 @@
 <div class="sticky-navbar">
     <ul class="sticky-navbar-list">
         <li class="sticky-navbar-list-item"><a href="/">Title page</a></li>
-        <li class="sticky-navbar-list-item"><a href="/starmaps">Star maps</a></li>
+        <!-- <li class="sticky-navbar-list-item"><a href="/starmaps">Star maps</a></li> -->
         <li class="sticky-navbar-list-item"><a href="#random-blog-entry">Random blog entry</a></li>
-        <li class="sticky-navbar-list-item"><a href="#faq">FAQ</a></li>
-        <li class="sticky-navbar-list-item"><a href="#contact-us">Contact us</a></li>
+        <li class="sticky-navbar-list-item"><a href="#how-to-use">How to use</a></li>
+        <li class="sticky-navbar-list-item"><a href="#about-and-contact">About us & Contact</a></li>
     </ul>
 </div>
 
@@ -39,7 +39,88 @@
     <button class="home-blog-fetch-button">Probe for a different blog entry</button>
 </section>
 
+<h1 class="how-to-title" id="how-to-use" data-aos="fade-up">How to use the website?</h1>
+<section class="how-to-use-section">
+    <div data-aos="fade-right">
+    <div class="explanation-div">
+        <h3 class="home-explanation-list-title">Follow the steps below!</h3>
+        <ul class="home-explanation-list">
+            <li class="home-list-item steps-background" data-tab-target="#step-1">Step 1</li>
+            <li class="home-list-item" data-tab-target="#step-2">Step 2</li>
+            <li class="home-list-item" data-tab-target="#step-3">Step 3</li>
+            <li class="home-list-item" data-tab-target="#step-4">Step 4</li>
+        </ul>
+    </div>
+    <hr class="hr-style-one">
+
+    <div class="steps-text-div">
+        <p class="steps-text step-active " id="step-1">Navigate to one of the maps in the Star Maps section by clicking the 'JUMP' button in the navigation bar. Select one of the points of interest which are displayed on the Star Map by glowing circles and click on it. Each point of interest represents a planet - a possible expedition target for your crew!</p>
+        <p class="steps-text step-inactive" id="step-2">Read the information about the given planet - climate, flora and fauna, and other expedition parameteres - and, should you decide to explore the planet, click 'Send expedition'!</p>
+        <p class="steps-text step-inactive" id="step-3">Now comes the interesting part... Read the prompt we have prepared for you which takes into account the information about the planet and some information about you, and enter a log report as to what happened during the expedition in up to 2000 words! </p>
+        <p class="steps-text step-inactive" id="step-4">Read comments other people will have written about your expedition log and comment on other people's expeditions. If you really like an expedition log, give it a like and post a link to it on Twitter!</p>
+        
+    </div>
+    </div>
+
+    <div class="star-map-example-div" data-aos="fade-left">
+        <div class="star-map-example-container">
+            <img src="/images/constellation-2.jpg" alt="Constellation"> 
+                <div class="point-of-interest point-of-interest-1"></div>
+                <div class="point-of-interest point-of-interest-2"></div>
+                <div class="point-of-interest point-of-interest-3"></div>
+                <div class="point-of-interest point-of-interest-4"></div>
+                <div class="point-of-interest point-of-interest-5"></div>
+                <div class="point-of-interest point-of-interest-6"></div>
+                <div class="point-of-interest point-of-interest-7"></div>
+                <div class="point-of-interest point-of-interest-8"></div>
+        </div>
+    </div>
+</section>
+
+<section class="about-and-contact" id="about-and-contact" >
+<h1 class="about-us-title" data-aos="fade-up">About Us</h1>
+<div class="about-us-container" data-aos="fade-left">
+<p class="about-us-text">Ever since my first encounter with the novels of Jules Verne at a very young age, I've been a huge fan of science fiction. Though I've tinkered with the idea of writing a science-fiction novel, up until now I've always lacked to confidence to give it an honest try. However, as you can tell by reading this, I've opted for a website rather than a book - and you could argue that the nature of the website requires that you - the user - write more than I have in the prompts and planet descriptions. </p>
+<aside class="aside-comment">
+<p>My biggest wish is to incentivize those among you who - like me - have so far had no courage to engage in creative writing. </p>
+</aside class="aside-comment">
+<p class="about-us-text"> Prior to starting this project I'd invested approximately three months into studying coding and web development and it took me, in total, around two months to construct this website from scratch. However, I couldn't have done it without my wife who helped me on numerous occasions, not just by giving support, but also by writing several of the prompts herself. I hope that the website provides an opportunity for everyone to, at least, dip their toes in the waters of science fiction writing.</p>
 </div>
+
+<div class="contact-us-container" data-aos="fade-right">
+
+    <div class="form-explanation-container">
+        <p>If you wish to contact us with suggestions, complaints or anything else, please fill out the form to the right. Thank you!</p>
+        <hr class="hr-style-one">
+        <small>We will not disclose your information to anyone.</small>
+    </div>
+
+    <div class="home-form-container">
+        <h2 class="contact-us-form-title">Send us an email!</h2>
+        <form class="contact-us-form" action="https://formspree.io/f/xdojrrrl" method="POST">
+            <input type="text" name="Name" placeholder="Enter your name" required>
+            <input type="email" name="Email" placeholder="Enter your email" required pattern="\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b">
+            <label for="query-type">What is the purpose of your message?</label>
+            <select name="Type of query" id="query-type" required>
+                <option value="Suggestion" selected>Suggestion</option>
+                <option value="Complaint">Complaint</option>
+                <option value="Praise or criticism">Praise or criticism</option>
+                <option value="Other">Other</option>
+            </select>
+            <textarea name="Message" cols="30" rows="10" placeholder="Enter your message here" required></textarea>
+            <button type="submit" class="update-button">Submit</button>
+        </form>
+    </div>
+
+</div>
+</section>
+
+<footer class="home-footer">
+    PUT SOMETHING IN THE FOOTER!
+</footer>
+
+</div>
+
 
 <script>
     let stardateDiv = document.querySelector('.home-loader-div')
@@ -63,6 +144,26 @@ function stickynavbar() {
 }
 window.addEventListener('scroll', stickynavbar);
 
+const tabs = document.querySelectorAll('[data-tab-target]')
+const sections = document.querySelectorAll('.steps-text')
+
+tabs.forEach(tab =>
+    tab.addEventListener('click', function() {
+
+        const target = document.querySelector(tab.dataset.tabTarget)
+        sections.forEach(function (section) {
+            section.classList.add('step-inactive')
+            section.classList.remove('step-active')
+        })    
+        tabs.forEach(function (tab) {
+            tab.classList.remove('steps-background')
+        })
+        tab.classList.add('steps-background')
+        target.classList.remove('step-inactive')
+        target.classList.add('step-active')
+        
+    })
+)
 </script>
 
 <%- include('./partials/footer') %> 

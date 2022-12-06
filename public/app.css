@@ -420,7 +420,7 @@ body {
     background-color: #023e8a;
     transition: 200ms ease;
     border: 2px solid var(--error-color);
-    scale: 1.2;
+    scale: 1.3;
 }
 
 .point-of-interest-1 { top: 13.8%; left: 9.4%; }
@@ -431,6 +431,14 @@ body {
 .point-of-interest-6 { top: 47.5%; left: 16.25%; }
 .point-of-interest-7 { top: 67.5%; left: 76.25%; }
 .point-of-interest-8 { top: 27.5%; left: 66.25%; }
+
+.point-of-interest-9 { top: 87.5%; left: 66.25%; }
+.point-of-interest-10 { top: 52.5%; left: 53.25%; }
+.point-of-interest-11 { top: 12.5%; left: 75.25%; }
+.point-of-interest-12 { top: 46.5%; left: 67.25%; }
+.point-of-interest-13 { top: 33.5%; left: 38.25%; }
+.point-of-interest-14 { top: 82.5%; left: 15.25%; }
+.point-of-interest-15 { top: 69.5%; left: 33.25%; }
 
 .about-and-contact {
     max-width: 70%;
@@ -569,7 +577,7 @@ body {
 /* HOME PAGE END */
 
 /* AUTHENTICATION START */
-.signup-link, .jump-link, .login-link {
+.signup-link, .jump-link, .login-link, .jump-to-galaxy-link {
     all: unset;
 }
 
@@ -972,7 +980,7 @@ body {
 .jump-div {
     background: url('/images/jump-background-2.jpg');
     background-size: cover;
-    background-attachment:scroll;
+    background-attachment: scroll;
     background-position: 0 15%;
     opacity: 110%;
     width: 100%;
@@ -1003,7 +1011,7 @@ body {
 .jump-galaxy-img {
     width: 32vw;
     height: 40vh;
-    filter: blur(1.5px);
+    filter: blur(2.5px);
     border-radius: 2vmin;
 }
 
@@ -1033,8 +1041,48 @@ body {
     font-size: 5vmin;
     margin: 1vmin auto;
 }
-
 /* JUMP PAGE END */
+
+/* GALAXY PAGE START */
+.galaxy-div {
+    background: url('/images/jump-background-3.jpg');
+    background-size: cover;
+    width: 100%;
+    min-height: 100vh;
+    background-attachment: fixed;
+    background-position: 0 15%;
+    opacity: 110%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 60vw 30vw;
+}
+
+.galaxy-image-container {
+    max-height: 100vmin;
+    max-width: 100vmin;
+    position: relative;
+    border-radius: 1.5vmin;
+}
+
+.galaxy-image-container img {
+    width: 90%;
+    height: 90%;
+    border: 4px solid var(--secondary-color);
+    border-radius: 1.5vmin;
+    position: relative;
+}
+
+.galaxy-galaxy-name {
+    color: var(--primary-color);
+    font-size: 7vmin;
+    text-align: left;
+    padding: 0.5vmin 3vmin;
+    background: linear-gradient(to right, var(--secondary-color) 0%, transparent 100%);
+    border-radius: 1.5vmin;
+}
+
+/* GALAXY PAGE END */
 
 
 /* MEDIA QUERIES */

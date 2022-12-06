@@ -11,8 +11,8 @@ const blogSchema = new mongoose.Schema({
         type: String,
         default: new Date()
     },
-    planet: {
-        type: mongoose.Schema.Types.ObjectId, ref: 'Planet'
+    event: {
+        type: mongoose.Schema.Types.ObjectId, ref: 'Event'
     },
 })
 
@@ -20,4 +20,4 @@ const Blog = mongoose.model('Blog', blogSchema)
 
 module.exports = Blog
 const User = require('./user')
-const Planet = require('./planet')
+const Event = require('./event')

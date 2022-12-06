@@ -7,22 +7,14 @@
     <h2 class="jump-title">Select jump destination</h2>
     <div>
     <div class="galaxy-selection-div">
-        <div class="jump-galaxy-background-div">
-            <h5 class="jump-galaxy-name">Virgo A</h5>
-            <img src="/images/constellation-3.jpg" alt="Constellation one" class="jump-galaxy-img">
-        </div>
-        <div class="jump-galaxy-background-div">
-            <h5 class="jump-galaxy-name">Andromeda</h5>
-            <img src="/images/constellation-2.jpg" alt="Constellation two" class="jump-galaxy-img">
-        </div>
-        <div class="jump-galaxy-background-div">
-            <h5 class="jump-galaxy-name">Anadeia</h5>
-            <img src="/images/constellation-6.jpg" alt="Constellation three" class="jump-galaxy-img">
-        </div>
-        <div class="jump-galaxy-background-div">
-            <h5 class="jump-galaxy-name">Euthenia Nebula</h5>
-            <img src="/images/constellation-7.jpg" alt="Constellation four" class="jump-galaxy-img">
-        </div>
+        <% for (let galaxy of galaxies) { %> 
+            <a href="/jump/<%=galaxy.name%>" class="jump-to-galaxy-link">
+                <div class="jump-galaxy-background-div">
+                <h5 class="jump-galaxy-name"><%= galaxy.name %></h5>
+                <img src="<%= galaxy.image %>" alt="Constellation" class="jump-galaxy-img">
+            </div>
+            </a>
+        <% } %> 
     </div>
     </div>
 </div>

@@ -36,13 +36,14 @@ const userSchema = new mongoose.Schema({
     blogEntries: [{
         type: mongoose.Schema.Types.ObjectId, ref: 'Blog'
     }],
-    planetsVisited: [{
-        type: mongoose.Schema.Types.ObjectId, ref: 'Planet'
+    events: [{
+        type: mongoose.Schema.Types.ObjectId, ref: 'Event'
     }]
 })
 
 userSchema.plugin(passportLocalMongoose)
 const User = mongoose.model('User', userSchema)
 
-
 module.exports = User
+const Blog = require('./blog')
+const Event = require('./event')

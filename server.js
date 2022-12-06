@@ -6,7 +6,8 @@ const flash = require('connect-flash')
 const passport = require('passport');
 const LocalStrategy = require('passport-local')
 const User = require('./models/user')
-const Planet = require('./models/planet')
+const Event = require('./models/event')
+const Galaxy = require('./models/galaxy')
 const Blog = require('./models/blog')
 const methodOverride = require('method-override')
 
@@ -120,8 +121,24 @@ app.post('/logout', function(req, res, next){
     });
   });
 
-app.get('/jump', function(req, res) {
-    res.render('jump')
+app.get('/jump', async function(req, res) {
+    try {
+        let galaxies = await Galaxy.find()
+        res.render('jump', {galaxies})
+    } catch(err) {
+        console.log(err)
+        req.flash('error', "An unexpected error has occurred")
+        res.redirect('/home')
+    }  
+})
+
+app.get('/jump/:galaxy', async function(req, res) {
+    try {
+        let galaxy = await Galaxy.findOne({name: req.params.galaxy})
+        res.render('galaxy', {galaxy} )
+    } catch(err) {
+        console.log(err)
+    }
 })
 
 app.get('/users/:rank-:username', async (req, res) => {

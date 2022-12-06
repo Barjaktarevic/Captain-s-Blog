@@ -569,11 +569,7 @@ body {
 /* HOME PAGE END */
 
 /* AUTHENTICATION START */
-.signup-link {
-    all: unset;
-}
-
-.login-link {
+.signup-link, .jump-link, .login-link {
     all: unset;
 }
 
@@ -970,6 +966,75 @@ body {
     filter: brightness(120%);
 }
 /* USERPAGE END */
+
+/* JUMP PAGE START */
+
+.jump-div {
+    background: url('/images/jump-background-2.jpg');
+    background-size: cover;
+    background-attachment:scroll;
+    background-position: 0 15%;
+    opacity: 110%;
+    width: 100%;
+    height: 150vh;
+}
+
+.jump-title {
+    text-align: center;
+    font-size: 6.5vmin;
+    background: linear-gradient(to right, transparent 0%, var(--secondary-color) 50%, transparent 100%);
+    color: var(--primary-color);
+    padding: 1vmin 0;
+}
+
+.jump-div > div {
+    display: flex;
+    justify-content: space-around;
+    margin: 6vmin auto;
+}
+
+.galaxy-selection-div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    gap: 7.5%;
+}
+
+.jump-galaxy-img {
+    width: 32vw;
+    height: 40vh;
+    filter: blur(1.5px);
+    border-radius: 2vmin;
+}
+
+.jump-galaxy-background-div {
+    background-color: var(--tertiary-color);
+    opacity: 85%;
+    padding: 3vmin;
+    border: 4px solid var(--secondary-color);
+    transition: 200ms ease-in;
+    border-radius: 2vmin;
+}
+
+.jump-galaxy-background-div:hover {
+    opacity: 100%;
+    filter: brightness(105%);
+    scale: 1.1;
+    cursor: pointer;
+}
+
+.jump-galaxy-background-div:hover .jump-galaxy-img{
+    filter: blur(0);
+}
+
+.jump-galaxy-name {
+    color: var(--primary-color);
+    text-align: center; 
+    font-size: 5vmin;
+    margin: 1vmin auto;
+}
+
+/* JUMP PAGE END */
 
 
 /* MEDIA QUERIES */

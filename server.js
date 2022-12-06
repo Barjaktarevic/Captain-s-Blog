@@ -120,6 +120,10 @@ app.post('/logout', function(req, res, next){
     });
   });
 
+app.get('/jump', function(req, res) {
+    res.render('jump')
+})
+
 app.get('/users/:rank-:username', async (req, res) => {
     const user = await User.findOne({ username: req.params.username})
     if (user) {

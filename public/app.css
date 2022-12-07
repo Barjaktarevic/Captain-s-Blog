@@ -1048,14 +1048,14 @@ body {
     background: url('/images/jump-background-3.jpg');
     background-size: cover;
     width: 100%;
-    min-height: 100vh;
+    min-height: 120vh;
     background-attachment: fixed;
     background-position: 0 15%;
     opacity: 110%;
     display: grid;
     justify-content: center;
     align-items: center;
-    grid-template-columns: 60vw 30vw;
+    grid-template-columns: 58vw 35vw;
 }
 
 .galaxy-image-container {
@@ -1067,7 +1067,7 @@ body {
 
 .galaxy-image-container img {
     width: 90%;
-    height: 90%;
+    height: 70%;
     border: 4px solid var(--secondary-color);
     border-radius: 1.5vmin;
     position: relative;
@@ -1120,7 +1120,6 @@ body {
     animation: fetch-button-animation 400ms infinite alternate;
     cursor: pointer;
 }
-
 
 /* GALAXY PAGE END */
 

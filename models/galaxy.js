@@ -8,9 +8,9 @@ const galaxySchema = new mongoose.Schema({
     image: {
         type: String
     },
-    event: {
+    event: [{
         type: mongoose.Schema.Types.ObjectId, ref: 'Event'
-    },
+    }]
 })
 
 const Galaxy = mongoose.model('Galaxy', galaxySchema)

@@ -21,17 +21,15 @@
     let stardateDiv = document.querySelector('.titlepage-stardate-div')
     let homeTitleAndSubtitleDiv = document.querySelector('.titlepage-title-and-subtitle-div')
     
+    let randomStardate = (Math.random() * 100000).toFixed(2)
 
-    let getStardate = async function() {
-        const response = await fetch('https://stardateapi.herokuapp.com/api/csd')
-        const data = await response.json()
+    let getStardate =  function() {
         setInterval(() => {
             stardateDiv.style.display = "none"
-            stardate.textContent = data.a
+            stardate.textContent = randomStardate
             homeTitleAndSubtitleDiv.style.display = "block"
             homeTitleAndSubtitleDiv.style.animation = "title-fade-in 1200ms ease-in"
         }, 2500)
-        
     }
 
     getStardate() 

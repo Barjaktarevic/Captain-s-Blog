@@ -23,8 +23,8 @@
             <p>Description: <%=event.description%></p>
             <p>Equipment: <%=event.equipment%></p>
             <p>Health: <%=event.health%></p>
-            <a href="/jump/<%=galaxy.name%>/<%=event.name%>" class="galaxy-compose-log-link">Compose log</a>
-            <a href="#" class="galaxy-compose-log-link">Read existing logs</a>
+            <a href="/jump/<%=galaxy.name%>/logs/<%=event.name%>?intent=compose" class="galaxy-compose-log-link">Compose log</a>
+            <a href="/jump/<%=galaxy.name%>/logs/<%=event.name%>" class="galaxy-compose-log-link">Read existing logs</a>
         </div>
     <% }) %>
 
@@ -42,9 +42,6 @@ tabs.forEach(tab =>
             section.classList.add('step-inactive')
             section.classList.remove('step-active')
         })    
-        // tabs.forEach(function (tab) {
-        //     tab.classList.remove('steps-background')
-        // })
         tab.classList.add('steps-background')
         target.classList.remove('step-inactive')
         target.classList.add('step-active')

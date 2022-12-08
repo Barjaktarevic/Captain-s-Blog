@@ -1120,8 +1120,23 @@ body {
     animation: fetch-button-animation 400ms infinite alternate;
     cursor: pointer;
 }
-
 /* GALAXY PAGE END */
+
+
+/* COMPOSE LOG PAGE START */
+.compose-log-div {
+    background: url('/images/jump-background-3.jpg');
+    background-size: cover;
+    width: 100%;
+    min-height: 120vh;
+    background-attachment: fixed;
+    background-position: 0 15%;
+    display: flex;
+    flex-direction: column;
+    gap: 10%
+}
+
+/* COMPOSE LOG PAGE END */
 
 
 /* MEDIA QUERIES */

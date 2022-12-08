@@ -121,6 +121,19 @@ app.post('/logout', function(req, res, next){
     });
   });
 
+app.get('/jump/:galaxy/logs/:event', async(req, res) => {
+    const intent = req.query.intent
+    if (intent === 'compose') {
+        const event = await Event.findOne({ name: req.params.event })
+        console.log(event)
+        res.render('logsCompose', { event })
+    } else {
+        // const event = await Event.findOne({ name: req.params.event }).populate('blog')
+        // console.log(event)
+        // res.render('logs', { event })
+    }
+})
+
 app.get('/jump', async function(req, res) {
     try {
         let galaxies = await Galaxy.find()
@@ -135,7 +148,6 @@ app.get('/jump', async function(req, res) {
 app.get('/jump/:galaxy', async function(req, res) {
     try {
         let galaxy = await Galaxy.findOne({name: req.params.galaxy}).populate('event')
-        console.log(galaxy)
         res.render('galaxy', {galaxy} )
     } catch(err) {
         console.log(err)

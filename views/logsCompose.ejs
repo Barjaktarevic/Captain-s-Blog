@@ -3,19 +3,30 @@
 
 <div class="compose-log-div">
 
-    <div>
-        Event stuff.
+    <div class="event-compose-container">
+        <h2 class="event-compose-title"><%=event.name%></h2>
+        <img src="<%=event.image%>" alt="Planet" class="event-compose-image">
+        <p>Location: <%=event.location%></p>
+        <p>Description: <%=event.description%></p>
+        <p>Equipment: <%=event.equipment%></p>
+         <p>Health: <%=event.health%></p>
     </div>
 
-    <div>
-        <form action="#" method="POST">
+    <div class="text-compose-container">
+        <form action="/jump/<%=galaxy.name%>/logs/<%=event.name%>" method="POST">
+
+            <div class="hidden-inputs">
+            <input type="text" name="author" value=<%=login.username%> disabled>
+            
+            </div>
 
             <label for="title">Log title</label>
-            <input type="text" id="title" value="title">
+            <input type="text" id="title" value="title" name="title" placeholder="Give the log a name">
 
-            <label for="entry">Log entry</label>
-            <textarea name="" id="entry" cols="70" rows="50" ></textarea>
+            <label for="body">Log entry</label>
+            <textarea name="body" id="body" cols="25" rows="15" placeholder="Describe the events of the day..."></textarea>
 
+            <button type='submit' class="text-compose-button">Submit log</button>
         </form>
     </div>
 

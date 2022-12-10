@@ -125,13 +125,25 @@ app.get('/jump/:galaxy/logs/:event', async(req, res) => {
     const intent = req.query.intent
     if (intent === 'compose') {
         const event = await Event.findOne({ name: req.params.event })
-        console.log(event)
-        res.render('logsCompose', { event })
+        const galaxy = await Galaxy.findOne({ name: req.params.galaxy})
+        console.log(event, galaxy)
+        res.render('logsCompose', { event, galaxy })
     } else {
         // const event = await Event.findOne({ name: req.params.event }).populate('blog')
         // console.log(event)
         // res.render('logs', { event })
     }
+})
+
+app.post('/jump/:galaxy/logs/:event', async(req, res) => {
+    const { title, body, author } = req.body
+    const user = await User.findOne({ name: author })
+    const foundEvent = await Event.findOne({ name: req.params.event})
+    console.log(foundEvent)
+
+    const blog = new Blog({ title, body, author: user.id, event: foundEvent.id })
+    
+    await blog.save()
 })
 
 app.get('/jump', async function(req, res) {

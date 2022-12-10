@@ -1128,14 +1128,85 @@ body {
     background: url('/images/jump-background-3.jpg');
     background-size: cover;
     width: 100%;
-    min-height: 120vh;
+    min-height: 150vmin;
     background-attachment: fixed;
     background-position: 0 15%;
     display: flex;
-    flex-direction: column;
-    gap: 10%
+    gap: 10%;
+    padding-top: 5%;
 }
 
+.event-compose-container {
+    max-width: 30vw;
+    max-height: 40vh;
+    color: var(--primary-color);
+    margin-left: 5%;
+}
+
+.event-compose-title {
+    text-align: center;
+    font-size: 5vmin;
+}
+
+.event-compose-image {
+    height: 100%;
+    width: 100%;
+}
+
+.event-compose-container p {
+    margin-top: 1.5vmin;
+    font-size: 3vmin;
+}
+
+.text-compose-container {
+    text-align: center;
+    height: 60vh;
+    width: 60vw;
+    color: var(--primary-color);
+}
+
+.text-compose-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.text-compose-container input, .text-compose-container textarea {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    padding: 1vmin 0;
+    opacity: 90%;
+    font-family: inherit;
+    font-size: 3vmin;
+    width: 80%;
+}
+
+.text-compose-container label {
+    text-align: left;
+    font-size: 4.5vmin;
+    padding: 2vmin 0;
+}
+
+.text-compose-button {
+    width: 20vmin;
+    padding: 0.75vmin;
+    margin-top: 2vmin;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: none;
+    box-shadow: 0.5vmin 1vmin 1vmin 2vmin transparent;
+    font-size: 2.5vmin;
+    font-family: inherit;
+    border-radius: 1vmin;
+}
+
+.text-compose-button:hover {
+    cursor: pointer;
+    animation: fetch-button-animation 400ms alternate infinite;
+}
+
+.hidden-inputs {
+    display: none;
+}
 /* COMPOSE LOG PAGE END */
 
 

@@ -35,9 +35,6 @@ const userSchema = new mongoose.Schema({
     },
     blogEntries: [{
         type: mongoose.Schema.Types.ObjectId, ref: 'Blog'
-    }],
-    events: [{
-        type: mongoose.Schema.Types.ObjectId, ref: 'Event'
     }]
 })
 

@@ -73,29 +73,40 @@
 
         </div>
         
-        <div class="systems-visited-container"> 
-            <h3 class="systems-inspected-title">SYSTEMS INSPECTED</h3>
-            <div class="systems-inspected-div">
-                <p>Chion JEQ</p>
-                <p>Anvoacury</p>
-                <p>Timeter</p>
-                <p>Kazuiclite</p>
-                <p>Elnaugantu</p>
-                <p>Ivides</p>
-                <p>Guzonoe</p>
-                <p>Zieter</p>
-                <p>Vuatis</p>
-                <p>Phanenov</p>
-                <p>Drocihiri</p>
-                <p>Brora 2S5</p>
-                <p>Lluna 20D</p>
+        <div class="logs-written-container"> 
+            <h3 class="logs-written-title">LOG ENTRIES</h3>
+            <div class="logs-written-div">
+                <% for (let entry of user.blogEntries)  {%> 
+                    <p class=""><%=entry.title %></p>
+                <% } %> 
+
             </div>
         </div>
     </div>
 
+
+
     <div class="userpage-blog-information">
-        <h1>PLANETARY SURVEY RECORDS:</h1>
+
+        <h1>LOG ENTRIES</h1>
+        <% for (let entry of user.blogEntries)  {%> 
+            <div class="userpage-show-logs-entry">
+            <img src="/images/user-1.jpg" class="userpage-show-logs-user-img">
+            <h2 class="userpage-show-logs-blog-title"> <%= entry.title %></h2>
+            <div class="userpage-show-logs-author-and-stardate-div">
+                <h4> <%=user.rank%>  <%=user.username%> </h4>
+                <h4> <%=entry.createdAt.substring(0, 16) %>  </h4>
+            </div>
+            <p class="userpage-show-logs-body"> <%=entry.body %> </p>
+            <p class="userpage-show-logs-likes">Likes: 52</p>
+
+        </div>
+        <% } %> 
     </div>
+
+
+
+
 </div>
 
 <script>
@@ -107,7 +118,7 @@
         homeLoaderDiv.style.display = "none"
         mainDiv1.style.display = "block"
         mainDiv2.style.display = "block"
-    }, 2500)
+    }, 1500)
 
     let updateButton = document.querySelector('.update-button')
     let infoContainer = document.querySelector('.info-container')

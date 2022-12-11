@@ -782,19 +782,6 @@ body {
     font-size: 9vmin;
 }
 
-.userpage-blog-information {
-    color: var(--primary-color);
-    min-height: 80vmin;
-    opacity: 75%;
-    margin: 10vmin auto;
-    display: none;
-    flex-grow: 1;
-}
-
-.userpage-blog-information h1 {
-    text-align: center;
-}
-
 .image-and-info-container {
     display: flex;
     justify-content: space-around;
@@ -842,37 +829,36 @@ body {
     font-size: 3.5vmin;
 }
 
-.systems-visited-container {
+.logs-written-container {
     background-color: var(--tertiary-color);
     opacity: 85%;
     border: 1px solid var(--secondary-color);
     border-radius: 2vmin;
     margin: 2vmin auto;
-    max-width: 90vmin;
+    max-width: 110vmin;
 }
 
-.systems-inspected-title {
+.logs-written-title {
     text-align: center;
     margin-top: 3vmin;
     margin-bottom: 1.5vmin;
     font-size: 6vmin;
 }
 
-.systems-inspected-div {
+.logs-written-div {
     text-align: center;
-    column-gap: -2vmin;
-    column-count: 3;
+    column-count: 2;
     font-size: 3.5vmin;
     padding-bottom: 1vmin;
 }
 
-.systems-inspected-div p {
+.logs-written-div p {
     z-index: 1;
     position: relative;
-    margin-top: 1vmin;
+    padding: 1vmin;
 }
 
-.systems-inspected-div p::before {
+.logs-written-div p::before {
     content: '';
     position: absolute;
     top: 0;
@@ -886,11 +872,11 @@ body {
     z-index: -1;
 }
 
-.systems-inspected-div p:hover::before {
+.logs-written-div p:hover::before {
     transform: scaleX(1);
 }
 
-.systems-inspected-div p:hover {
+.logs-written-div p:hover {
     cursor: pointer;
     filter: brightness(120%);
     color: var(--primary-color);
@@ -973,6 +959,66 @@ body {
     cursor: pointer;
     filter: brightness(120%);
 }
+
+.userpage-blog-information {
+    color: var(--primary-color);
+    min-height: 80vmin;
+    opacity: 75%;
+    margin: 10vmin auto;
+    display: none;
+    flex-grow: 1;
+    max-width: 90vmin;
+}
+
+.userpage-blog-information h1 {
+    text-align: center;
+}
+
+.userpage-show-logs-entry {
+    background-color: #141414;
+    opacity: 95%;
+    color: var(--primary-color);
+    position: relative;
+    margin: 5vmin 1vmin;
+    padding: 3vmin 0.5vmin;
+    border: 3px solid var(--secondary-color);
+    border-radius: 2.5vmin;
+}
+
+.userpage-show-logs-user-img {
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    border-radius: 50%;
+    height: 5vmin;
+    width: 5vmin;
+}
+
+.userpage-show-logs-likes {
+    position: absolute;
+    bottom: 2%;
+    right: 2%;
+}
+
+.userpage-show-logs-blog-title {
+    text-align: center;
+}
+
+.userpage-show-logs-author-and-stardate-div {
+    margin: 0.5vmin 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.userpage-show-logs-body {
+    margin-top: 3vmin;
+}
+
+.userpage-show-logs-body::first-letter {
+    color: var(--error-color);
+    font-size: 4vmin;
+}
+
 /* USERPAGE END */
 
 /* JUMP PAGE START */

@@ -186,7 +186,7 @@ app.get('/jump/:galaxy', async function(req, res) {
 })
 
 app.get('/users/:rank-:username', async (req, res) => {
-    const user = await User.findOne({ username: req.params.username})
+    const user = await User.findOne({ username: req.params.username}).populate('blogEntries')
     if (user) {
         res.render('userpage', {user})
     } else {

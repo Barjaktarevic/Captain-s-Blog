@@ -126,12 +126,11 @@ app.get('/jump/:galaxy/logs/:event', async(req, res) => {
     if (intent === 'compose') {
         const event = await Event.findOne({ name: req.params.event })
         const galaxy = await Galaxy.findOne({ name: req.params.galaxy})
-        console.log(event, galaxy)
         res.render('logsCompose', { event, galaxy })
     } else {
-        // const event = await Event.findOne({ name: req.params.event }).populate('blog')
-        // console.log(event)
-        // res.render('logs', { event })
+        const event = await Event.findOne({ name: req.params.event }).populate('galaxy')
+        const blogs = await Blog.find({ event: event.id}).populate('author')
+        res.render('logs', { event, blogs })
     }
 })
 
@@ -139,11 +138,31 @@ app.post('/jump/:galaxy/logs/:event', async(req, res) => {
     const { title, body, author } = req.body
     const user = await User.findOne({ name: author })
     const foundEvent = await Event.findOne({ name: req.params.event})
-    console.log(foundEvent)
+    const galaxy = req.params.galaxy
 
     const blog = new Blog({ title, body, author: user.id, event: foundEvent.id })
-    
     await blog.save()
+
+    foundEvent.blogEntries.push(blog)
+    await foundEvent.save()
+
+    user.blogEntries.push(blog)
+    await user.save()
+
+    req.flash('success', 'Successfully posted a log entry')
+    res.redirect(`/jump/${galaxy}/logs/${foundEvent.name}`)
+})
+
+app.delete('/jump/:galaxy/logs/:event', async(req, res) => {
+    const eventInfo = await Event.findOne({ name: req.params.event })
+    
+    const foundBlog = await Blog.findOne({ event: eventInfo.id})
+    await Blog.findByIdAndDelete({ _id : foundBlog._id })
+
+    const URLgalaxy = req.params.galaxy
+    const URLevent = req.params.event
+    req.flash('success', 'Successfully deleted the game from the database.')
+    res.redirect(`/jump/${URLgalaxy}/logs/${URLevent}`)
 })
 
 app.get('/jump', async function(req, res) {

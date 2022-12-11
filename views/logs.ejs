@@ -1,6 +1,31 @@
 <%- include('./partials/header') %> 
 <%- include('./partials/navbar') %> 
 
+<div class="show-logs-div">
+
+    <h1 class="show-logs-title">Log entries found for '<%=event.name%>'</h1>
+
+    <% if(blogs) { %> 
+    <% for (let blog of blogs ) { %> 
+        <div class="show-logs-entry">
+            <img src="/images/user-1.jpg" class="show-logs-user-img">
+            <h2 class="show-logs-blog-title"> <%= blog.title %></h2>
+            <div class="show-logs-author-and-stardate-div">
+                <h4> <%=blog.author.rank%>  <%=blog.author.username%> </h4>
+                <h4> <%=blog.createdAt.substring(0, 16) %>  </h4>
+            </div>
+            <p class="show-logs-body"> <%=blog.body %> </p>
+            <p class="show-logs-likes">Likes: 52</p>
+
+            <form action="/jump/<%=event.galaxy.name%>/logs/<%=event.name%>?_method=DELETE" method="POST">
+                <button class="expunge-log-button">Expunge log entry</button>
+            </form>
+
+        </div>
+
+    <% } %>
+    <% } %>
+</div>
 
 
 

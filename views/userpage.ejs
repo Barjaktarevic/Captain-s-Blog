@@ -13,8 +13,47 @@
         <h1>STAR FLEET PASSPORT</h1>
         <div class="image-and-info-container">
             <div class="image-container">
-                <img src="<%=user.image%>" alt="profile image">
+                <img src="<%=user.image%>" alt="profile image" class="userpage-avatar">
             </div>
+
+            <dialog class="modal">
+                <h2 class="modal-title">Choose a new avatar</h2>
+                <div class="userpage-avatar-selection-div">
+                    
+                <form action="/users/<%=user.rank%>-<%=user.username%>/avatar?_method=PUT" method="POST"><button class="avatar-button"><img src="/images/avatar1.jpg" alt="avatar" class="avatar-image">
+                <input name='avatar' type="text" value='/images/avatar1.jpg' class="hidden-inputs"></button></form>
+
+                <form action="/users/<%=user.rank%>-<%=user.username%>/avatar?_method=PUT" method="POST"><button class="avatar-button"><img src="/images/avatar2.jpg" alt="avatar" class="avatar-image">
+                <input name='avatar' type="text" value='/images/avatar2.jpg' class="hidden-inputs"></button></form>
+
+                <form action="/users/<%=user.rank%>-<%=user.username%>/avatar?_method=PUT" method="POST"><button class="avatar-button"><img src="/images/avatar3.jpg" alt="avatar" class="avatar-image">
+                <input name='avatar' type="text" value='/images/avatar3.jpg' class="hidden-inputs"></button></form>
+
+                <form action="/users/<%=user.rank%>-<%=user.username%>/avatar?_method=PUT" method="POST"><button class="avatar-button"><img src="/images/avatar4.jpg" alt="avatar" class="avatar-image">
+                <input name='avatar' type="text" value='/images/avatar4.jpg' class="hidden-inputs"></button></form>
+
+                <form action="/users/<%=user.rank%>-<%=user.username%>/avatar?_method=PUT" method="POST"><button class="avatar-button"><img src="/images/avatar5.jpg" alt="avatar" class="avatar-image">
+                <input name='avatar' type="text" value='/images/avatar5.jpg' class="hidden-inputs"></button></form>
+
+                <form action="/users/<%=user.rank%>-<%=user.username%>/avatar?_method=PUT" method="POST"><button class="avatar-button"><img src="/images/avatar6.jpg" alt="avatar" class="avatar-image">
+                <input name='avatar' type="text" value='/images/avatar6.jpg' class="hidden-inputs"></button></form>
+
+                <form action="/users/<%=user.rank%>-<%=user.username%>/avatar?_method=PUT" method="POST"><button class="avatar-button"><img src="/images/avatar7.jpg" alt="avatar" class="avatar-image">
+                <input name='avatar' type="text" value='/images/avatar7.jpg' class="hidden-inputs"></button></form>
+
+                <form action="/users/<%=user.rank%>-<%=user.username%>/avatar?_method=PUT" method="POST"><button class="avatar-button"><img src="/images/avatar8.jpg" alt="avatar" class="avatar-image">
+                <input name='avatar' type="text" value='/images/avatar8.jpg' class="hidden-inputs"></button></form>
+
+                <form action="/users/<%=user.rank%>-<%=user.username%>/avatar?_method=PUT" method="POST"><button class="avatar-button"><img src="/images/avatar9.jpg" alt="avatar" class="avatar-image">
+                <input name='avatar' type="text" value='/images/avatar9.jpg' class="hidden-inputs"></button></form>
+
+                <form action="/users/<%=user.rank%>-<%=user.username%>/avatar?_method=PUT" method="POST"><button class="avatar-button"><img src="/images/avatar10.jpg" alt="avatar" class="avatar-image">
+                <input name='avatar' type="text" value='/images/avatar10.jpg' class="hidden-inputs"></button></form>
+              
+                </div>
+                <img src="/images/cancel-button-1.svg" alt="close" class="modal-close-button">
+            </dialog>
+
             <div class="info-container">
                 <div>
                 <h3><span class="info-label-span">Name:</span></h3>
@@ -84,14 +123,13 @@
         </div>
     </div>
 
-
-
     <div class="userpage-blog-information">
 
         <h1>LOG ENTRIES</h1>
         <% for (let entry of user.blogEntries)  {%> 
             <div class="userpage-show-logs-entry">
-            <img src="/images/user-1.jpg" class="userpage-show-logs-user-img">
+            <h3 class="userpage-show-logs-event-name">Event:  <%= entry.event.name %></h3>
+            <img src=<%=user.image%> class="userpage-show-logs-user-img">
             <h2 class="userpage-show-logs-blog-title"> <%= entry.title %></h2>
             <div class="userpage-show-logs-author-and-stardate-div">
                 <h4> <%=user.rank%>  <%=user.username%> </h4>
@@ -103,9 +141,6 @@
         </div>
         <% } %> 
     </div>
-
-
-
 
 </div>
 
@@ -132,9 +167,23 @@
 
     closeButton.addEventListener('click', () => {
         updateContainer.style.display = "none"
-        infoContainer.style.display = "grid"
-        
+        infoContainer.style.display = "grid"   
     })
+
+    let avatar = document.querySelector('.userpage-avatar')
+    let modal = document.querySelector('.modal')
+    let closeModalButton = document.querySelector('.modal-close-button')
+
+    avatar.addEventListener('click', () => {
+        modal.showModal()
+    })
+
+    closeModalButton.addEventListener('click', () => {
+        modal.close()
+    })
+
+
+
 </script>
 
 <%- include('./partials/footer') %> 

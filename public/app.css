@@ -798,14 +798,6 @@ body {
     border-radius: 2vmin;
 }
 
-.image-container img {
-    object-fit: fill;
-    max-width: 50vmin;
-    max-height: 37.5vmin;
-    border-radius: 2vmin;
-    margin-top: 4vmin;
-}
-
 .info-container {
     width: 80vmin;
     text-align: left;
@@ -987,11 +979,19 @@ body {
 
 .userpage-show-logs-user-img {
     position: absolute;
-    top: 2%;
-    left: 2%;
+    top: 1%;
+    left: 1%;
     border-radius: 50%;
-    height: 5vmin;
-    width: 5vmin;
+    height: 6vmin;
+    width: 6vmin;
+    border: solid 2px var(--secondary-color);
+}
+
+.userpage-show-logs-event-name {
+    text-align: right;
+    padding: 1vmin;
+    background-color: var(--error-color);
+    color: var(--tertiary-color);
 }
 
 .userpage-show-logs-likes {
@@ -1002,6 +1002,8 @@ body {
 
 .userpage-show-logs-blog-title {
     text-align: center;
+    padding: 1vmin;
+    background: linear-gradient(to right, transparent 0%, var(--secondary-color) 50%, transparent 100%);
 }
 
 .userpage-show-logs-author-and-stardate-div {
@@ -1012,13 +1014,94 @@ body {
 
 .userpage-show-logs-body {
     margin-top: 3vmin;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2.5vmin;
+    padding: 0.5vmin;
 }
 
 .userpage-show-logs-body::first-letter {
     color: var(--error-color);
-    font-size: 4vmin;
+    font-size: 3vmin;
 }
 
+.userpage-avatar {
+    object-fit: contain;
+    width: 26vmin;
+    height: 34.5vmin;
+    border-radius: 2vmin;
+    margin-top: 4vmin;
+    margin-right: 1vmin;
+}
+
+.userpage-avatar:hover {
+    cursor: pointer;
+    filter: brightness(80%);
+}
+
+.modal {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--tertiary-color);
+    border: 4px solid var(--secondary-color);
+    width: 75%;
+    min-height: 60vh;
+    color: var(--primary-color);
+    text-align: center;
+    border-radius: 3vmin;
+}
+
+.modal::backdrop {
+    background: rgba(0, 0, 0, 0.45);
+}
+
+.userpage-avatar-selection-div {
+    padding: 2vmin;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    justify-content: center;
+    gap: 0.5vmin;
+}
+
+.userpage-avatar-selection-div img {
+    margin: 0 auto;
+    width: 130px;
+    height: 168px;
+    object-fit: cover;
+}
+
+.userpage-avatar-selection-div img:hover {
+    border: 2px solid var(--secondary-color);
+    filter: brightness(110%);
+    transition: 200ms ease-in;
+    cursor: pointer;
+}
+
+.modal-title {
+    font-size: 5vmin;
+    padding: 2vmin 0;
+}
+
+.modal-close-button {
+    position: absolute;
+    top: 1.25%;
+    right: 0.5%;
+    background-color: var(--primary-color);
+    scale: 0.7;
+    border-radius: 4vmin;
+}
+
+.modal-close-button:hover {
+    filter: invert(40%);
+    cursor: pointer;
+}
+
+.avatar-button {
+    all:unset;
+}
 /* USERPAGE END */
 
 /* JUMP PAGE START */
@@ -1224,6 +1307,9 @@ body {
     font-family: inherit;
     font-size: 3vmin;
     width: 80%;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2.5vmin;
+    padding: 0.5vmin;
 }
 
 .text-compose-container label {
@@ -1264,13 +1350,15 @@ body {
     min-height: 150vmin;
     background-attachment: fixed;
     background-position: 0 15%;
+    padding-bottom: 10vmin;
 }
 
 .show-logs-title {
     font-size: 8vmin;
     color: var(--primary-color);
     text-align: center;
-    padding: 5vmin 0;
+    padding: 2vmin 0;
+    background: linear-gradient(to right, transparent 0%, var(--secondary-color) 50%, transparent 100%);
 }
 
 .show-logs-entry {
@@ -1281,14 +1369,28 @@ body {
     width: 70vw;
     max-height: 82vh;
     background-color: var(--tertiary-color);
-    padding: 5vmin;
+    padding: 3vmin;
     color: var(--primary-color);
     opacity: 80%;
     position: relative;
 }
 
+.show-logs-event-name {
+    text-align: right;
+    padding: 1vmin;
+    display: block;
+    background-color: var(--error-color);
+    color: var(--tertiary-color);
+    border-top-right-radius: 5vmin;
+    padding-right: 2%;
+    margin: 0 5%;
+}
+
 .show-logs-blog-title {
     text-align: center;
+    padding: 1vmin;
+    background: linear-gradient(to right, transparent 0%, var(--secondary-color) 50%, transparent 100%);
+    font-size: 5vmin;
 }
 
 .show-logs-author-and-stardate-div {
@@ -1298,8 +1400,21 @@ body {
     margin-top: 2vmin;
 }
 
+.direct-user-link, .direct-galaxy-link {
+    all: unset;
+}
+
+.direct-user-link:hover, .direct-galaxy-link {
+    cursor: pointer;
+    filter: brightness(120%);
+}
+
 .show-logs-body {
     margin: 6vmin;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2.5vmin;
 }
 
 .show-logs-likes {
@@ -1311,8 +1426,8 @@ body {
 .show-logs-user-img {
     border-radius: 50%;
     position: absolute;
-    max-width: 10vmin;
-    max-height: 10vmin;
+    width: 10vmin;
+    height: 10vmin;
     top: 2.5%;
     left: 2.5%;
 }

@@ -136,7 +136,8 @@ app.get('/jump/:galaxy/logs/:event', async(req, res) => {
 
 app.post('/jump/:galaxy/logs/:event', async(req, res) => {
     const { title, body, author } = req.body
-    const user = await User.findOne({ name: author })
+    const user = await User.findOne({ username: author })
+    
     const foundEvent = await Event.findOne({ name: req.params.event})
     const galaxy = req.params.galaxy
 
@@ -161,7 +162,7 @@ app.delete('/jump/:galaxy/logs/:event', async(req, res) => {
 
     const URLgalaxy = req.params.galaxy
     const URLevent = req.params.event
-    req.flash('success', 'Successfully deleted the game from the database.')
+    req.flash('success', 'Entry successfully deleted.')
     res.redirect(`/jump/${URLgalaxy}/logs/${URLevent}`)
 })
 
@@ -186,7 +187,7 @@ app.get('/jump/:galaxy', async function(req, res) {
 })
 
 app.get('/users/:rank-:username', async (req, res) => {
-    const user = await User.findOne({ username: req.params.username}).populate('blogEntries')
+    const user = await User.findOne({ username: req.params.username}).populate({ path: 'blogEntries', populate: { path: 'event'} })
     if (user) {
         res.render('userpage', {user})
     } else {
@@ -194,6 +195,8 @@ app.get('/users/:rank-:username', async (req, res) => {
         res.redirect('/home')
     }
   })
+
+  
 
   app.put('/users/:rank-:username', async (req, res) => {
     try {
@@ -210,9 +213,20 @@ app.get('/users/:rank-:username', async (req, res) => {
     }
   }) 
 
+  app.put('/users/:rank-:username/avatar', async (req, res) => {
+    try {
+    const user = await User.findOneAndUpdate({ username: req.params.username}, { image: req.body.avatar } )
+    await user.save()  
+    req.flash('success', 'Successfully changed your avatar.')
+    res.redirect(`/users/${user.rank}-${user.username}`)
+    } catch(err) {
+        console.log(err)
+        req.flash('error', 'An unexpected error has occurred.')
+        res.redirect('back')
+    }
+  }) 
+
 app.use('*', (req, res) => {
     res.render('404')
 })
-
-
 

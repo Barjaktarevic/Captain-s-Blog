@@ -1,0 +1,32 @@
+<%- include('./partials/header') %> 
+<%- include('./partials/navbar') %> 
+
+<div class="show-blog-div">
+
+    <div class="show-logs-entry">
+        <a href="/users/<%=blog.author.rank%>-<%=blog.author.username%>" class="direct-user-link" title="Visit this user's ship"><img src=<%=blog.author.image%> class="show-logs-user-img"></a>
+
+        <h3 class="show-logs-event-name"><a href="/jump/<%=blog.event.galaxy.name%>" class="direct-galaxy-link" title="Go to galaxy view">Event:  <%= blog.event.name %></a></h3>
+
+        <h2 class="show-logs-blog-title"> <%= blog.title %></h2>
+        <div class="show-logs-author-and-stardate-div">
+
+            <h4><a href="/users/<%=blog.author.rank%>-<%=blog.author.username%>" class="direct-user-link" title="Visit this user's ship"> <%=blog.author.rank%>  <%=blog.author.username%> </a></h4>
+
+            <h4> <%=blog.createdAt.substring(0, 16) %>  </h4>
+
+        </div>
+        <p class="show-logs-body"> <%=blog.body %> </p>
+        <p class="show-logs-likes">Likes: 52</p>
+
+        <% if (login && login._id.equals(blog.author._id)) { %>  
+        <form action="/jump/<%=blog.event.galaxy.name%>/logs/<%=blog.event.name%>?_method=DELETE" method="POST">
+            <button class="expunge-log-button">Expunge log entry</button>
+        </form>
+        <% } %> 
+        
+    </div>
+
+</div>
+
+<%- include('./partials/footer') %> 

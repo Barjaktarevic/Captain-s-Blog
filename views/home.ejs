@@ -22,17 +22,14 @@
     </div>
     
     <div class="home-blog">
-        <img src="/images/user-1.jpg" class="home-blog-user-img">
-        <h2 class="home-blog-title">Into the void...</h2>
+        <img src=<%=author.image%> class="home-blog-user-img">
+        <h2 class="home-blog-title"> <%= blog[0].title %> </h2>
+        
         <div class="home-author-and-stardate-div">
-        <h4 class="home-blog-author">Cpt. Arthur Miller</h4>
-        <h4 class="home-blog-stardate">Stardate: 15678.8</4>
+        <h4 class="home-blog-author"><%=author.rank%>  <%=author.username%></h4>
+        <h4 class="home-blog-stardate"><%=blog[0].createdAt.substring(0, 16) %></h4>
         </div>
-        <p class="home-blog-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime cumque eos consequatur veniam error, sapiente adipisci asperiores magnam, corporis quo eveniet consectetur, dolorum quibusdam corrupti inventore aliquam nisi fugit assumenda!
-        Earum fugiat atque corrupti excepturi non enim ut tempore voluptatum eius dolor eum veniam voluptate, explicabo, architecto laudantium molestias? Iste harum consequuntur fugiat possimus nesciunt distinctio ratione aliquid repellendus dolores.
-        Dolores reiciendis similique repudiandae aspernatur alias perspiciatis quaerat doloremque, earum adipisci inventore, fuga harum autem eaque voluptates illum quisquam! Consectetur aspernatur earum vitae ipsa labore iste quis vel nemo iure.
-        Dolore voluptatem ad totam eius maxime. Eum sequi impedit qui magnam ipsum placeat similique natus incidunt enim accusamus sed quaerat expedita in eos velit odio, fugiat perferendis maiores atque fugit.
-        Unde nam magni inventore velit accusamus ratione, facilis recusandae aut ipsum cupiditate ducimus debitis odio id vero esse nihil quis delectus soluta, voluptatibus dolore possimus. Esse praesentium id iste dolorem.</p>
+        <p class="home-blog-body"><%=blog[0].body %></p>
         <p class="home-blog-likes">Likes: 52</p>
     </div>
     <button class="home-blog-fetch-button">Probe for a different blog entry</button>

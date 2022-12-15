@@ -11,7 +11,7 @@
         <div class="show-logs-entry">
             <img src=<%=blog.author.image%> class="show-logs-user-img">
 
-            <h3 class="show-logs-event-name"><a href="/jump/<%=event.galaxy.name%>" class="direct-galaxy-link" title="Back to galaxy view">Event:  <%= event.name %></a></h3>
+            <h3 class="show-logs-event-name"><a href="/jump/<%=event.galaxy.name%>" class="direct-galaxy-link" title="Go to galaxy view">Event:  <%= event.name %></a></h3>
 
             <h2 class="show-logs-blog-title"> <%= blog.title %></h2>
             <div class="show-logs-author-and-stardate-div">
@@ -21,12 +21,8 @@
                 <h4> <%=blog.createdAt.substring(0, 16) %>  </h4>
 
             </div>
-            <p class="show-logs-body"> <%=blog.body %> </p>
+            <p class="show-logs-body"> <%=blog.body.substring(0, 750) %>... </p>
             <p class="show-logs-likes">Likes: 52</p>
-
-            <form action="/jump/<%=event.galaxy.name%>/logs/<%=event.name%>?_method=DELETE" method="POST">
-                <button class="expunge-log-button">Expunge log entry</button>
-            </form>
 
         </div>
 

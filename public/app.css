@@ -687,6 +687,9 @@ body {
     text-align: center;
     line-height: 5vmin;
     font-size: 2.8vmin;
+    position: fixed;
+    margin-top: 3vh;
+    z-index: 20;
 }
 
 .error-partial {
@@ -697,6 +700,9 @@ body {
     text-align: center;
     line-height: 5vmin;
     font-size: 2.8vmin;
+    position: fixed;
+    margin-top: 3vh;
+    z-index: 20;
 }
 
 .logout-button {
@@ -835,10 +841,12 @@ body {
     margin-top: 3vmin;
     margin-bottom: 1.5vmin;
     font-size: 6vmin;
+    border-bottom: 4.5px solid;
+    border-image-source: linear-gradient(to right, transparent 0%, var(--error-color) 50%, transparent 100%);
+    border-image-slice: 1;
 }
 
 .logs-written-div {
-    text-align: center;
     column-count: 2;
     font-size: 3.5vmin;
     padding-bottom: 1vmin;
@@ -848,6 +856,7 @@ body {
     z-index: 1;
     position: relative;
     padding: 1vmin;
+    text-align: left;
 }
 
 .logs-written-div p::before {
@@ -873,6 +882,10 @@ body {
     filter: brightness(120%);
     color: var(--primary-color);
     transition: color 300ms ease-in-out;
+}
+
+.fa-caret-right {
+    color: var(--error-color);
 }
 
 .update-button, .update-form-button {
@@ -1019,6 +1032,7 @@ body {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 2.5vmin;
     padding: 0.5vmin;
+    padding-bottom: 3vmin;
 }
 
 .userpage-show-logs-body::first-letter {
@@ -1038,6 +1052,15 @@ body {
 .userpage-avatar:hover {
     cursor: pointer;
     filter: brightness(80%);
+}
+
+.userpage-avatar-guest {
+    object-fit: contain;
+    width: 26vmin;
+    height: 34.5vmin;
+    border-radius: 2vmin;
+    margin-top: 4vmin;
+    margin-right: 1vmin;
 }
 
 .modal {
@@ -1101,6 +1124,23 @@ body {
 
 .avatar-button {
     all:unset;
+}
+
+.inspect-log-link {
+    all: unset;
+    padding: 1vmin;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border-radius: 1vmin;
+    position: absolute;
+    bottom: 1%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.inspect-log-link:hover {
+    cursor: pointer;
+    animation: fetch-button-animation 400ms infinite alternate;
 }
 /* USERPAGE END */
 
@@ -1367,7 +1407,7 @@ body {
     border-top-right-radius: 20vmin;
     margin: 5vmin auto;
     width: 70vw;
-    max-height: 82vh;
+    min-height: 82vh;
     background-color: var(--tertiary-color);
     padding: 3vmin;
     color: var(--primary-color);
@@ -1404,9 +1444,9 @@ body {
     all: unset;
 }
 
-.direct-user-link:hover, .direct-galaxy-link {
+.direct-user-link:hover, .direct-galaxy-link:hover {
     cursor: pointer;
-    filter: brightness(120%);
+    opacity: 75%;
 }
 
 .show-logs-body {
@@ -1430,6 +1470,7 @@ body {
     height: 10vmin;
     top: 2.5%;
     left: 2.5%;
+    object-fit: cover;
 }
 
 .expunge-log-button {
@@ -1448,8 +1489,23 @@ body {
     cursor: pointer;
 
 }
-
 /* SHOW ALL LOGS PAGE END */
+
+/* SHOW SINGLE LOG PAGE START */
+.show-blog-div {
+    background: url('/images/image-9.jpg');
+    background-size: cover;
+    width: 100%;
+    min-height: 150vmin;
+    background-attachment: fixed;
+    background-position: 0 15%;
+    display: flex;
+    gap: 10%;
+    padding-top: 5%;
+}
+
+
+/* SHOW SINGLE LOG PAGE END */
 
 
 /* MEDIA QUERIES */

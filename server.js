@@ -76,7 +76,11 @@ app.get('/', (req, res) => {
 })
 
 app.get('/home', async (req, res) => {
-    res.render('home')
+    const blog = await Blog.aggregate([{$match: {}}, {$sample: {size: 1}}])
+    const author = await User.findOne({ _id: blog[0].author._id }).select(['username', 'rank', 'image'])
+    const event = await Event.findOne({ _id: blog[0].event._id }).select('name').populate({ path: 'galaxy', select: 'name'})
+    
+    res.render('home', { blog, author, event })
 })
 
 app.get('/signup', (req, res) => {
@@ -120,6 +124,13 @@ app.post('/logout', function(req, res, next){
       res.redirect('/home');
     });
   });
+
+app.get('/logs/:id', async(req, res) => {
+    const blog = await Blog.findOne({ _id: req.params.id })
+        .populate({ path: 'event', select: 'name', populate: { path: 'galaxy', select: 'name' }})
+        .populate({ path: 'author', select: ['image', 'rank', 'username']})
+         res.render('showBlog', { blog })
+})
 
 app.get('/jump/:galaxy/logs/:event', async(req, res) => {
     const intent = req.query.intent
@@ -189,14 +200,12 @@ app.get('/jump/:galaxy', async function(req, res) {
 app.get('/users/:rank-:username', async (req, res) => {
     const user = await User.findOne({ username: req.params.username}).populate({ path: 'blogEntries', populate: { path: 'event'} })
     if (user) {
-        res.render('userpage', {user})
+        res.render('userpage', { user })
     } else {
         req.flash('error', "That user doesn't exist")
         res.redirect('/home')
     }
   })
-
-  
 
   app.put('/users/:rank-:username', async (req, res) => {
     try {

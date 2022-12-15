@@ -12,10 +12,21 @@
     <div class="userpage-user-information">
         <h1>STAR FLEET PASSPORT</h1>
         <div class="image-and-info-container">
+            <% if (login && login._id.equals(user._id)) { %>  
             <div class="image-container">
-                <img src="<%=user.image%>" alt="profile image" class="userpage-avatar">
+                <img src="<%=user.image%>" alt="profile image" 
+                class= "userpage-avatar">
             </div>
+            <% } else {%> 
+                <div class="image-container">
+                    <img src="<%=user.image%>" alt="profile image" 
+                    class= "userpage-avatar-guest">
+                </div>
+            <% } %> 
 
+
+
+            <% if (login && login._id.equals(user._id)) { %>  
             <dialog class="modal">
                 <h2 class="modal-title">Choose a new avatar</h2>
                 <div class="userpage-avatar-selection-div">
@@ -53,6 +64,7 @@
                 </div>
                 <img src="/images/cancel-button-1.svg" alt="close" class="modal-close-button">
             </dialog>
+            <% } %> 
 
             <div class="info-container">
                 <div>
@@ -70,7 +82,9 @@
                 <h3><%= user.shipName %></h3>
                 </div>
                 
+            <% if (login && login._id.equals(user._id)) { %>  
                 <button class="update-button">EDIT INFORMATION</button>
+            <% } %> 
             </div>
 
             <div class="update-container">
@@ -108,16 +122,16 @@
                   <p class="update-form-close">Rescind request</p>
                   </div>
             </form>
-        </div>
+        </div> 
 
         </div>
         
         <div class="logs-written-container"> 
-            <h3 class="logs-written-title">LOG ENTRIES</h3>
+            <h3 class="logs-written-title">LOG ENTRIES: <%=user.blogEntries.length %></h3>
             <div class="logs-written-div">
-                <% for (let entry of user.blogEntries)  {%> 
-                    <p class=""><%=entry.title %></p>
-                <% } %> 
+                <% user.blogEntries.forEach((entry, index) => { %> 
+                    <p data-tab-target="#index-<%=index%>"><i class="fa-solid fa-caret-right"></i>  <%=entry.title %></p>
+                <% })  %>  
 
             </div>
         </div>
@@ -126,8 +140,9 @@
     <div class="userpage-blog-information">
 
         <h1>LOG ENTRIES</h1>
-        <% for (let entry of user.blogEntries)  {%> 
-            <div class="userpage-show-logs-entry">
+        <% user.blogEntries.forEach((entry, index) => { %> 
+            <div class="<%= index === 0 ? 'step-active' : 'step-inactive' %> userpage-show-logs-entry" id="index-<%=index%>">
+
             <h3 class="userpage-show-logs-event-name">Event:  <%= entry.event.name %></h3>
             <img src=<%=user.image%> class="userpage-show-logs-user-img">
             <h2 class="userpage-show-logs-blog-title"> <%= entry.title %></h2>
@@ -135,11 +150,17 @@
                 <h4> <%=user.rank%>  <%=user.username%> </h4>
                 <h4> <%=entry.createdAt.substring(0, 16) %>  </h4>
             </div>
-            <p class="userpage-show-logs-body"> <%=entry.body %> </p>
+            <p class="userpage-show-logs-body"> <%=entry.body.substring(0, 500) %>... </p>
             <p class="userpage-show-logs-likes">Likes: 52</p>
 
+            <% if (login && login._id.equals(entry.author._id)) { %> 
+            <a href="/logs/<%=entry._id%>" class="inspect-log-link">Inspect log and amend</a>
+            <% } else { %> 
+            <a href="/logs/<%=entry._id%>" class="inspect-log-link">Inspect log</a>   
+            <% } %> 
+
         </div>
-        <% } %> 
+        <% })  %>  
     </div>
 
 </div>
@@ -159,13 +180,14 @@
     let infoContainer = document.querySelector('.info-container')
     let updateContainer = document.querySelector('.update-container')
     let closeButton = document.querySelector('.update-form-close')
+    
 
-    updateButton.addEventListener('click', () => {
+    updateButton && updateButton.addEventListener('click', () => {
         infoContainer.style.display = "none"
         updateContainer.style.display = "block"
     })
 
-    closeButton.addEventListener('click', () => {
+    closeButton && closeButton.addEventListener('click', () => {
         updateContainer.style.display = "none"
         infoContainer.style.display = "grid"   
     })
@@ -174,15 +196,33 @@
     let modal = document.querySelector('.modal')
     let closeModalButton = document.querySelector('.modal-close-button')
 
-    avatar.addEventListener('click', () => {
+    avatar && avatar.addEventListener('click', () => {
         modal.showModal()
     })
 
-    closeModalButton.addEventListener('click', () => {
+    closeModalButton && closeModalButton.addEventListener('click', () => {
         modal.close()
     })
 
+const tabs = document.querySelectorAll('[data-tab-target]')
+const sections = document.querySelectorAll('.userpage-show-logs-entry')
 
+tabs.forEach(tab =>
+    tab.addEventListener('click', function() {
+
+        const target = document.querySelector(tab.dataset.tabTarget)
+        sections.forEach(function (section) {
+            section.classList.add('step-inactive')
+            section.classList.remove('step-active')
+        })
+        tabs.forEach(function (tab) {
+            tab.classList.remove('steps-background')
+        })
+        tab.classList.add('steps-background')
+        target.classList.remove('step-inactive')
+        target.classList.add('step-active')
+    })
+)
 
 </script>
 

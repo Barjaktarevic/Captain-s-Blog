@@ -2,7 +2,8 @@
 <%- include('./partials/navbar') %> 
 
 <div class="show-blog-div">
-
+    <%- include('./partials/success') %> 
+    <%- include('./partials/error') %> 
     <div class="show-logs-entry">
         <a href="/users/<%=blog.author.rank%>-<%=blog.author.username%>" class="direct-user-link" title="Visit this user's ship"><img src=<%=blog.author.image%> class="show-logs-user-img"></a>
 

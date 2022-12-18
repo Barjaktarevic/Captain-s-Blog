@@ -4,7 +4,7 @@
 <div class="show-logs-div">
     <%- include('./partials/success') %> 
     <%- include('./partials/error') %> 
-    <h1 class="show-logs-title">Log entries found for '<%=event.name%>'</h1>
+    <h1 class="show-logs-title">Log entries found for <span><%=event.name%></span></h1>
 
     <% if(blogs) { %> 
     <% for (let blog of blogs ) { %> 
@@ -20,6 +20,7 @@
 
                 <h4> <%=blog.createdAt.substring(0, 16) %>  </h4>
 
+                <a href="/logs/<%=blog._id%>" class="inspect-log-link">Inspect log</a> 
             </div>
             <p class="show-logs-body"> <%=blog.body.substring(0, 750) %>... </p>
             <p class="show-logs-likes">Likes: 52</p>

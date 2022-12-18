@@ -22,15 +22,22 @@
     </div>
     
     <div class="home-blog">
-        <img src=<%=author.image%> class="home-blog-user-img">
+        <a href="/users/<%=author.rank%>-<%=author.username%>" class="direct-user-link" title="Visit this user's ship"><img src=<%=author.image%> class="home-blog-user-img" /></a>
+
+        <h3 class="home-blog-event-name"><a href="/jump/<%=event.galaxy.name%>" class="direct-galaxy-link" title="Go to galaxy view">Event:  <%= event.name %></a></h3>
+
         <h2 class="home-blog-title"> <%= blog[0].title %> </h2>
         
         <div class="home-author-and-stardate-div">
-        <h4 class="home-blog-author"><%=author.rank%>  <%=author.username%></h4>
-        <h4 class="home-blog-stardate"><%=blog[0].createdAt.substring(0, 16) %></h4>
+            <h4 class="home-blog-author"><a href="/users/<%=author.rank%>-<%=author.username%>" class="direct-user-link" title="Visit this user's ship"><%=author.rank%>  <%=author.username%></a></h4>
+            <h4 class="home-blog-stardate"><%=blog[0].createdAt.substring(0, 16) %></h4>
         </div>
-        <p class="home-blog-body"><%=blog[0].body %></p>
+        <p class="home-blog-body"><%=blog[0].body.substring(0, 500) %>...</p>
         <p class="home-blog-likes">Likes: 52</p>
+        
+        
+        <a href="/logs/<%=blog[0]._id%>" class="inspect-log-link">Inspect log</a>   
+
     </div>
     <button class="home-blog-fetch-button">Probe for a different blog entry</button>
 </section>
@@ -60,7 +67,7 @@
 
     <div class="star-map-example-div" data-aos="fade-left">
         <div class="star-map-example-container">
-            <img src="/images/constellation-2.jpg" alt="Constellation"> 
+            <img src="/images/constellation-2.jpg" alt="Constellation" loading="lazy"> 
                 <div class="point-of-interest point-of-interest-1"></div>
                 <div class="point-of-interest point-of-interest-2"></div>
                 <div class="point-of-interest point-of-interest-3"></div>
@@ -160,6 +167,98 @@ tabs.forEach(tab =>
         
     })
 )
+
+
+// PROBE FOR A RANDOM BLOG
+const probeButton = document.querySelector('.home-blog-fetch-button')
+
+const url = 'http://localhost:3000/randomblog'
+
+probeButton.addEventListener('click', async () => {
+    const res = await fetch(url, {method: 'GET'})
+    const data = await res.json()
+    console.log(data)
+    await createElements(data)
+})
+
+function createElements(data){
+
+    let child = homeBlogDiv.lastElementChild
+    while (child) {
+            homeBlogDiv.removeChild(child);
+            child = homeBlogDiv.lastElementChild;
+        }
+
+    // a tag & img at the top-left
+    let a1 = document.createElement('a')
+    a1.setAttribute('href', `/users/${data.author.rank}-${data.author.username}`)
+    a1.setAttribute('title', "Visit this user's ship")
+    a1.classList.add('direct-user-link')
+    let img1 = document.createElement('img')
+    img1.setAttribute('src', `${data.author.image}`)
+    img1.classList.add('home-blog-user-img')
+    a1.appendChild(img1)
+
+    // event name and blog title name
+    let firstH3 = document.createElement('h3')
+    firstH3.classList.add('home-blog-event-name')
+    firstH3.innerText = `Event: ${data.event.name}`
+    let a2 = document.createElement('a')
+    a2.setAttribute('href', `/jump/${data.event.galaxy.name}`)
+    a2.setAttribute('title', "Go to galaxy view")
+    a2.classList.add('direct-galaxy-link')
+    firstH3.appendChild(a2)
+
+    let firstH2 = document.createElement('h2')
+    firstH2.classList.add('home-blog-title')
+    firstH2.innerText = data.blog[0].title
+
+    // div for author and date + author and date
+    let firstDiv = document.createElement('div')
+    firstDiv.classList.add('home-author-and-stardate-div')
+    
+
+    let firstH4 = document.createElement('h4')
+    firstH4.classList.add('home-blog-author')
+    firstH4.innerText = `${data.author.rank} ${data.author.username}`
+    let a3 = document.createElement('a')
+    a3.classList.add('direct-user-link')
+    a3.setAttribute('href', `/users/${data.author.rank}-${data.author.username}`)
+    a3.setAttribute('title', "Visit this user's ship")
+    let secondH4 = document.createElement('h4')
+    secondH4.classList.add('home-blog-stardate')
+    secondH4.innerText = `${data.blog[0].createdAt.substring(0, 16)}`
+
+    firstH4.appendChild(a3)
+    firstDiv.appendChild(firstH4)
+    firstDiv.appendChild(secondH4)
+
+    // body and likes
+    let blogBody = document.createElement('p')
+    blogBody.classList.add('home-blog-body')
+    blogBody.innerText = `${data.blog[0].body.substring(0, 500)}...`
+    let likes = document.createElement('p')
+    likes.classList.add('home-blog-likes')
+    likes.innerText = 'Likes: 52'
+
+    // inspect link
+    let a4 = document.createElement('a')
+    a4.setAttribute('href', `/logs/${data.blog[0]._id}`)
+    a4.classList.add('inspect-log-link')
+    a4.innerText = 'Inspect log'
+
+    homeBlogDiv.appendChild(a1)
+    homeBlogDiv.appendChild(firstH3)
+    homeBlogDiv.appendChild(firstH2)
+    homeBlogDiv.appendChild(firstDiv)
+    homeBlogDiv.appendChild(blogBody)
+    homeBlogDiv.appendChild(likes)
+    homeBlogDiv.appendChild(a4)
+}
+
 </script>
 
 <%- include('./partials/footer') %> 
+
+
+

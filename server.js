@@ -83,6 +83,15 @@ app.get('/home', async (req, res) => {
     res.render('home', { blog, author, event })
 })
 
+app.get('/randomblog', async(req, res) => {
+    const blog = await Blog.aggregate([{$match: {}}, {$sample: {size: 1}}])
+    const author = await User.findOne({ _id: blog[0].author._id }).select(['username', 'rank', 'image'])
+    const event = await Event.findOne({ _id: blog[0].event._id }).select('name').populate({ path: 'galaxy', select: 'name'})
+    
+    const randomBlogInfo = { blog, author, event }
+    res.send( randomBlogInfo )
+})
+
 app.get('/signup', (req, res) => {
     res.render('signup')
 })
@@ -140,7 +149,7 @@ app.get('/jump/:galaxy/logs/:event', async(req, res) => {
         res.render('logsCompose', { event, galaxy })
     } else {
         const event = await Event.findOne({ name: req.params.event }).populate('galaxy')
-        const blogs = await Blog.find({ event: event.id}).populate('author')
+        const blogs = await Blog.find({ event: event.id}).populate('author').sort({ createdAt: 1})
         res.render('logs', { event, blogs })
     }
 })

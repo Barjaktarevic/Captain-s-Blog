@@ -174,16 +174,12 @@ app.post('/jump/:galaxy/logs/:event', async(req, res) => {
     res.redirect(`/jump/${galaxy}/logs/${foundEvent.name}`)
 })
 
-app.delete('/jump/:galaxy/logs/:event', async(req, res) => {
-    const eventInfo = await Event.findOne({ name: req.params.event })
-    
-    const foundBlog = await Blog.findOne({ event: eventInfo.id})
-    await Blog.findByIdAndDelete({ _id : foundBlog._id })
+app.delete('/logs/:id', async(req, res) => {    
+    const direction = await Blog.findByIdAndDelete({ _id : req.params.id })
+        .populate({ path: 'event', select: 'name', populate: { path: 'galaxy', select: 'name' }})
 
-    const URLgalaxy = req.params.galaxy
-    const URLevent = req.params.event
     req.flash('success', 'Entry successfully deleted.')
-    res.redirect(`/jump/${URLgalaxy}/logs/${URLevent}`)
+    res.redirect(`/jump/${direction.event.galaxy.name}/`)
 })
 
 app.get('/jump', async function(req, res) {

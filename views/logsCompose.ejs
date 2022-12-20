@@ -5,7 +5,22 @@
 
     <div class="event-compose-container">
         <h2 class="event-compose-title"><%=event.name%></h2>
-        <img src="<%=event.image%>" alt="Planet" class="event-compose-image">
+        
+        <div class="swiper mySwiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+              <!-- Slides -->
+              <div class="swiper-slide"><img src="<%=event.image[0]%>"  class="event-compose-image"></div>
+              <div class="swiper-slide"><img src="<%=event.image[1]%>"  class="event-compose-image"></div>
+              <div class="swiper-slide"><img src="<%=event.image[2]%>"  class="event-compose-image"></div>
+    
+            </div>
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-pagination"></div>
+          </div>
+
         <p>Location: <%=event.location%></p>
         <p>Description: <%=event.description%></p>
         <p>Equipment: <%=event.equipment%></p>
@@ -25,7 +40,8 @@
             <input type="text" id="title" name="title" placeholder="Title">
 
             <label for="body">Log entry</label>
-            <textarea name="body" id="body" cols="25" rows="15" placeholder="Describe the events of the day..."></textarea>
+            <textarea name="body" id="body" cols="25" rows="15" placeholder="Describe the events of the day..."
+            autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
 
             <button type='submit' class="text-compose-button">Submit log</button>
         </form>
@@ -45,6 +61,20 @@
 </div>
 
 <script>
+    var swiper = new Swiper('.mySwiper', {
+    
+    loop: true,
+
+    pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+    // Navigation arrows
+    navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+}})
+
     let synonymsForm = document.querySelector('.synonyms-search-form')
     let synonymsDisplay = document.querySelector('.synonyms-display-paragraph')
     let formInput = document.querySelector('.text-compose-form-input')

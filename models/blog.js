@@ -25,7 +25,6 @@ const blogSchema = new mongoose.Schema({
 })
 
 blogSchema.post('findOneAndDelete', async function (doc) {
-    console.log(doc)
     const author = doc.author
     const event = doc.event
     await User.findOneAndUpdate({_id: author._id}, {$pull: {blogEntries: doc.id}})

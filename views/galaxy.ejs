@@ -18,7 +18,22 @@
     <% galaxy.event.forEach((event, index) => { %> 
         <div id="index-<%=index%>" class="galaxy-event-container step-inactive">
             <h2 class="galaxy-event-title"><%=event.name%></h2>
-            <img src="<%=event.image%>" alt="Planet" class="galaxy-event-image">
+
+            <div class="swiper mySwiper">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                  <!-- Slides -->
+                  <div class="swiper-slide"><img src="<%=event.image[0]%>"  class="galaxy-event-image"></div>
+                  <div class="swiper-slide"><img src="<%=event.image[1]%>"  class="galaxy-event-image"></div>
+                  <div class="swiper-slide"><img src="<%=event.image[2]%>"  class="galaxy-event-image"></div>
+        
+                </div>
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-pagination"></div>
+              </div>
+
             <p>Location: <%=event.location%></p>
             <p>Description: <%=event.description%></p>
             <p>Equipment: <%=event.equipment%></p>
@@ -31,6 +46,20 @@
 </div>
 
 <script>
+var swiper = new Swiper('.mySwiper', {
+    
+    loop: true,
+
+    pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+    // Navigation arrows
+    navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+}})
+
 const tabs = document.querySelectorAll('[data-tab-target]')
 const sections = document.querySelectorAll('.galaxy-event-container')
 

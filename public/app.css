@@ -1038,15 +1038,10 @@ body {
     margin-top: 3vmin;
     white-space: pre-wrap;
     overflow-wrap: break-word;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 2.5vmin;
     padding: 0.5vmin;
     padding-bottom: 3vmin;
-}
-
-.userpage-show-logs-body::first-letter {
-    color: var(--error-color);
-    font-size: 3vmin;
 }
 
 .userpage-avatar {
@@ -1173,7 +1168,7 @@ body {
     padding: 1vmin 0;
 }
 
-.jump-div > div {
+.jump-div-child {
     display: flex;
     justify-content: space-around;
     margin: 6vmin auto;
@@ -1184,6 +1179,7 @@ body {
     grid-template-columns: 1fr 1fr;
     justify-content: center;
     gap: 7.5%;
+    position: relative;
 }
 
 .jump-galaxy-img {
@@ -1200,6 +1196,23 @@ body {
     border: 4px solid var(--secondary-color);
     transition: 200ms ease-in;
     border-radius: 2vmin;
+    position: relative;
+}
+
+.galaxy-dialog {
+    color: var(--primary-color);
+    height: 6vmin;
+    width: 35vmin;
+    z-index: 5;
+    font-size: 2.5vmin;
+    background-color: var(--secondary-color);
+    border: 2px solid var(--error-color);
+    text-align: center;
+    line-height: 6vmin;
+    display: none;
+    position: absolute;
+    bottom: 1%;
+    left: 25%;
 }
 
 .jump-galaxy-background-div:hover {
@@ -1219,6 +1232,7 @@ body {
     font-size: 5vmin;
     margin: 1vmin auto;
 }
+
 /* JUMP PAGE END */
 
 /* GALAXY PAGE START */
@@ -1279,8 +1293,39 @@ body {
 
 .galaxy-event-image {
     width: 100%;
-    height: 50%;
+    height: 50vh;
+    object-fit: cover;
 }
+
+.swiper {
+    width: 100%;
+    height: 50%;
+  }
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+
+.swiper-pagination {
+    background-color: var(--primary-color);
+    opacity: 40%;
+  }
 
 .galaxy-compose-log-link {
     all: unset;
@@ -1316,9 +1361,13 @@ body {
 
 .event-compose-container {
     max-width: 30vw;
-    max-height: 40vh;
+    max-height: 70vh;
     color: var(--primary-color);
     margin-left: 5%;
+}
+
+.event-compose-container img {
+    object-fit: cover;
 }
 
 .event-compose-title {
@@ -1333,7 +1382,7 @@ body {
 
 .event-compose-container p {
     margin-top: 1.5vmin;
-    font-size: 3vmin;
+    font-size: 2.5vmin;
 }
 
 .text-compose-container {
@@ -1356,7 +1405,7 @@ body {
     font-family: inherit;
     font-size: 3vmin;
     width: 80%;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 2.5vmin;
     padding: 0.5vmin;
 }
@@ -1437,7 +1486,7 @@ body {
     border-top-right-radius: 20vmin;
     margin: 5vmin auto;
     width: 70vw;
-    min-height: 30vh;
+    height: fit-content;
     background-color: var(--tertiary-color);
     padding: 3vmin;
     color: var(--primary-color);
@@ -1483,14 +1532,14 @@ body {
     margin: 6vmin;
     white-space: pre-wrap;
     overflow-wrap: break-word;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 2.5vmin;
 }
 
 .show-logs-likes {
     position: absolute;
-    bottom: 2%;
-    right: 2%;
+    bottom: 1.5vmin;
+    right: 1.5vmin;
 }
 
 .show-logs-user-img {
@@ -1507,13 +1556,13 @@ body {
     all: unset;
     padding: 1vmin;
     position: absolute;
-    bottom: 2%;
-    left: 2%;
+    bottom: 1.5vmin;
+    left: 1.5vmin;
     background-color: var(--error-color);
     color: var(--tertiary-color);
     border-radius: 1vmin;
     font-weight: 800;
-} */
+}
 
 .expunge-log-button:hover {
     cursor: pointer;

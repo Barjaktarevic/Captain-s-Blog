@@ -5,7 +5,7 @@ const eventSchema = new mongoose.Schema({
         type: String
     },
     image: {
-        type: String
+        type: [String]
     },
     location: {
         type: String
@@ -28,15 +28,6 @@ const eventSchema = new mongoose.Schema({
 })
 
 const Event = mongoose.model('Event', eventSchema)
-
-eventSchema.post('findOneAndDelete', async function (doc) {
-    console.log(doc)
-    // const blogsArray = [...doc.blogEntries]
-    // blogsArray.forEach(async (blogEntry) => {
-    //     await Event.findOneAndUpdate({_id: owner._id}, {$pull: {games: doc.id}})
-    // })
-})
-
 
 module.exports = Event
 const Blog = require('./blog')

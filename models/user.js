@@ -41,12 +41,5 @@ const userSchema = new mongoose.Schema({
 userSchema.plugin(passportLocalMongoose)
 const User = mongoose.model('User', userSchema)
 
-userSchema.post('findOneAndDelete', async function (doc) {
-    console.log(doc)
-    // const author = doc.author
-    // await User.findOneAndUpdate({_id: author._id}, {$pull: {blogEntries: doc.id}})
-})
-
-
 module.exports = User
 const Blog = require('./blog')

@@ -5,18 +5,53 @@
     <br>
     <br>
     <h2 class="jump-title">Select jump destination</h2>
-    <div>
+    <div class="jump-div-child">
     <div class="galaxy-selection-div">
         <% for (let galaxy of galaxies) { %> 
             <a href="/jump/<%=galaxy.name%>" class="jump-to-galaxy-link">
                 <div class="jump-galaxy-background-div">
-                <h5 class="jump-galaxy-name"><%= galaxy.name %></h5>
-                <img src="<%= galaxy.image %>" alt="Constellation" class="jump-galaxy-img">
-            </div>
+                    <h5 class="jump-galaxy-name"><%= galaxy.name %></h5>
+                    <img src="<%= galaxy.image %>" alt="Constellation" class="jump-galaxy-img">
+                    <% if (galaxy.name === 'Anadeia') { %> 
+                        <div class="galaxy-dialog">
+                            Space exploration stories
+                        </div>
+                    <% } else if  (galaxy.name === 'Andromeda'){%> 
+                        <div class="galaxy-dialog">
+                            First contact stories
+                        </div>
+                    <% } else if  (galaxy.name === 'Virgo A'){%> 
+                        <div class="galaxy-dialog">
+                            Sci-fi fantasy
+                        </div>
+                    <% } else if  (galaxy.name === 'Euthenia Nebula'){%> 
+                        <div class="galaxy-dialog">
+                            Human origin stories
+                        </div>
+                        <% } %> 
+                </div>
             </a>
         <% } %> 
     </div>
     </div>
+
 </div>
+
+<script>
+const galaxies = document.querySelectorAll('.jump-galaxy-background-div')
+const galaxiesArray = [...galaxies]
+const dialogues = document.querySelectorAll('.galaxy-dialog')
+const dialoguesArray = [...dialogues]
+
+for (let i = 0; i < galaxiesArray.length; i++) {
+    galaxiesArray[i].addEventListener('mouseenter', () => {
+        dialoguesArray[i].style.display = 'block'
+    })
+    galaxiesArray[i].addEventListener('mouseleave', () => {
+            dialoguesArray[i].style.display = 'none'
+    })
+}
+
+</script>
 
 <%- include('./partials/footer') %> 

@@ -35,7 +35,10 @@ const userSchema = new mongoose.Schema({
     },
     blogEntries: [{
         type: mongoose.Schema.Types.ObjectId, ref: 'Blog'
-    }]
+    }],
+    comments: [{
+        type: mongoose.Schema.Types.ObjectId, ref: 'Comment'
+    }],
 })
 
 userSchema.plugin(passportLocalMongoose)
@@ -43,3 +46,4 @@ const User = mongoose.model('User', userSchema)
 
 module.exports = User
 const Blog = require('./blog')
+const Comment = require('./comment')

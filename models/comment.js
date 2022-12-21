@@ -1,20 +1,26 @@
 const mongoose = require('mongoose');
 
 const commentSchema = new mongoose.Schema({
-    author: {
-        type: mongoose.Schema.Types.ObjectId, ref: 'User'
+    creator: {
+        type: mongoose.Schema.Types.ObjectId, ref: 'User',
+        required: true
     },
     comment: {
         type: String,
-        require: true,
+        required: true,
     },
     createdAt: {
         type: String,
         default: new Date()
     },
-    blog: {
-        type: mongoose.Schema.Types.ObjectId, ref: 'Event'
+    rating: {
+        type: Number,
+        required: true
     },
+    blog: {
+        type: mongoose.Schema.Types.ObjectId, ref: 'Event',
+        required: true
+    }
 })
 
 // commentSchema.post('findOneAndDelete', async function (doc) {

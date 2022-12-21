@@ -33,9 +33,13 @@
         <h2>Submit log review</h2>
         <form action="/logs/<%=blog._id%>" method="POST">
 
+            <div class="hidden-inputs">
+                <input type="text" name="creator" value=<%=login.username%> />
+            </div>
+
             <label>
                 <span>Your evaluation:</span><br/>
-                <input type="range" min="1" max="5" step="1" list="tickmarks"/><br/>
+                <input type="range" min="1" max="5" step="1" list="tickmarks" name="rating"/><br/>
 
                 <datalist id="tickmarks">
                     <option value="1" label="deficient"></option>
@@ -57,10 +61,23 @@
     </div>
 
     <div class="comment-section-container">
-
+        <% if (blog.comments.length > 0) { %>
+        <% blog.comments.forEach((comment) => { %>
+            <div class="comment-div">
+                <p> <%=comment.creator.rank%> <%=comment.creator.username%>  </p>
+                <p> <%=comment.createdAt.substring(0, 24)%>  </p>
+                <img src=<%=comment.creator.image%> alt='Person making the comment'/> 
+                
+                <p><%=comment.comment%></p>
+                <p> RATING: <%=comment.rating%>  </p>
+                
+            </div>
+        <%})%> 
+        <%}%> 
     </div>
 
 </div>
+
 
 <script>
     const showForm = document.querySelector('.post-comment-button')

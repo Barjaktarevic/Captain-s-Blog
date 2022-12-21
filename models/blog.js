@@ -11,6 +11,9 @@ const blogSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    comments: [{
+        type: mongoose.Schema.Types.ObjectId, ref: 'Comment'
+    }],
     body: {
         type: String,
         require: true,
@@ -37,3 +40,4 @@ const Blog = mongoose.model('Blog', blogSchema)
 module.exports = Blog
 const User = require('./user')
 const Event = require('./event')
+const Comment = require('./comment')

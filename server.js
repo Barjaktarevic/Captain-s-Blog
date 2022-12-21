@@ -139,6 +139,8 @@ app.get('/logs/:id', async(req, res) => {
     const blog = await Blog.findOne({ _id: req.params.id })
         .populate({ path: 'event', select: 'name', populate: { path: 'galaxy', select: 'name' }})
         .populate({ path: 'author', select: ['image', 'rank', 'username']})
+        .populate({ path: 'comments', select: ['creator', 'comment', 'createdAt', 'rating'], populate: { path: 'creator'}})
+        console.log(blog)
          res.render('showBlog', { blog })
 })
 
@@ -148,6 +150,26 @@ app.delete('/logs/:id', async(req, res) => {
 
     req.flash('success', 'Entry successfully deleted.')
     res.redirect(`/jump/${direction.event.galaxy.name}/`)
+})
+
+app.post('/logs/:id', async(req, res) => {
+    const { rating, comment, creator } = req.body
+    const user = await User.findOne({ username: creator })
+    const blog = await Blog.findOne({ _id: req.params.id})
+    console.log(user)
+    console.log(blog)
+    const newComment = new Comment({rating, comment, creator: user._id, blog: blog._id })
+    await newComment.save()
+    console.log(newComment)
+    blog.comments.push(newComment)
+    await blog.save()
+
+    user.comments.push(blog)
+    await user.save()
+
+    req.flash('success', 'Successfully posted a log entry')
+    res.redirect(`/logs/${req.params.id}`)
+
 })
 
 app.get('/jump/:galaxy/logs/:event', async(req, res) => {

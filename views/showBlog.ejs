@@ -25,9 +25,59 @@
             <button class="expunge-log-button">Expunge log entry</button>
         </form>
         <% } %> 
-        
+    </div>
+
+    <button class="post-comment-button">Submit log review</button>
+
+    <div class="comment-form-container" hidden>
+        <h2>Submit log review</h2>
+        <form action="/logs/<%=blog._id%>" method="POST">
+
+            <label>
+                <span>Your evaluation:</span><br/>
+                <input type="range" min="1" max="5" step="1" list="tickmarks"/><br/>
+
+                <datalist id="tickmarks">
+                    <option value="1" label="deficient"></option>
+                    <option value="2" label="modest"></option>
+                    <option value="3" label="unexceptional"></option>
+                    <option value="4" label="distinguished"></option>
+                    <option value="5" label="spectacular"></option>
+                  </datalist>
+            </label>
+
+            <label>
+                <span>Your review:</span><br/>
+                <textarea name="comment" cols="30" rows="5" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Your comment here"></textarea><br/>
+            </label>
+
+            <button class="submit-comment-button">Print report</button>
+        </form>
+        <button class="censor-comment-button">Censor review</button>
+    </div>
+
+    <div class="comment-section-container">
+
     </div>
 
 </div>
+
+<script>
+    const showForm = document.querySelector('.post-comment-button')
+    const formContainer = document.querySelector('.comment-form-container')
+    const closeForm = document.querySelector('.censor-comment-button')
+
+    showForm.addEventListener('click', () => {
+        if (formContainer.style.display != 'block') {
+            formContainer.style.display = 'block'
+        } else {
+            formContainer.style.display = 'none'
+        }     
+    })
+
+    closeForm.addEventListener('click', () => {
+        formContainer.style.display = 'none'
+    })
+</script>
 
 <%- include('./partials/footer') %> 

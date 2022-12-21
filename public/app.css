@@ -32,7 +32,7 @@ body {
 
 :root {
    --primary-color: #faebd7;
-   --secondary-color: #023e8a;
+   --secondary-color: rgb(2, 62, 138);
    --tertiary-color: #141414;
    --error-color: #fb7805;
    --success-color: #048e12;
@@ -1578,9 +1578,181 @@ body {
     background-attachment: fixed;
     background-position: 0 15%;
     display: flex;
+    flex-direction: column;
     gap: 10%;
     padding-top: 5%;
 }
+
+.post-comment-button {
+    all:unset;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    padding: 1vmin 2vmin;
+    width: fit-content;
+    display: block;
+    margin: 0 auto;
+    border-radius: 1vmin;
+}
+
+.post-comment-button:hover {
+    cursor: pointer;
+    animation: fetch-button-animation 400ms alternate infinite;
+}
+
+.comment-form-container {
+    margin: 2vmin auto;
+    width: 45vw;
+    color: var(--primary-color);
+    background-color: var(--tertiary-color);
+    border: 4px solid var(--secondary-color);
+    padding: 2vmin;
+    text-align: center;
+    opacity: 90%;
+    border-radius: 1.5vmin;
+    position: relative;
+}
+
+.comment-form-container form {
+    margin-top: 3.5vmin;
+    text-align: left;
+}
+
+.comment-form-container span {
+    font-size: 4vmin;
+}
+
+.comment-form-container textarea {
+    width: 90vmin;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    font-family: inherit;
+    font-size: 2.5vmin;
+
+}
+
+datalist {
+    display: flex;
+    justify-content: space-between;
+    width: 90vmin;
+    margin-bottom: 2vmin;
+    margin-right: 1vmin;
+  }
+
+.submit-comment-button {
+    all: unset;
+    padding: 1vmin;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border-radius: 1vmin;
+    width: fit-content;
+    margin-top: 2.6vmin;
+}
+
+.censor-comment-button {
+    all: unset;
+    padding: 1vmin;
+    background-color: var(--error-color);
+    color: var(--tertiary-color);
+    font-weight: bold;
+    border-radius: 1vmin;
+    width: fit-content;
+    position: absolute;
+    bottom: 1.5vmin;
+    right: 1.5vmin;
+}
+
+.submit-comment-button:hover, .censor-comment-button:hover {
+    cursor: pointer;
+    opacity: 70%;
+}
+
+.submit-comment-button:active, .censor-comment-button:active {
+    transform: translateY(1vmin);
+}
+
+input[type=range] {
+    width: 90vmin;
+    margin: 4.4px 0;
+    background-color: transparent;
+    -webkit-appearance: none;
+    font-size: 1.25vmin;
+  }
+  input[type=range]:focus {
+    outline: none;
+  }
+  input[type=range]::-webkit-slider-runnable-track {
+    background: #023e8a;
+    border: 0;
+    width: 100%;
+    height: 31.2px;
+    cursor: pointer;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    margin-top: -4.4px;
+    width: 16px;
+    height: 40px;
+    background: #ffffe6;
+    border: 2.9px solid #012800;
+    cursor: pointer;
+    -webkit-appearance: none;
+  }
+  input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #035bcb;
+  }
+  input[type=range]::-moz-range-track {
+    background: #023e8a;
+    border: 0;
+    width: 100%;
+    height: 31.2px;
+    cursor: pointer;
+  }
+  input[type=range]::-moz-range-thumb {
+    width: 16px;
+    height: 40px;
+    background: #ffffe6;
+    border: 2.9px solid #012800;
+    cursor: pointer;
+  }
+  input[type=range]::-ms-track {
+    background: transparent;
+    border-color: transparent;
+    border-width: 5.2px 0;
+    color: transparent;
+    width: 100%;
+    height: 31.2px;
+    cursor: pointer;
+  }
+  input[type=range]::-ms-fill-lower {
+    background: #012149;
+    border: 0;
+  }
+  input[type=range]::-ms-fill-upper {
+    background: #023e8a;
+    border: 0;
+  }
+  input[type=range]::-ms-thumb {
+    width: 16px;
+    height: 40px;
+    background: #ffffe6;
+    border: 2.9px solid #012800;
+    cursor: pointer;
+    margin-top: 0px;
+  }
+  input[type=range]:focus::-ms-fill-lower {
+    background: #023e8a;
+  }
+  input[type=range]:focus::-ms-fill-upper {
+    background: #035bcb;
+  }
+
+@supports (-ms-ime-align:auto) {
+    input[type=range] {
+      margin: 0;
+    }
+  }
+  
+  
+  
 
 
 /* SHOW SINGLE LOG PAGE END */

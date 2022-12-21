@@ -9,6 +9,7 @@ const User = require('./models/user')
 const Event = require('./models/event')
 const Galaxy = require('./models/galaxy')
 const Blog = require('./models/blog')
+const Comment = require('./models/comment')
 const methodOverride = require('method-override')
 
 mongoose.connect('mongodb://localhost:27017/captains-blog')
@@ -141,6 +142,14 @@ app.get('/logs/:id', async(req, res) => {
          res.render('showBlog', { blog })
 })
 
+app.delete('/logs/:id', async(req, res) => {    
+    const direction = await Blog.findByIdAndDelete({ _id : req.params.id })
+        .populate({ path: 'event', select: 'name', populate: { path: 'galaxy', select: 'name' }})
+
+    req.flash('success', 'Entry successfully deleted.')
+    res.redirect(`/jump/${direction.event.galaxy.name}/`)
+})
+
 app.get('/jump/:galaxy/logs/:event', async(req, res) => {
     const intent = req.query.intent
     if (intent === 'compose') {
@@ -172,14 +181,6 @@ app.post('/jump/:galaxy/logs/:event', async(req, res) => {
 
     req.flash('success', 'Successfully posted a log entry')
     res.redirect(`/jump/${galaxy}/logs/${foundEvent.name}`)
-})
-
-app.delete('/logs/:id', async(req, res) => {    
-    const direction = await Blog.findByIdAndDelete({ _id : req.params.id })
-        .populate({ path: 'event', select: 'name', populate: { path: 'galaxy', select: 'name' }})
-
-    req.flash('success', 'Entry successfully deleted.')
-    res.redirect(`/jump/${direction.event.galaxy.name}/`)
 })
 
 app.get('/jump', async function(req, res) {

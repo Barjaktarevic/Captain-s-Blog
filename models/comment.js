@@ -23,11 +23,13 @@ const commentSchema = new mongoose.Schema({
     }
 })
 
-// commentSchema.post('findOneAndDelete', async function (doc) {
-//     const author = doc.author
-//     const event = doc.event
-//     await User.findOneAndUpdate({_id: author._id}, {$pull: {blogEntries: doc.id}})
-// })
+commentSchema.post('findOneAndDelete', async function (doc) {
+    console.log(doc)
+    const creator = doc.creator
+    const blog = doc.blog
+    await User.findOneAndUpdate({_id: creator._id}, {$pull: {comments: doc.id}})
+    await Blog.findOneAndUpdate({_id: blog._id}, {$pull: {comments: doc.id}})
+})
 
 const Comment = mongoose.model('Comment', commentSchema)
 

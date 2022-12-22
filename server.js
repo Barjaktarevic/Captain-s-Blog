@@ -23,7 +23,7 @@ app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(express.urlencoded({extended: true}))
 
-// MIDDLEWARE START
+// ============================== MIDDLEWARE START ==============================
 app.use(session({
     secret: 'test123',
     resave: false,
@@ -65,7 +65,7 @@ app.use(function (req, res, next) {
     res.locals.login = req.user;
     next();
 });
-// MIDDLEWARE END
+// ============================== MIDDLEWARE END ==============================
 
 
 app.listen(3000, () => {
@@ -77,6 +77,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/home', async (req, res) => {
+
     const blog = await Blog.aggregate([{$match: {}}, {$sample: {size: 1}}])
     const author = await User.findOne({ _id: blog[0].author._id }).select(['username', 'rank', 'image'])
     const event = await Event.findOne({ _id: blog[0].event._id }).select('name').populate({ path: 'galaxy', select: 'name'})
@@ -156,20 +157,25 @@ app.post('/logs/:id', async(req, res) => {
     const { rating, comment, creator } = req.body
     const user = await User.findOne({ username: creator })
     const blog = await Blog.findOne({ _id: req.params.id})
-    console.log(user)
-    console.log(blog)
+    
     const newComment = new Comment({rating, comment, creator: user._id, blog: blog._id })
     await newComment.save()
-    console.log(newComment)
+    
     blog.comments.push(newComment)
     await blog.save()
 
-    user.comments.push(blog)
+    user.comments.push(newComment)
     await user.save()
 
     req.flash('success', 'Successfully posted a log entry')
     res.redirect(`/logs/${req.params.id}`)
 
+})
+
+app.delete('/logs/comments/:id', async (req, res) => {
+    const deletedComment = await Comment.findByIdAndDelete(req.params.id)
+    req.flash('success', 'Review expunged from archives.')
+    res.redirect(`/logs/${deletedComment.blog._id}`)
 })
 
 app.get('/jump/:galaxy/logs/:event', async(req, res) => {

@@ -71,13 +71,17 @@
                 <p><%=comment.comment%></p>
                 <p> RATING: <%=comment.rating%>  </p>
                 
+                <% if (login && login._id.equals(comment.creator._id)) { %> 
+                <form action="/logs/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                    <button class="delete-review-button">Expunge review</button>
+                </form>
+                <% } %> 
             </div>
         <%})%> 
         <%}%> 
     </div>
 
 </div>
-
 
 <script>
     const showForm = document.querySelector('.post-comment-button')

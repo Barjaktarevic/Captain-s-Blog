@@ -78,11 +78,15 @@ app.get('/', (req, res) => {
 
 app.get('/home', async (req, res) => {
 
+    if (await Blog.findOne({})) {
     const blog = await Blog.aggregate([{$match: {}}, {$sample: {size: 1}}])
     const author = await User.findOne({ _id: blog[0].author._id }).select(['username', 'rank', 'image'])
     const event = await Event.findOne({ _id: blog[0].event._id }).select('name').populate({ path: 'galaxy', select: 'name'})
     
     res.render('home', { blog, author, event })
+    } else {
+        res.render('home', {blog: 'blog', author: 'author', event: 'event'})
+    }
 })
 
 app.get('/randomblog', async(req, res) => {
@@ -167,7 +171,7 @@ app.post('/logs/:id', async(req, res) => {
     user.comments.push(newComment)
     await user.save()
 
-    req.flash('success', 'Successfully posted a log entry')
+    req.flash('success', 'Successfully posted!')
     res.redirect(`/logs/${req.params.id}`)
 
 })

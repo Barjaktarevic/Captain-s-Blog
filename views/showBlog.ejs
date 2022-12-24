@@ -18,7 +18,6 @@
 
         </div>
         <p class="show-logs-body"> <%=blog.body %> </p>
-        <p class="show-logs-likes">Likes: 52</p>
 
         <% if (login && login._id.equals(blog.author._id)) { %>  
         <form action="/logs/<%=blog._id%>?_method=DELETE" method="POST">

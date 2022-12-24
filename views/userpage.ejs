@@ -151,7 +151,6 @@
                 <h4> <%=entry.createdAt.substring(0, 16) %>  </h4>
             </div>
             <p class="userpage-show-logs-body"> <%=entry.body.substring(0, 500) %>... </p>
-            <p class="userpage-show-logs-likes">Likes: 52</p>
 
             <% if (login && login._id.equals(entry.author._id)) { %> 
             <a href="/logs/<%=entry._id%>" class="inspect-log-link">Inspect log and amend</a>

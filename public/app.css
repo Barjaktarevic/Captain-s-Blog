@@ -9,8 +9,8 @@ html {
   }
 
 body {
-    font-family: 'Unica One', cursive;
-    letter-spacing: 1px;
+    font-family: Cochin, Cambria, Georgia, Times, 'Times New Roman', serif;
+    letter-spacing: 0.5px;
 }
 
 ::-webkit-scrollbar-track  {
@@ -291,11 +291,6 @@ body {
     justify-content: center;
     gap: 10%;
     margin-top: 2vmin;
-}
-
-.home-blog-likes {
-    margin-top: 2vmin;
-    text-align: right;
 }
 
 .home-blog-user-img {
@@ -1016,12 +1011,6 @@ body {
     color: var(--tertiary-color);
 }
 
-.userpage-show-logs-likes, .home-blog-likes {
-    position: absolute;
-    bottom: 2%;
-    right: 2%;
-}
-
 .userpage-show-logs-blog-title {
     text-align: center;
     padding: 1vmin;
@@ -1038,7 +1027,7 @@ body {
     margin-top: 3vmin;
     white-space: pre-wrap;
     overflow-wrap: break-word;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: inherit;
     font-size: 2.5vmin;
     padding: 0.5vmin;
     padding-bottom: 3vmin;
@@ -1215,6 +1204,11 @@ body {
     left: 25%;
 }
 
+#earth-dialog {
+    width: fit-content;
+    padding: 0 2vmin;
+}
+
 .jump-galaxy-background-div:hover {
     opacity: 100%;
     filter: brightness(105%);
@@ -1242,7 +1236,7 @@ body {
     width: 100%;
     min-height: 120vh;
     background-attachment: fixed;
-    background-position: 0 15%;
+    background-position: -20vh;
     opacity: 110%;
     display: grid;
     justify-content: center;
@@ -1402,10 +1396,9 @@ body {
     color: var(--primary-color);
     padding: 1vmin 0;
     opacity: 90%;
-    font-family: inherit;
     font-size: 3vmin;
     width: 80%;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: inherit;
     font-size: 2.5vmin;
     padding: 0.5vmin;
 }
@@ -1532,14 +1525,8 @@ body {
     margin: 6vmin;
     white-space: pre-wrap;
     overflow-wrap: break-word;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: inherit;
     font-size: 2.5vmin;
-}
-
-.show-logs-likes {
-    position: absolute;
-    bottom: 1.5vmin;
-    right: 1.5vmin;
 }
 
 .show-logs-user-img {

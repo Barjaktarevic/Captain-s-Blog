@@ -20,7 +20,7 @@
         <h1 class="home-loader-title">REASSEMBLING RANDOM BLOG ENTRY...</h1>
         <img class="home-loader" src="/images/loader-1.svg">
     </div>
-    
+    <% if (blog != 'blog' ) { %> 
     <div class="home-blog">
         <a href="/users/<%=author.rank%>-<%=author.username%>" class="direct-user-link" title="Visit this user's ship"><img src=<%=author.image%> class="home-blog-user-img" /></a>
 
@@ -32,13 +32,12 @@
             <h4 class="home-blog-author"><a href="/users/<%=author.rank%>-<%=author.username%>" class="direct-user-link" title="Visit this user's ship"><%=author.rank%>  <%=author.username%></a></h4>
             <h4 class="home-blog-stardate"><%=blog[0].createdAt.substring(0, 16) %></h4>
         </div>
-        <p class="home-blog-body"><%=blog[0].body.substring(0, 500) %>...</p>
-        <p class="home-blog-likes">Likes: 52</p>
-        
+        <p class="home-blog-body"><%=blog[0].body.substring(0, 500) %>...</p>        
         
         <a href="/logs/<%=blog[0]._id%>" class="inspect-log-link">Inspect log</a>   
 
     </div>
+    <% } %> 
     <button class="home-blog-fetch-button">Probe for a different blog entry</button>
 </section>
 

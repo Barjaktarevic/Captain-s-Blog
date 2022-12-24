@@ -4,9 +4,6 @@ const blogSchema = new mongoose.Schema({
     author: {
         type: mongoose.Schema.Types.ObjectId, ref: 'User'
     },
-    likes: {
-        type: Number
-    },
     title: {
         type: String,
         required: true
@@ -30,8 +27,13 @@ const blogSchema = new mongoose.Schema({
 blogSchema.post('findOneAndDelete', async function (doc) {
     const author = doc.author
     const event = doc.event
+   
     await User.findOneAndUpdate({_id: author._id}, {$pull: {blogEntries: doc.id}})
+
+    await User.updateMany({}, {$pull: {comments: {$in: doc.comments}}})
+
     await Event.findOneAndUpdate({_id: event._id}, {$pull: {blogEntries: doc.id}})
+    await Comment.deleteMany({ _id: {$in: doc.comments}})
 })
 
 const Blog = mongoose.model('Blog', blogSchema)

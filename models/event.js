@@ -7,16 +7,7 @@ const eventSchema = new mongoose.Schema({
     image: {
         type: [String]
     },
-    location: {
-        type: String
-    },
     description: {
-        type: String
-    },
-    equipment: {
-        type: String
-    },
-    health: {
         type: String
     },
     galaxy: {

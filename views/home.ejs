@@ -236,10 +236,7 @@ function createElements(data){
     let blogBody = document.createElement('p')
     blogBody.classList.add('home-blog-body')
     blogBody.innerText = `${data.blog[0].body.substring(0, 500)}...`
-    let likes = document.createElement('p')
-    likes.classList.add('home-blog-likes')
-    likes.innerText = 'Likes: 52'
-
+  
     // inspect link
     let a4 = document.createElement('a')
     a4.setAttribute('href', `/logs/${data.blog[0]._id}`)
@@ -251,7 +248,6 @@ function createElements(data){
     homeBlogDiv.appendChild(firstH2)
     homeBlogDiv.appendChild(firstDiv)
     homeBlogDiv.appendChild(blogBody)
-    homeBlogDiv.appendChild(likes)
     homeBlogDiv.appendChild(a4)
 }
 

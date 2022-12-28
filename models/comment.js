@@ -3,11 +3,11 @@ const mongoose = require('mongoose');
 const commentSchema = new mongoose.Schema({
     creator: {
         type: mongoose.Schema.Types.ObjectId, ref: 'User',
-        required: true
+        required: [true, "Comment author name is missing."]
     },
     comment: {
         type: String,
-        required: true,
+        required: [true, "Review field cannot be left empty."],
     },
     createdAt: {
         type: String,
@@ -15,7 +15,8 @@ const commentSchema = new mongoose.Schema({
     },
     rating: {
         type: Number,
-        required: true
+        required: [true, "You have to select a rating"],
+        default: 3
     },
     blog: {
         type: mongoose.Schema.Types.ObjectId, ref: 'Event',

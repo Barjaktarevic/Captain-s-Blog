@@ -6,14 +6,17 @@ const blogSchema = new mongoose.Schema({
     },
     title: {
         type: String,
-        required: true
+        required: [true, "Your log needs to have a title."],
+        unique: [true, "Log with the same title already exists. Please change the title."]
     },
     comments: [{
         type: mongoose.Schema.Types.ObjectId, ref: 'Comment'
     }],
     body: {
         type: String,
-        require: true,
+        required: [true, "Log is required and has to be at least 1000 characters long."],
+        unique: [true, "Identical log already exists. Please be original."],
+        min: [1000, "Log has to be at least 1000 characters long."]
     },
     createdAt: {
         type: String,

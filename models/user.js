@@ -5,12 +5,13 @@ const userSchema = new mongoose.Schema({
     email: {
         type: String,
         required: [true, "You have to provide an email."],
-        unique: true,
+        unique: [true, "This email is already in use."]
     },
     age: {
         type: Number,
-        min: [18, 'You have to be 18 or older to join.'],
-        max: [90, 'You have to be 90 or younger to join.']
+        min: [18, 'Age is required and must be between 18 and 90.'],
+        max: [90, 'Age is required and must be between 18 and 90.'],
+        required: [true, "You have to specify your age"]
     },
     isAdmin: {
         type: Boolean,

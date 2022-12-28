@@ -89,14 +89,15 @@
 
             <div class="update-container">
             <form action="/users/<%=user.rank%>-<%=user.username%>?_method=PUT" method="POST" class="update-form">
-                <!-- <label for="username" class="update-label" >Username cannot be changed.</label>
-                <input id="username" type="text" name="username" class="update-input first-update-input" placeholder="e.g. Zach Pizzaz" value=<%= user.username %> disabled> -->
+                <!-- <label for="username" class="update-label" >Change your username.</label>
+                <input id="username" type="text" name="username" class="update-input" placeholder="e.g. Zach Pizzaz" value=<%= user.username %>> -->
 
                 <label for="email" class="update-label">Change your email.</label>
-                <input id="email" type="email" name="email" class="update-input" placeholder="e.g. spaceguy@gmail.com" required   pattern="\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b" value="<%= user.email %>">
+                <input id="email" type="email" name="email" class="update-input" placeholder="e.g. spaceguy@gmail.com" required  pattern="\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b" value="<%= user.email %>">
                 
                 <label for="age" class="update-label">Update your age.</label>
-                <input id="age" type="number" name="age" class="update-input" placeholder="Must be over 18." min="18" max="90" required value="<%=user.age%>">
+                <input id="age" type="number" name="age" class="update-input" placeholder="Must be over 18." min="18" max="90" 
+                required value="<%=user.age%>">
         
                 <label for="shipName" class="update-label">Choose a new ship name.</label>
                 <input id="shipName" type="text" name="shipName" class="update-input" placeholder="e.g. Venture" value="<%=user.shipName%>">

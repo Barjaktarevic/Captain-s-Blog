@@ -32,11 +32,7 @@
         <h2>Submit log review</h2>
         <form action="/logs/<%=blog._id%>" method="POST">
 
-            <div class="hidden-inputs">
-                <input type="text" name="creator" value=<%=login.username%> />
-            </div>
-
-            <label>
+             <label>
                 <span>Your evaluation:</span><br/>
                 <input type="range" min="1" max="5" step="1" list="tickmarks" name="rating"/><br/>
 

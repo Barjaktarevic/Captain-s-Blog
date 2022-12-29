@@ -32,7 +32,7 @@ body {
 
 :root {
    --primary-color: #faebd7;
-   --secondary-color: rgb(2, 62, 138);
+   --secondary-color: #023e8a;
    --tertiary-color: #141414;
    --error-color: #fb7805;
    --success-color: #048e12;
@@ -1426,11 +1426,16 @@ body {
     background-color: var(--tertiary-color);
 }
 
+.text-compose-button-container {
+    margin-top: 2vmin;
+    width: 60vmin;
+    display: flex;
+    justify-content: space-around;
+}
 
-.text-compose-button {
+.text-compose-button, .save-draft-button {
     width: 20vmin;
     padding: 0.75vmin;
-    margin-top: 2vmin;
     background-color: var(--secondary-color);
     color: var(--primary-color);
     border: none;
@@ -1440,7 +1445,7 @@ body {
     border-radius: 1vmin;
 }
 
-.text-compose-button:hover {
+.text-compose-button:hover, .save-draft-button:hover {
     cursor: pointer;
     animation: fetch-button-animation 400ms alternate infinite;
 }
@@ -1551,9 +1556,23 @@ body {
     font-weight: 800;
 }
 
-.expunge-log-button:hover {
+.expunge-log-button:hover, .amend-log-link:hover {
     cursor: pointer;
+    opacity: 80%;
  }
+
+ .amend-log-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    position: absolute;
+    right: 1.5vmin;
+    bottom: 1.5vmin;
+    padding: 1vmin;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border-radius: 1vmin;
+    font-weight: 800;
+}
 /* SHOW ALL LOGS PAGE END */
 
 /* SHOW SINGLE LOG PAGE START */

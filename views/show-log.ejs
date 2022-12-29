@@ -24,6 +24,10 @@
             <button class="expunge-log-button">Expunge log entry</button>
         </form>
         <% } %> 
+
+        <% if (login && login._id.equals(blog.author._id)) { %>  
+            <a href="/jump/<%=blog.event.galaxy.name%>/logs/<%=blog.event.name%>?intent=compose" class="amend-log-link">Amend log</a>
+            <% } %> 
     </div>
 
     <button class="post-comment-button">Submit log review</button>

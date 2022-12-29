@@ -3,6 +3,7 @@
 
 <div class="compose-log-div">
     <%- include('./partials/error') %> 
+    <%- include('./partials/success') %> 
     <div class="event-compose-container">
         <h2 class="event-compose-title"><%=event.name%></h2>
         
@@ -31,14 +32,19 @@
 
             <!-- Title needs to be made required -->
             <label for="title">Log title</label>
-            <input type="text" id="title" name="title" placeholder="Title">
+            <input type="text" id="title" name="title" placeholder="Title" 
+            value="<%=draft ? draft.title : ''%>">
 
             <!-- Log input needs to be made required -->
             <label for="body">Log entry</label>
             <textarea name="body" id="body" cols="25" rows="15" placeholder="Describe the events of the day..."
-            autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+            autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  
+            ><%=draft ? draft.body : ''%></textarea>
 
-            <button type='submit' class="text-compose-button">Submit log</button>
+            <div class="text-compose-button-container">
+                <button type="submit" class="save-draft-button" formaction="/jump/<%=galaxy.name%>/logs/<%=event.name%>?_method=PUT" formmethod="POST">Save log draft</button>
+                <button type='submit' class="text-compose-button">Submit log</button>
+            </div>
         </form>
 
         <div class="text-compose-synonyms-search-div">
@@ -104,6 +110,11 @@
         console.log(err.message)
     }
 } 
+
+const titleInput = document.querySelector('#title')
+const bodyInput = document.querySelector('#body')
+
+
 </script>
 
 <%- include('./partials/footer') %> 

@@ -40,6 +40,17 @@ const userSchema = new mongoose.Schema({
     comments: [{
         type: mongoose.Schema.Types.ObjectId, ref: 'Comment'
     }],
+    drafts: [{
+        event: {
+            type: String
+        },
+        title: {
+            type: String
+        },
+        body: {
+            type: String
+        }
+    }]
 })
 
 userSchema.plugin(passportLocalMongoose)
@@ -48,3 +59,4 @@ const User = mongoose.model('User', userSchema)
 module.exports = User
 const Blog = require('./blog')
 const Comment = require('./comment')
+// const Event = require('./event')

@@ -14,7 +14,11 @@
         <input id="email" type="email" name="email" class="auth-input" placeholder="e.g. spaceguy@gmail.com" data-aos="fade-left" data-aos-delay="600" required pattern="\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b">
 
         <label for="password" class="auth-label" data-aos="fade-left" data-aos-delay="700">Enter a password.</label>
-        <input id="password" type="password" name="password" class="auth-input" placeholder="1 uppercase, 1 lowercase, 1 number" data-aos="fade-left" data-aos-delay="700" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$" title="Please include at least 1 lowercase character, 1 uppercase character, 1 number">
+        <div class="password-input-div">
+            <input id="password" type="password" name="password" class="auth-input" placeholder="1 uppercase, 1 lowercase, 1 number" data-aos="fade-left" data-aos-delay="700" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$" title="Please include at least 1 lowercase character, 1 uppercase character, 1 number" data-password-input>
+            <img src="images/show-password.svg" alt="Show password." class="show-password" data-show-password data-aos="fade-left" data-aos-delay="1000"> 
+            <img src="images/hide-password.svg" alt="Hide password." class="hide-password" data-hide-password>
+        </div>
 
         <label for="age" class="auth-label" data-aos="fade-left" data-aos-delay="800">Enter your age.</label>
         <input id="age" type="number" name="age" class="auth-input" placeholder="Must be over 18." data-aos="fade-left" data-aos-delay="800" min="18" max="90" required>
@@ -43,4 +47,22 @@
     </div>
 </div>
 
+<script>
+    // show and hide password field
+    const showPassword = document.querySelector('[data-show-password]')
+    const hidePassword = document.querySelector('[data-hide-password]')
+    const passwordInput = document.querySelector('[data-password-input]')
+
+    showPassword && showPassword.addEventListener('click', () => {
+        passwordInput.setAttribute('type', 'text')
+        showPassword.style.display = 'none'
+        hidePassword.style.display = 'block'
+    })
+
+    hidePassword && hidePassword.addEventListener('click', () => {
+        passwordInput.setAttribute('type', 'password')
+        hidePassword.style.display = 'none'
+        showPassword.style.display = 'block'
+    })
+</script>
 <%- include('./partials/footer') %> 

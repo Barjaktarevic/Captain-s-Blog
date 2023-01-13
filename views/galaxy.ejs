@@ -7,12 +7,12 @@
         <h2 class="galaxy-galaxy-name"><%= galaxy.name %></h2>
         <img src="<%=galaxy.image%>" alt="Galaxy">
 
-           <div class="point-of-interest-8 point-of-interest" title="Click for details" data-tab-target="#index-0"></div>
-           <div class="point-of-interest-12 point-of-interest" title="Click for details" data-tab-target="#index-1"></div>
-           <div class="point-of-interest-14 point-of-interest" title="Click for details" data-tab-target="#index-2"></div>
-           <div class="point-of-interest-1 point-of-interest" title="Click for details" data-tab-target="#index-3"></div>
-           <div class="point-of-interest-2 point-of-interest" title="Click for details" data-tab-target="#index-4"></div>
-           <div class="point-of-interest-3 point-of-interest" title="Click for details" data-tab-target="#index-5"></div>
+           <div class="point-of-interest" title="Click for details" data-tab-target="#index-0"></div>
+           <div class="point-of-interest" title="Click for details" data-tab-target="#index-1"></div>
+           <div class="point-of-interest" title="Click for details" data-tab-target="#index-2"></div>
+           <div class="point-of-interest" title="Click for details" data-tab-target="#index-3"></div>
+           <div class="point-of-interest" title="Click for details" data-tab-target="#index-4"></div>
+           <div class="point-of-interest" title="Click for details" data-tab-target="#index-5"></div>
     </div>
 
     <% galaxy.event.forEach((event, index) => { %> 
@@ -45,13 +45,15 @@
 
 <script>
 var swiper = new Swiper('.mySwiper', {
-    
-    loop: true,
-
-    pagination: {
+        pagination: {
           el: ".swiper-pagination",
           clickable: true,
         },
+    
+    autoplay: {
+    delay: 2500,
+    disableOnInteraction: false,
+  },
     // Navigation arrows
     navigation: {
     nextEl: '.swiper-button-next',
@@ -75,6 +77,22 @@ tabs.forEach(tab =>
         
     })
 )
+
+// randomize position of points of interest
+let randomSet = new Set()
+
+for (let i = 0; randomSet.size < 6; i++) {
+    randomNumber = Math.floor(Math.random() * 15 + 1)
+    randomSet.add(randomNumber)
+}
+
+const pointsOfInterest = [...document.querySelectorAll(".point-of-interest")]
+
+const randomSetArray = Array.from(randomSet)
+for (let i = 0; i < randomSetArray.length; i++) {
+    pointsOfInterest[i].classList.add(`point-of-interest-${randomSetArray[i]}`)
+}
+
 </script>
 
 <%- include('./partials/footer') %> 

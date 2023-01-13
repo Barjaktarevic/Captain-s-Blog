@@ -31,8 +31,8 @@ const userSchema = new mongoose.Schema({
     },
     rank: {
         type: String,
-        enum: ['midshipman', 'ensing', 'liutenant', 'commander', 'captain', 'fleet captain', 'commodore', 'rear admiral', 'vice admiral', 'admiral', 'fleet admiral', 'admiral of starfleet'],
-        default: 'midshipman'
+        enum: ['Midshipman', 'Ensing', 'Liutenant', 'Commander', 'Captain', 'Fleet captain', 'Commodore', 'Rear Admiral', 'Vice Admiral', 'Admiral', 'Fleet Admiral', 'Admiral of Starfleet'],
+        default: 'Midshipman'
     },
     blogEntries: [{
         type: mongoose.Schema.Types.ObjectId, ref: 'Blog'

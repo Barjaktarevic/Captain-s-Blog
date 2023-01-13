@@ -427,7 +427,7 @@ body {
     scale: 1.3;
 }
 
-.point-of-interest-1 { top: 13.8%; left: 9.4%; }
+.point-of-interest-1 { top: 18.8%; left: 9.4%; }
 .point-of-interest-2 { top: 35%; left: 55%; }
 .point-of-interest-3 { top: 28.7%; left: 25.2%; }
 .point-of-interest-4 { top: 75%; left: 35%; }
@@ -436,12 +436,12 @@ body {
 .point-of-interest-7 { top: 67.5%; left: 76.25%; }
 .point-of-interest-8 { top: 27.5%; left: 66.25%; }
 
-.point-of-interest-9 { top: 87.5%; left: 66.25%; }
+.point-of-interest-9 { top: 84.5%; left: 66.25%; }
 .point-of-interest-10 { top: 52.5%; left: 53.25%; }
-.point-of-interest-11 { top: 12.5%; left: 75.25%; }
+.point-of-interest-11 { top: 16.5%; left: 75.25%; }
 .point-of-interest-12 { top: 46.5%; left: 67.25%; }
 .point-of-interest-13 { top: 33.5%; left: 38.25%; }
-.point-of-interest-14 { top: 82.5%; left: 15.25%; }
+.point-of-interest-14 { top: 81.5%; left: 15.25%; }
 .point-of-interest-15 { top: 69.5%; left: 33.25%; }
 
 .about-and-contact {
@@ -729,7 +729,30 @@ body {
 .login-info {
     margin-top: 1vmin;
 }
-/* AUTHENTICATION END */
+
+.password-input-div {
+    display: flex;
+}
+
+.show-password {
+    display: block;
+    scale: 0.5;
+}
+
+.hide-password {
+    scale: 0.5;
+    display: none;
+}
+
+.show-password:hover, .hide-password:hover {
+    cursor: pointer;
+    opacity: 95%;
+}
+
+.show-password:active, .hide-password:active {
+    transform: translateY(10%);
+}
+/* ================ AUTHENTICATION END ================ */
 
 /* 404 PAGE START */
 .not-found-div {
@@ -1409,6 +1432,18 @@ body {
     padding: 2vmin 0;
 }
 
+.total-character-text {
+    font-size: 1.65vmin;
+    text-align: left;
+    width: fit-content;
+}
+
+.total-character-number {
+    font-size: 1.65vmin;
+    text-align: left;
+    width: fit-content;
+}
+
 .text-compose-synonyms-search-div {
     margin: 3vmin 0;
 }
@@ -1433,7 +1468,7 @@ body {
     justify-content: space-around;
 }
 
-.text-compose-button, .save-draft-button {
+.text-compose-button, .save-draft-button, .text-compose-error-button {
     width: 20vmin;
     padding: 0.75vmin;
     background-color: var(--secondary-color);
@@ -1448,6 +1483,18 @@ body {
 .text-compose-button:hover, .save-draft-button:hover {
     cursor: pointer;
     animation: fetch-button-animation 400ms alternate infinite;
+}
+
+.text-compose-error-button {
+    background-color: var(--error-color);
+    color: var(--tertiary-color);
+    font-weight: bold;
+}
+
+
+.text-compose-synonyms-search-div small {
+    margin-top: 1vmin;
+    font-size: 1.65vmin;
 }
 
 .hidden-inputs {

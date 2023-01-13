@@ -89,8 +89,6 @@
 
             <div class="update-container">
             <form action="/users/<%=user.rank%>-<%=user.username%>?_method=PUT" method="POST" class="update-form">
-                <!-- <label for="username" class="update-label" >Change your username.</label>
-                <input id="username" type="text" name="username" class="update-input" placeholder="e.g. Zach Pizzaz" value=<%= user.username %>> -->
 
                 <label for="email" class="update-label">Change your email.</label>
                 <input id="email" type="email" name="email" class="update-input" placeholder="e.g. spaceguy@gmail.com" required  pattern="\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b" value="<%= user.email %>">
@@ -104,18 +102,18 @@
         
                 <label for="rank" class="update-label">Update your rank.</label>
                 <select id="rank" name="rank" class="update-input">
-                    <option value="midshipman">midshipman</option>
-                    <option value="ensing">ensing</option>
-                    <option value="liutenant">liutenant</option>
-                    <option value="commander">commander</option>
-                    <option value="captain">captain</option>
-                    <option value="fleet captain">fleet captain</option>
-                    <option value="commodore">commodore</option>
-                    <option value="rear admiral">rear admiral</option>
-                    <option value="vice admiral">vice admiral</option>
-                    <option value="admiral">admiral</option>
-                    <option value="fleet admiral">fleet admiral</option>
-                    <option value="admiral of starfleet">admiral of starfleet</option>
+                    <option value="Midshipman">Midshipman</option>
+                    <option value="Ensing">Ensing</option>
+                    <option value="Liutenant">Liutenant</option>
+                    <option value="Commander">Commander</option>
+                    <option value="Captain">Captain</option>
+                    <option value="Fleet Captain">Fleet Captain</option>
+                    <option value="Commodore">Commodore</option>
+                    <option value="Rear Admiral">Rear Admiral</option>
+                    <option value="Vice Admiral">Vice Admiral</option>
+                    <option value="Admiral">Admiral</option>
+                    <option value="Fleet Admiral">Fleet Admiral</option>
+                    <option value="Admiral of Starfleet">Admiral of Starfleet</option>
                   </select>
                 
                   <div>

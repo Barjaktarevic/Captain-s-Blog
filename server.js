@@ -223,7 +223,7 @@ app.post('/jump/:galaxy/logs/:event', wrapAsync(async(req, res, next) => {
     if (alreadyWrittenBlog === true) {
         const newBlog = await Blog.findOneAndUpdate({ _id: writtenBlogId}, {title: title, body: body})
         await User.findOneAndUpdate({ _id: req.user._id}, {$pull: { drafts: { event: foundEvent.name}}}, {runValidators: true})
-        console.log(draft)
+        // console.log(draft) // need to add user.save here as well in all likelihood because it could fail otherwise
         await user.drafts.push(draft)
         await user.save()
         req.flash('success', 'Successfully updated log entry')
@@ -243,7 +243,7 @@ app.post('/jump/:galaxy/logs/:event', wrapAsync(async(req, res, next) => {
     }
 }))
 
-// Save and update drafts route
+// Save and update drafts route 
 app.put('/jump/:galaxy/logs/:event', wrapAsync(async(req, res, next) => {
     const user = await User.findOne({ _id: req.user._id})
     const { title, body } = req.body
@@ -255,10 +255,11 @@ app.put('/jump/:galaxy/logs/:event', wrapAsync(async(req, res, next) => {
             await User.findOneAndUpdate({ _id: req.user._id}, {$pull: { drafts: { event: event}}}, {runValidators: true})
         }
     })
-    
-    await user.drafts.push(draft)
     await user.save()
 
+    user.drafts.push(draft)
+    await user.save()
+     
     req.flash('success', 'Draft successfully saved.')
     res.redirect('back')
 }))

@@ -9,13 +9,36 @@
     <form action="/login" method="POST" class="auth-login-form">
         <label for="username" class="auth-label" data-aos="fade-left" data-aos-delay="500">Enter your username.</label>
         <input type="text" name="username" class="auth-input" placeholder="e.g. Zach Pizzaz" data-aos="fade-left" data-aos-delay="500" required title="Please enter a username.">
+       
 
         <label for="password" class="auth-label" data-aos="fade-left" data-aos-delay="700">Enter your password.</label>
-        <input type="password" name="password" class="auth-input" placeholder="1 uppercase, 1 lowercase, 1 number" data-aos="fade-left" data-aos-delay="700" required title="Please enter a password.">
-
+        <div class="password-input-div">
+            <input type="password" name="password" class="auth-input" placeholder="1 uppercase, 1 lowercase, 1 number" data-aos="fade-left" data-aos-delay="700" required title="Please enter a password." data-password-input>
+            <img src="images/show-password.svg" alt="Show password." class="show-password" data-aos="fade-left" data-aos-delay="1000" data-show-password>
+            <img src="images/hide-password.svg" alt="Hide password." class="hide-password" data-hide-password>
+        </div>
         <button class="auth-button" data-aos="fade-up" data-aos-delay="1100" data-aos-offset="0">Lift off</button>
     </form>
     </div>
 </div>
+
+<script>
+    // show and hide password field
+    const showPassword = document.querySelector('[data-show-password]')
+    const hidePassword = document.querySelector('[data-hide-password]')
+    const passwordInput = document.querySelector('[data-password-input]')
+
+    showPassword && showPassword.addEventListener('click', () => {
+        passwordInput.setAttribute('type', 'text')
+        showPassword.style.display = 'none'
+        hidePassword.style.display = 'block'
+    })
+
+    hidePassword && hidePassword.addEventListener('click', () => {
+        passwordInput.setAttribute('type', 'password')
+        hidePassword.style.display = 'none'
+        showPassword.style.display = 'block'
+    })
+</script>
 
 <%- include('./partials/footer') %> 

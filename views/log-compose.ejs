@@ -32,19 +32,22 @@
 
             <!-- Title needs to be made required -->
             <label for="title">Log title</label>
-            <input type="text" id="title" name="title" placeholder="Title" 
+            <input type="text" id="title" name="title" placeholder="Name your log entry" 
             value="<%=draft ? draft.title : ''%>">
 
             <!-- Log input needs to be made required -->
             <label for="body">Log entry</label>
-            <textarea name="body" id="body" cols="25" rows="15" placeholder="Describe the events of the day..."
+            <textarea name="body" id="body" cols="25" rows="15" placeholder="Write the entry. Click on the question mark in the top right for writing tips."
             autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  
             ><%=draft ? draft.body : ''%></textarea>
+
+            <p class="total-character-text">Total number of characters:&nbsp;<span id="total-character-number">0</span></p> 
 
             <div class="text-compose-button-container">
                 <button type="submit" class="save-draft-button" formaction="/jump/<%=galaxy.name%>/logs/<%=event.name%>?_method=PUT" formmethod="POST">Save log draft</button>
                 <button type='submit' class="text-compose-button">Submit log</button>
             </div>
+            
         </form>
 
         <div class="text-compose-synonyms-search-div">
@@ -56,6 +59,7 @@
             
             </form>
             <p class="synonyms-display-paragraph"> </p>
+            <small title="More words will be added in the future">Thesaurus is still under development - apologies for the inconvenience.</small>
         </div>
 
     </div>
@@ -112,8 +116,39 @@
 } 
 
 const titleInput = document.querySelector('#title')
-const bodyInput = document.querySelector('#body')
+const submitButton = document.querySelector('.text-compose-button')
 
+// // Display number of characters in the body.
+let bodyInput = document.querySelector('#body')
+let characterCount = document.querySelector('#total-character-number')
+characterCount.textContent = bodyInput.textContent.length
+
+// Disable submit button if input too long // refactor this to also include too long a title // title would need a different class because then then title can disable the body and vice-versa!
+// function determineIfBodyInputTooLong() {
+//     if (characterCount.textContent > 50) {
+//     submitButton.setAttribute("disabled", "")
+//     submitButton.innerText = "Log too long"
+//     submitButton.classList.remove('text-compose-button')
+//     submitButton.classList.add('text-compose-error-button')
+// }
+// }
+
+bodyInput.addEventListener('input', (e) => {
+    characterCount.textContent = e.target.value.length
+    if (e.target.value.length > 50) {
+        submitButton.setAttribute("disabled", "")
+        submitButton.innerText = "Log too long"
+        submitButton.classList.remove('text-compose-button')
+        submitButton.classList.add('text-compose-error-button')
+    } else {
+        submitButton.setAttribute("enabled", "")
+        submitButton.innerText = "Submit log"
+        submitButton.classList.remove('text-compose-error-button')
+        submitButton.classList.add('text-compose-button')
+    }
+})
+
+determineIfBodyInputTooLong()
 
 </script>
 

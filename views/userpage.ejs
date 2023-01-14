@@ -142,7 +142,7 @@
         <% user.blogEntries.forEach((entry, index) => { %> 
             <div class="<%= index === 0 ? 'step-active' : 'step-inactive' %> userpage-show-logs-entry" id="index-<%=index%>">
 
-            <h3 class="userpage-show-logs-event-name">Event:  <%= entry.event.name %></h3>
+            <h3 class="userpage-show-logs-event-name">Event: <%= entry.event.name %> </h3>
             <img src=<%=user.image%> class="userpage-show-logs-user-img">
             <h2 class="userpage-show-logs-blog-title"> <%= entry.title %></h2>
             <div class="userpage-show-logs-author-and-stardate-div">

@@ -156,12 +156,13 @@ body {
     padding: 0.1vmin 17vmin;
     background: linear-gradient(to right, transparent 0%, var(--primary-color) 50%, transparent 100%);
     color: var(--secondary-color);
+    transition: 200ms ease-in;
 }
 
 .jump-button:hover {
     cursor: pointer;
     background: linear-gradient(to right, transparent 0%, var(--error-color) 50%, transparent 100%);
-    color: var(--tertiary-color);
+    color: var(--primary-color);
 }
 
 .navbar-logo {
@@ -728,6 +729,7 @@ body {
 .auth-signup-form-div {
     display: flex;
     justify-content: flex-end;
+    position: relative;
 }
 
 .auth-signup-form {
@@ -761,11 +763,18 @@ body {
     background-color: var(--secondary-color);
     color: var(--primary-color);
     border: none;
-    box-shadow: 0.5vmin 1vmin 1vmin 2vmin transparent;
     font-size: 2.5vmin;
     font-family: inherit;
     border-radius: 1vmin;
-    margin-right: 1vmin;
+    position: absolute;
+    bottom: -7vmin;
+    left: 44vw;
+    outline: 2px solid var(--tertiary-color);
+}
+
+.auth-button-2 {
+    bottom: -9vmin;
+    right: -16vw;
 }
 
 .auth-button:hover {
@@ -785,6 +794,7 @@ body {
 .auth-login-form-div {
     display: flex;
     justify-content: center;
+    position: relative;
 }
 
 .auth-login-title {
@@ -811,7 +821,7 @@ body {
 .success-partial {
     height: 5vmin;
     width: 100%;
-    background-color: var(--success-color);
+    background: linear-gradient(to right, transparent -20%, var(--success-color) 50%, transparent 120%);
     color: var(--primary-color);
     text-align: center;
     line-height: 5vmin;
@@ -824,7 +834,7 @@ body {
 .error-partial {
     height: 5vmin;
     width: 100%;
-    background-color: var(--error-color);
+    background-color: linear-gradient(to right, transparent -20%, var(--error-color) 50%, transparent 120%);
     color: var(--primary-color);
     text-align: center;
     line-height: 5vmin;
@@ -844,6 +854,7 @@ body {
     font-size: 2.5vmin;
     font-family: inherit;
     border-radius: 1vmin;
+    outline: 2px solid var(--tertiary-color);
 }
 
 .logout-button:hover {
@@ -1502,7 +1513,7 @@ body {
     background: url('/images/jump-background-3.jpg');
     background-size: cover;
     width: 100%;
-    min-height: 150vmin;
+    min-height: 135vmin;
     background-attachment: fixed;
     background-position: 0 15%;
     display: flex;
@@ -1548,6 +1559,51 @@ body {
     flex-direction: column;
 }
 
+.textarea-div {
+    position: relative;
+    text-align: left;
+    /* width: 80%; */
+}
+
+.fa-circle-question {
+    position: absolute;
+    top: 0.65vmin;
+    left: -4vmin;
+    scale: 115%;
+    color: var(--primary-color);
+    opacity: 80%;
+}
+
+.fa-circle-question:hover {
+    filter: brightness(130%);
+    cursor: pointer;
+}
+
+#writing-tips-modal {
+    min-height: 80vh;
+    min-width: 70vw;
+    background-color: var(--tertiary-color);
+    border: 5px solid var(--secondary-color);
+    opacity: 93.5%;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--primary-color);
+    padding: 1.5vmin;
+    border-radius: 2vmin;
+}
+
+#writing-tips-modal h1 {
+    text-align: center;
+    padding: 2vmin;
+}
+
+#writing-tips-modal p {
+    padding: 1vmin;
+    font-size: 2.5vmin;
+}
+
 .text-compose-container input,
 .text-compose-container textarea {
     background-color: var(--secondary-color);
@@ -1559,6 +1615,10 @@ body {
     font-family: inherit;
     font-size: 2.5vmin;
     padding: 0.5vmin;
+}
+
+#title {
+    text-align: center;
 }
 
 .text-compose-container label {
@@ -1601,6 +1661,7 @@ body {
     width: 60vmin;
     display: flex;
     justify-content: space-around;
+    gap: 4vmin;
 }
 
 .text-compose-button,

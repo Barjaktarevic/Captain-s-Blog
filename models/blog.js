@@ -9,7 +9,7 @@ const blogSchema = new mongoose.Schema({
         required: [true, "Your log needs to have a title."],
         unique: [true, "Log with the same title already exists. Please change the title."],
         minlength: [3, "Title must be at least three characters long."],
-        maxlength: [40, "Maximum title length (40 characters) exceeded."]
+        maxlength: [100, "Maximum title length (100 characters) exceeded."]
     },
     comments: [{
         type: mongoose.Schema.Types.ObjectId, ref: 'Comment'
@@ -19,7 +19,7 @@ const blogSchema = new mongoose.Schema({
         required: [true, "Log is required and has to be at least 1000 characters long."],
         unique: [true, "Identical log already exists. Please be original."],
         // min: [1000, "Log has to be at least 1000 characters long."],
-        maxlength: [35000, "Maximum blog length (35000 characters) exceeded."]
+        maxlength: [35, "Maximum blog length (35000 characters) exceeded."]
     },
     createdAt: {
         type: String,
@@ -50,13 +50,13 @@ const blogSchema = new mongoose.Schema({
 blogSchema.post('findOneAndDelete', async function (doc) {
     const author = doc.author
     const event = doc.event
-   
-    await User.findOneAndUpdate({_id: author._id}, {$pull: {blogEntries: doc.id}})
 
-    await User.updateMany({}, {$pull: {comments: {$in: doc.comments}}})
+    await User.findOneAndUpdate({ _id: author._id }, { $pull: { blogEntries: doc.id } })
 
-    await Event.findOneAndUpdate({_id: event._id}, {$pull: {blogEntries: doc.id}})
-    await Comment.deleteMany({ _id: {$in: doc.comments}})
+    await User.updateMany({}, { $pull: { comments: { $in: doc.comments } } })
+
+    await Event.findOneAndUpdate({ _id: event._id }, { $pull: { blogEntries: doc.id } })
+    await Comment.deleteMany({ _id: { $in: doc.comments } })
 })
 
 const Blog = mongoose.model('Blog', blogSchema)

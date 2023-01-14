@@ -37,15 +37,20 @@
 
             <!-- Log input needs to be made required -->
             <label for="body">Log entry</label>
+            <div class="textarea-div">
             <textarea name="body" id="body" cols="25" rows="15" placeholder="Write the entry. Click on the question mark in the top right for writing tips."
             autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  
-            ><%=draft ? draft.body : ''%></textarea>
+            ><%=draft ? draft.body : ''%>
+            </textarea>
+            <i class="fa-regular fa-circle-question" title="Need writing tips?" id="writing-tips-prompt"></i>
+            </div>
 
             <p class="total-character-text">Total number of characters:&nbsp;<span id="total-character-number">0</span></p> 
 
             <div class="text-compose-button-container">
                 <button type="submit" class="save-draft-button" formaction="/jump/<%=galaxy.name%>/logs/<%=event.name%>?_method=PUT" formmethod="POST">Save log draft</button>
                 <button type='submit' class="text-compose-button">Submit log</button>
+                <button type='submit' class="text-compose-error-button" id="title-too-long" hidden>Title too long</button>
             </div>
             
         </form>
@@ -62,6 +67,25 @@
             <small title="More words will be added in the future">Thesaurus is still under development - apologies for the inconvenience.</small>
         </div>
 
+    </div>
+
+    <dialog id="writing-tips-modal">
+        <h1>HELPFUL TIPS</h1>
+       <p>➤ Write only when you feel like it; don't force yourself. At the same time, try to write whenever you are motivated, regardless of how short or long that time period is.</p>
+       <p>➤ Play with words - having written something, ask yourself if you could have written it otherwise. Using thesaurus or looking up words in a dictionary might lead you to rephrase things in more interesting ways</p>
+       <p>➤ Don't focus on grammar while writing - you can do that after having finished the story. You can run your story through an online spelling checker (the one on this site has been disabled for performance reasons). </p>
+       <p>➤ Play to your strengths. If you're good at writing dialogues, then include more dialogues in your story. If, however, character descriptions are what you excel at, focus on that. Make those things the highlight of your story.  </p>
+       <p>➤ Do research online. You are writing a science fiction story so some scientific jargon is expected, as well as scientific explanations for observed phenomena. No one is going to analyse whether the theories you posit are believable (it is science 'fiction' after all), so don't think that you need an engineering degree to start writing.  </p>
+       <p>➤ If you plan on writing a longer story, it's advisable to start with an outline. Otherwise, you might find yourself wandering aimlessly through the story. </p>
+       <p>➤ Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis asperiores voluptas deleniti blanditiis, quae deserunt animi tenetur quisquam ipsum odit atque enim obcaecati qui vel, provident quibusdam? Tempore, ipsam commodi! Temporibus sunt voluptatem porro quibusdam quia, corporis facere at esse. </p>
+       <p>➤ Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis asperiores voluptas deleniti blanditiis, quae deserunt animi tenetur quisquam ipsum odit atque enim obcaecati qui vel, provident quibusdam? Tempore, ipsam commodi! Temporibus sunt voluptatem porro quibusdam quia, corporis facere at esse. </p>
+       <p>➤ Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis asperiores voluptas deleniti blanditiis, quae deserunt animi tenetur quisquam ipsum odit atque enim obcaecati qui vel, provident quibusdam? Tempore, ipsam commodi! Temporibus sunt voluptatem porro quibusdam quia, corporis facere at esse. </p>
+       <img src="/images/cancel-button-1.svg" alt="close" class="modal-close-button" title="Close help">
+    </dialog>
+
+    <div class="home-loader-div" hidden>
+        <h1 class="home-loader-title">SAVING...</h1>
+        <img class="home-loader" src="/images/loader-1.svg">
     </div>
 </div>
 
@@ -110,6 +134,7 @@
                 }
             })
         synonymsDisplay.innerText = synonymsArray
+        console.log(synonymsArray)
     } catch (err) {
         console.log(err.message)
     }
@@ -117,38 +142,70 @@
 
 const titleInput = document.querySelector('#title')
 const submitButton = document.querySelector('.text-compose-button')
+const titleTooLongButton = document.querySelector('#title-too-long')
 
 // // Display number of characters in the body.
 let bodyInput = document.querySelector('#body')
 let characterCount = document.querySelector('#total-character-number')
+
 characterCount.textContent = bodyInput.textContent.length
 
-// Disable submit button if input too long // refactor this to also include too long a title // title would need a different class because then then title can disable the body and vice-versa!
-// function determineIfBodyInputTooLong() {
-//     if (characterCount.textContent > 50) {
-//     submitButton.setAttribute("disabled", "")
-//     submitButton.innerText = "Log too long"
-//     submitButton.classList.remove('text-compose-button')
-//     submitButton.classList.add('text-compose-error-button')
-// }
-// }
+bodyInput.addEventListener('input', (e) => {
+    characterCount.textContent = e.target.value.length
+    if (e.target.value.length > 35000) {
+        submitButton.setAttribute("disabled", "")
+        submitButton.innerText = "Log too long"
+        submitButton.classList.remove('text-compose-button')
+        submitButton.classList.add('text-compose-error-button')
+    } else if (e.target.value.length < 1000) {
+        submitButton.setAttribute("disabled", "")
+        submitButton.innerText = "Log too short"
+        submitButton.classList.remove('text-compose-button')
+        submitButton.classList.add('text-compose-error-button')
+    } else {
+        submitButton.setAttribute("enabled", "")
+        submitButton.innerText = "Submit log"
+        submitButton.classList.remove('text-compose-error-button')
+        submitButton.classList.add('text-compose-button')
+    }
+})
 
-// bodyInput.addEventListener('input', (e) => {
-//     characterCount.textContent = e.target.value.length
-//     if (e.target.value.length > 50) {
-//         submitButton.setAttribute("disabled", "")
-//         submitButton.innerText = "Log too long"
-//         submitButton.classList.remove('text-compose-button')
-//         submitButton.classList.add('text-compose-error-button')
-//     } else {
-//         submitButton.setAttribute("enabled", "")
-//         submitButton.innerText = "Submit log"
-//         submitButton.classList.remove('text-compose-error-button')
-//         submitButton.classList.add('text-compose-button')
-//     }
-// })
+titleInput.addEventListener('input', (e) => {
+    if(e.target.value.length > 60) {
+        titleTooLongButton.innerText = 'Title too long'
+        titleTooLongButton.style.display = "block"
+    } else if(e.target.value.length < 3) {
+        titleTooLongButton.innerText = 'Title too short'
+        titleTooLongButton.style.display = "block"
+    } else {
+      titleTooLongButton.style.display = "none"
+    }
+})
 
-determineIfBodyInputTooLong()
+const composeContainer = document.querySelector('.text-compose-container')
+const saveDraftButton = document.querySelector('.save-draft-button')
+const loader = document.querySelector('.home-loader-div')
+
+saveDraftButton.addEventListener('click', () => {
+    composeContainer.style.display = "none"
+    loader.style.display = "block"
+    setTimeout(() => {
+        loader.style.display = "none"
+        composeContainer.style.display = "block"
+    }, 500)
+})
+
+const writingTipsPrompt = document.querySelector('#writing-tips-prompt')
+const writingTipsModal = document.querySelector('#writing-tips-modal')
+const modalCloseButton = document.querySelector('.modal-close-button')
+
+writingTipsPrompt.addEventListener('click', () => {
+    writingTipsModal.showModal()
+})
+
+modalCloseButton.addEventListener('click', () => {
+    writingTipsModal.close()
+})
 
 </script>
 

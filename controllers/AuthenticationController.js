@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const User = require('../models/user')
 const wrapAsync = require('../utils/wrapAsync')
 const passport = require('passport');
+const isLoggedIn = require('../utils/isLoggedIn')
 
 // Show signup view page route
 exports.get_signup = (req, res) => {

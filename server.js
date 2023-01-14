@@ -12,7 +12,11 @@ const authRouter = require('./routes/AuthenticationRoutes')
 const viewsRouter = require('./routes/ViewsRoutes')
 const cors = require('cors');
 
-mongoose.connect('mongodb://localhost:27017/captains-blog')
+require('dotenv').config()
+const PORT = process.env.PORT
+const MONGO_URI = process.env.MONGO_URI
+
+mongoose.connect(MONGO_URI)
     .then(console.log('Successfully connected to the database.'))
     .catch(err => console.log(err));
 
@@ -54,15 +58,6 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 
-const isLoggedIn = (req, res, next) => {
-    if (!req.isAuthenticated()) {
-        req.flash('error', 'You must be logged in to do that.')
-        res.redirect('/login')
-    } else {
-        next()
-    }
-}
-
 app.use(function (req, res, next) {
     res.locals.login = req.user; //req.user is how we access the logged-in user on the backend
     next();
@@ -79,8 +74,8 @@ app.post('/login', passport.authenticate('local', { failureFlash: true, failureR
     res.redirect('/home')
 })
 
-app.listen(3000, () => {
-    console.log('Listening on port 3000!')
+app.listen(PORT, () => {
+    console.log(`Listening on port ${PORT}!`)
 })
 
 // Catch-all 404 route
@@ -92,8 +87,8 @@ app.use('*', (req, res) => {
 app.use((err, req, res, next) => {
     if (err.message === "Cannot read properties of undefined (reading 'username')") {
         next(new AppError(500, "You need to be logged in to do that."))
-    } else if (err.message.includes("Maximum title length (40 characters) exceeded.")) {
-        next(new AppError(500, "Maximum title length (40 characters) exceeded."))
+    } else if (err.message.includes("Maximum title length (100 characters) exceeded.")) {
+        next(new AppError(500, "Maximum title length (100 characters) exceeded."))
     } else if (err.message.includes("Title must be at least three characters long.")) {
         next(new AppError(500, "Title must be at least three characters long."))
     } else if (err.message === "Comment validation failed: comment: Review field cannot be left empty.") {

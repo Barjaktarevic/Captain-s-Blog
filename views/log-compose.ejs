@@ -133,20 +133,20 @@ characterCount.textContent = bodyInput.textContent.length
 // }
 // }
 
-bodyInput.addEventListener('input', (e) => {
-    characterCount.textContent = e.target.value.length
-    if (e.target.value.length > 50) {
-        submitButton.setAttribute("disabled", "")
-        submitButton.innerText = "Log too long"
-        submitButton.classList.remove('text-compose-button')
-        submitButton.classList.add('text-compose-error-button')
-    } else {
-        submitButton.setAttribute("enabled", "")
-        submitButton.innerText = "Submit log"
-        submitButton.classList.remove('text-compose-error-button')
-        submitButton.classList.add('text-compose-button')
-    }
-})
+// bodyInput.addEventListener('input', (e) => {
+//     characterCount.textContent = e.target.value.length
+//     if (e.target.value.length > 50) {
+//         submitButton.setAttribute("disabled", "")
+//         submitButton.innerText = "Log too long"
+//         submitButton.classList.remove('text-compose-button')
+//         submitButton.classList.add('text-compose-error-button')
+//     } else {
+//         submitButton.setAttribute("enabled", "")
+//         submitButton.innerText = "Submit log"
+//         submitButton.classList.remove('text-compose-error-button')
+//         submitButton.classList.add('text-compose-button')
+//     }
+// })
 
 determineIfBodyInputTooLong()
 

@@ -30,21 +30,22 @@ const blogSchema = new mongoose.Schema({
     },
 })
 
-blogSchema.post('save', async function (doc) {
-    console.log(doc)
-    const event = await Event.findOne({ _id: doc.event._id})
-    const user = await User.findOne({ _id: doc.author._id})
-    let draft = { event: event.name, title: doc.title, body: doc.body}
+// I'M PRETTY SURE THAT THIS CAN BE SAFELY DELETED!
+// blogSchema.post('save', async function (doc) {
+//     console.log(doc)
+//     const event = await Event.findOne({ _id: doc.event._id})
+//     const user = await User.findOne({ _id: doc.author._id})
+//     let draft = { event: event.name, title: doc.title, body: doc.body}
 
-    user.drafts && user.drafts.forEach(async(singleDraft) => {
-        if (singleDraft.event === event.name) {
-            await User.findOneAndUpdate({ _id: doc.author._id}, {$pull: { drafts: { event: event.name}}}, {runValidators: true})
-        }
-    })
+//     user.drafts && user.drafts.forEach(async(singleDraft) => {
+//         if (singleDraft.event === event.name) {
+//             await User.findOneAndUpdate({ _id: doc.author._id}, {$pull: { drafts: { event: event.name}}}, {runValidators: true})
+//         }
+//     })
 
-    await user.drafts.push(draft)
-    await user.save()
-})
+//     await user.drafts.push(draft)
+//     await user.save()
+// })
 
 blogSchema.post('findOneAndDelete', async function (doc) {
     const author = doc.author

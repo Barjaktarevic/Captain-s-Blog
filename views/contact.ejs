@@ -1,0 +1,50 @@
+<%- include('./partials/header') %> <%- include('./partials/navbar') %>
+
+<div class="home-background-div">
+  <%- include('./partials/success') %> <%- include('./partials/error') %>
+
+  <div class="contact-us-container">
+    <div class="form-explanation-container">
+      <p>
+        If you wish to contact us with suggestions, complaints or anything else,
+        please fill out the form to the right. Thank you!
+      </p>
+      <hr class="hr-style-one" />
+      <small>We will not disclose your information to anyone.</small>
+    </div>
+
+    <div class="home-form-container">
+      <h2 class="contact-us-form-title">Send us an email!</h2>
+      <form
+        class="contact-us-form"
+        action="https://formspree.io/f/xdojrrrl"
+        method="POST"
+      >
+        <input type="text" name="Name" placeholder="Enter your name" required />
+        <input
+          type="email"
+          name="Email"
+          placeholder="Enter your email"
+          required
+          pattern="\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b"
+        />
+        <label for="query-type">What is the purpose of your message?</label>
+        <select name="Type of query" id="query-type" required>
+          <option value="Suggestion" selected>Suggestion</option>
+          <option value="Complaint">Complaint</option>
+          <option value="Praise or criticism">Praise or criticism</option>
+          <option value="Other">Other</option>
+        </select>
+        <textarea
+          name="Message"
+          cols="30"
+          rows="10"
+          placeholder="Enter your message here"
+          required
+        ></textarea>
+        <button type="submit" class="update-button">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+<%- include('./partials/footer') %>

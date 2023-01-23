@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { get_blog, get_events, get_galaxies, get_homepage, get_random_blog, get_titlepage, post_blog, post_comment, update_draft, delete_blog, delete_comment, compose_and_show_logs, get_contact, get_about } = require('../controllers/ViewsController')
+const { get_blog, get_events, get_galaxies, get_homepage, get_random_blog, get_titlepage, post_blog, post_comment, update_draft, delete_blog, delete_comment, compose_and_show_logs, get_contact, get_about, update_comment } = require('../controllers/ViewsController')
 const isLoggedIn = require('../utils/isLoggedIn')
 
 router.get('/', get_titlepage)

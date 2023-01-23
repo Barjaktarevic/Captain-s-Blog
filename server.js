@@ -11,10 +11,12 @@ const AppError = require('./utils/AppError')
 const authRouter = require('./routes/AuthenticationRoutes')
 const viewsRouter = require('./routes/ViewsRoutes')
 const cors = require('cors');
+// const helmet = require('helmet')
 
 require('dotenv').config()
 const PORT = process.env.PORT
 const MONGO_URI = process.env.MONGO_URI
+const MONGO_ATLAS_URI = process.env.MONGO_ATLAS_URI
 
 mongoose.connect(MONGO_URI)
     .then(console.log('Successfully connected to the database.'))
@@ -28,6 +30,7 @@ app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 // CORS
 app.use(cors({ origin: true, credentials: true }));
+
 
 // ============================== MIDDLEWARE START ==============================
 app.use(session({

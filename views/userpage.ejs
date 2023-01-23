@@ -102,18 +102,18 @@
         
                 <label for="rank" class="update-label">Update your rank.</label>
                 <select id="rank" name="rank" class="update-input">
-                    <option value="Midshipman">Midshipman</option>
-                    <option value="Ensing">Ensing</option>
-                    <option value="Liutenant">Liutenant</option>
-                    <option value="Commander">Commander</option>
-                    <option value="Captain">Captain</option>
-                    <option value="Fleet Captain">Fleet Captain</option>
-                    <option value="Commodore">Commodore</option>
-                    <option value="Rear Admiral">Rear Admiral</option>
-                    <option value="Vice Admiral">Vice Admiral</option>
-                    <option value="Admiral">Admiral</option>
-                    <option value="Fleet Admiral">Fleet Admiral</option>
-                    <option value="Admiral of Starfleet">Admiral of Starfleet</option>
+                    <option value="Midshipman" <%= user.rank == 'Midshipman' ? 'selected' : '' %> >Midshipman</option>
+                    <option value="Ensing" <%= user.rank == 'Ensing' ? 'selected' : '' %>>Ensing</option>
+                    <option value="Liutenant" <%= user.rank == 'Liutenant' ? 'selected' : '' %>>Liutenant</option>
+                    <option value="Commander" <%= user.rank == 'Commander' ? 'selected' : '' %>>Commander</option>
+                    <option value="Captain" <%= user.rank == 'Captain' ? 'selected' : '' %>>Captain</option>
+                    <option value="Fleet Captain" <%= user.rank == 'Fleet Captain' ? 'selected' : '' %>>Fleet Captain</option>
+                    <option value="Commodore" <%= user.rank == 'Commodore' ? 'selected' : '' %>>Commodore</option>
+                    <option value="Rear Admiral" <%= user.rank == 'Rear Admiral' ? 'selected' : '' %>>Rear Admiral</option>
+                    <option value="Vice Admiral" <%= user.rank == 'Vice Admiral' ? 'selected' : '' %>>Vice Admiral</option>
+                    <option value="Admiral" <%= user.rank == 'Admiral' ? 'selected' : '' %>>Admiral</option>
+                    <option value="Fleet Admiral" <%= user.rank == 'Fleet Admiral' ? 'selected' : '' %>>Fleet Admiral</option>
+                    <option value="Admiral of Starfleet" <%= user.rank == 'Admiral of Starfleet' ? 'selected' : '' %>>Admiral of Starfleet</option>
                   </select>
                 
                   <div>

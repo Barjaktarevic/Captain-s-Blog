@@ -5,7 +5,7 @@ const Event = require('../models/event')
 const Galaxy = require('../models/galaxy')
 const Comment = require('../models/comment')
 const wrapAsync = require('../utils/wrapAsync')
-const isLoggedIn = require('../utils/isLoggedIn')
+
 
 // Render titlepage
 exports.get_titlepage = (req, res) => {
@@ -41,7 +41,8 @@ exports.get_blog = wrapAsync(async (req, res, next) => {
         .populate({ path: 'event', select: 'name', populate: { path: 'galaxy', select: 'name' } })
         .populate({ path: 'author', select: ['image', 'rank', 'username'] })
         .populate({ path: 'comments', select: ['creator', 'comment', 'createdAt', 'rating'], populate: { path: 'creator' } })
-    console.log(blog)
+    // console.log(req.user)
+    // console.log(blog.comments)
     res.render('show-log', { blog })
 })
 
@@ -57,16 +58,25 @@ exports.delete_blog = wrapAsync(async (req, res, next) => {
 // Post comments route on individual blog viewpage
 exports.post_comment = wrapAsync(async (req, res, next) => {
     const { rating, comment } = req.body
-    const user = await User.findOne({ username: req.user.username })
-    const blog = await Blog.findOne({ _id: req.params.id })
+    const user = await User.findOne({ username: req.user.username }).populate('comments')
+    const blog = await Blog.findOne({ _id: req.params.id }).populate({ path: 'comments', populate: { path: 'creator' } })
+
+    blog.comments.forEach(async (comment) => {
+        if (comment.creator.id == req.user.id) {
+            console.log('You have already written a comment for this blog!')
+            const commentId = comment.id
+            console.log(comment.comment)
+            commentForDeletion = await Comment.findOneAndDelete({ comment: comment.comment })
+        }
+    })
 
     const newComment = new Comment({ rating, comment, creator: user._id, blog: blog._id })
     await newComment.save()
 
-    blog.comments.push(newComment)
+    await blog.comments.push(newComment)
     await blog.save()
 
-    user.comments.push(newComment)
+    await user.comments.push(newComment)
     await user.save()
 
     req.flash('success', 'Successfully posted!')
@@ -79,7 +89,6 @@ exports.delete_comment = wrapAsync(async (req, res, next) => {
     req.flash('success', 'Review expunged from archives.')
     res.redirect(`/logs/${deletedComment.blog._id}`)
 })
-
 
 // Either go to logs compose route for one event or show all logs for one event route
 exports.compose_and_show_logs = wrapAsync(async (req, res, next) => {

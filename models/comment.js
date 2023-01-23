@@ -28,8 +28,9 @@ commentSchema.post('findOneAndDelete', async function (doc) {
     console.log(doc)
     const creator = doc.creator
     const blog = doc.blog
-    await User.findOneAndUpdate({_id: creator._id}, {$pull: {comments: doc.id}})
-    await Blog.findOneAndUpdate({_id: blog._id}, {$pull: {comments: doc.id}})
+    await User.findOneAndUpdate({ _id: creator._id }, { $pull: { comments: doc.id } })
+    await Blog.findOneAndUpdate({ _id: blog._id }, { $pull: { comments: doc.id } })
+
 })
 
 const Comment = mongoose.model('Comment', commentSchema)

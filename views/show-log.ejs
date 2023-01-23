@@ -30,10 +30,13 @@
             <% } %> 
     </div>
 
-    <button class="post-comment-button">Submit log review</button>
+
+ 
+   <button class="post-comment-button">Submit report</button>
+ 
 
     <div class="comment-form-container" hidden>
-        <h2>Submit log review</h2>
+        <h2>Submit report</h2>
         <form action="/logs/<%=blog._id%>" method="POST">
 
              <label>
@@ -56,13 +59,14 @@
 
             <button class="submit-comment-button">Print report</button>
         </form>
-        <button class="censor-comment-button">Censor review</button>
+        <button class="censor-comment-button">Censor report</button>
     </div>
-
+   
+   
     <div class="comment-section-container">
         <% if (blog.comments.length > 0) { %>
-        <% blog.comments.forEach((comment) => { %>
-            <div class="comment-div">
+        <% blog.comments.forEach((comment, index) => { %>
+            <div class="comment-div" id="comment-<%=index%>">
                 <p> <%=comment.creator.rank%> <%=comment.creator.username%>  </p>
                 <p> <%=comment.createdAt.substring(0, 24)%>  </p>
                 <img src=<%=comment.creator.image%> alt='Person making the comment'/> 
@@ -72,9 +76,10 @@
                 
                 <% if (login && login._id.equals(comment.creator._id)) { %> 
                 <form action="/logs/comments/<%=comment._id%>?_method=DELETE" method="POST">
-                    <button class="delete-review-button">Expunge review</button>
+                    <button class="delete-review-button">Expunge </button>
                 </form>
                 <% } %> 
+
             </div>
         <%})%> 
         <%}%> 
@@ -98,6 +103,7 @@
     closeForm.addEventListener('click', () => {
         formContainer.style.display = 'none'
     })
+
 </script>
 
 <%- include('./partials/footer') %> 

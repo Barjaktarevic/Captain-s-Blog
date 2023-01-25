@@ -1,0 +1,65 @@
+<%- include('./partials/header') %> <%- include('./partials/navbar') %>
+
+<div class="home-background-div">
+  <%- include('./partials/success') %> <%- include('./partials/error') %>
+
+    <h1 class="faq-title">Frequently Asked Questions</h1>
+
+    <button class="accordion">Why should I write here instead of anywhere else? Don't I risk my stories being stolen?</button>
+    <div class="panel">
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nulla perferendis, necessitatibus suscipit excepturi pariatur optio accusamus, amet, iusto omnis laudantium accusantium. Temporibus rem unde id quos hic! Eum quia aut vitae consequuntur, dolores nobis consequatur alias accusantium unde vel, numquam, expedita fuga? Dolores, tenetur officiis corrupti assumenda expedita vel!</p>
+    </div>
+    
+    <button class="accordion">Section 2</button>
+    <div class="panel">
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nulla perferendis, necessitatibus suscipit excepturi pariatur optio accusamus, amet, iusto omnis laudantium accusantium. Temporibus rem unde id quos hic! Eum quia aut vitae consequuntur, dolores nobis consequatur alias accusantium unde vel, numquam, expedita fuga? Dolores, tenetur officiis corrupti assumenda expedita vel!</p>
+    </div>
+    
+    <button class="accordion">Section 3</button>
+    <div class="panel">
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nulla perferendis, necessitatibus suscipit excepturi pariatur optio accusamus, amet, iusto omnis laudantium accusantium. Temporibus rem unde id quos hic! Eum quia aut vitae consequuntur, dolores nobis consequatur alias accusantium unde vel, numquam, expedita fuga? Dolores, tenetur officiis corrupti assumenda expedita vel!</p>
+    </div>
+
+    <button class="accordion">Section 4</button>
+    <div class="panel">
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nulla perferendis, necessitatibus suscipit excepturi pariatur optio accusamus, amet, iusto omnis laudantium accusantium. Temporibus rem unde id quos hic! Eum quia aut vitae consequuntur, dolores nobis consequatur alias accusantium unde vel, numquam, expedita fuga? Dolores, tenetur officiis corrupti assumenda expedita vel!</p>
+    </div>
+
+    <button class="accordion">Section 5</button>
+    <div class="panel">
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nulla perferendis, necessitatibus suscipit excepturi pariatur optio accusamus, amet, iusto omnis laudantium accusantium. Temporibus rem unde id quos hic! Eum quia aut vitae consequuntur, dolores nobis consequatur alias accusantium unde vel, numquam, expedita fuga? Dolores, tenetur officiis corrupti assumenda expedita vel!</p>
+    </div>
+
+    <button class="accordion">Section 6</button>
+    <div class="panel">
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nulla perferendis, necessitatibus suscipit excepturi pariatur optio accusamus, amet, iusto omnis laudantium accusantium. Temporibus rem unde id quos hic! Eum quia aut vitae consequuntur, dolores nobis consequatur alias accusantium unde vel, numquam, expedita fuga? Dolores, tenetur officiis corrupti assumenda expedita vel!</p>
+    </div>
+
+    <button class="accordion">Section 7</button>
+    <div class="panel">
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nulla perferendis, necessitatibus suscipit excepturi pariatur optio accusamus, amet, iusto omnis laudantium accusantium. Temporibus rem unde id quos hic! Eum quia aut vitae consequuntur, dolores nobis consequatur alias accusantium unde vel, numquam, expedita fuga? Dolores, tenetur officiis corrupti assumenda expedita vel!</p>
+    </div>
+
+
+
+
+
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+        
+        for (i = 0; i < acc.length; i++) {
+          acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+              panel.style.maxHeight = null;
+            } else {
+              panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+          });
+        }
+        </script>
+
+</div>
+<%- include('./partials/footer') %>

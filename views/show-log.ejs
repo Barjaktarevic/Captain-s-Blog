@@ -53,23 +53,24 @@
             </label>
 
             <label>
-                <span>Your review:</span><br/>
+                <span id="review-span">Your review:</span><br/>
                 <textarea name="comment" cols="30" rows="5" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Your comment here"></textarea><br/>
             </label>
 
             <button class="submit-comment-button">Print report</button>
         </form>
         <button class="censor-comment-button">Censor report</button>
+        <i class="fa-regular fa-circle-question" title="Open rules for submitting comments." id="writing-tips-prompt"></i>
     </div>
    
    
     <div class="comment-section-container">
         <% if (blog.comments.length > 0) { %>
-        <% blog.comments.forEach((comment, index) => { %>
-            <div class="comment-div" id="comment-<%=index%>">
-                <p> <%=comment.creator.rank%> <%=comment.creator.username%>  </p>
-                <p> <%=comment.createdAt.substring(0, 24)%>  </p>
-                <img src=<%=comment.creator.image%> alt='Person making the comment'/> 
+        <% blog.comments.forEach((comment) => { %>
+            <div class="comment-div">
+                <p><a class="direct-user-link" href="/users/:<%=comment.creator.rank%>-:<%=comment.creator.username%>"> <%=comment.creator.rank%> <%=comment.creator.username%> </a></p> 
+                <p> <%=comment.createdAt.substring(0, 15)%>  </p>
+                <a href="/users/:<%=comment.creator.rank%>-:<%=comment.creator.username%>"> <img src=<%=comment.creator.image%> alt='Person making the comment'/>  </a>
                 
                 <p><%=comment.comment%></p>
                 <p> RATING: <%=comment.rating%>  </p>
@@ -84,6 +85,17 @@
         <%})%> 
         <%}%> 
     </div>
+
+    <dialog id="writing-tips-modal">
+        <h1>PLEASE FOLLOW THESE RULES WHEN POSTING REVIEWS</h1>
+        <p>➤ Be respectful - you are free to submit negative reviews, but refrain from attacking or denigrating the author. Such comments will be removed by the moderator.</p>
+       <p>➤ Try to be specific in your criticism - what is it exactly that you like about the story, and what exactly do you dislike?</p>
+       <p>➤ Don't focus on obvious typos or other similar easy-to-correct mistakes unless they impede the understanding of the story. </p>
+       <p>➤ You can only post one review per story; any additional reviews will overwrite the previous one. Do not try to use the review section as a chat room. </p>
+       <p>➤ Always remember that the person on the other side of the screen is also a human being and treat them as you would like to be treated yourself. </p>
+      
+       <img src="/images/cancel-button-1.svg" alt="close" class="modal-close-button" title="Close help">
+    </dialog>
 
 </div>
 
@@ -103,6 +115,18 @@
     closeForm.addEventListener('click', () => {
         formContainer.style.display = 'none'
     })
+
+    const writingTipsPrompt = document.querySelector('#writing-tips-prompt')
+    const writingTipsModal = document.querySelector('#writing-tips-modal')
+    const modalCloseButton = document.querySelector('.modal-close-button')
+
+    writingTipsPrompt.addEventListener('click', () => {
+    writingTipsModal.showModal()
+    })
+
+modalCloseButton.addEventListener('click', () => {
+    writingTipsModal.close()
+})
 
 </script>
 

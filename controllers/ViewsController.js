@@ -64,7 +64,7 @@ exports.post_comment = wrapAsync(async (req, res, next) => {
     blog.comments.forEach(async (comment) => {
         if (comment.creator.id == req.user.id) {
             console.log('You have already written a comment for this blog!')
-            const commentId = comment.id
+            // const commentId = comment.id
             console.log(comment.comment)
             commentForDeletion = await Comment.findOneAndDelete({ comment: comment.comment })
         }
@@ -199,4 +199,14 @@ exports.get_contact = (req, res) => {
 // Render about page
 exports.get_about = (req, res) => {
     res.render('about')
+}
+
+// Render privacy policy page
+exports.get_privacy_policy = (req, res) => {
+    res.render('privacy-policy')
+}
+
+// Render FAQs
+exports.get_faqs = (req, res) => {
+    res.render('faqs')
 }

@@ -1872,7 +1872,7 @@ body {
 
 .comment-form-container form {
     margin-top: 3.5vmin;
-    text-align: left;
+    text-align: center;
 }
 
 .comment-form-container span {
@@ -2104,6 +2104,62 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 /* SHOW SINGLE LOG PAGE END */
+
+/* FAQS SECTIONS START */
+
+
+.accordion {
+    background: linear-gradient(to right, transparent -10%, var(--secondary-color) 50%, transparent 110%);
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 18px;
+    width: 80%;
+    text-align: center;
+    outline: none;
+    transition: 0.2s;
+    display: block;
+    margin: 0 auto;
+    font-family: Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 3vmin;
+}
+
+.active,
+.accordion:hover {
+    opacity: 70%;
+    filter: hue-rotate(90deg)
+}
+
+.panel {
+    padding: 0 18px;
+    background-color: var(--tertiary-color);
+    color: var(--primary-color);
+    max-height: 0;
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.accordion:after {
+    content: '\02795';
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2796";
+}
+
+.faq-title {
+    color: var(--primary-color);
+    text-align: center;
+    font-size: 6vmin;
+    margin: 4vh auto;
+}
+
+/* FAQS SECTION END */
 
 
 /* MEDIA QUERIES */

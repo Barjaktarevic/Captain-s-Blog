@@ -2165,6 +2165,6 @@ input[type=range]:focus::-ms-fill-upper {
 /* MEDIA QUERIES */
 @media screen and (max-width: 900px) {
     .title-page {
-        background-image: url('/images/image-2.jpg')
+        background-image: url('/images/image-2b.jpg')
     }
 }

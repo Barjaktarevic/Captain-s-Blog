@@ -30,7 +30,7 @@ mongoose.connect(MONGO_ATLAS_URI)
 app.set('views', 'views')
 app.set('view engine', 'ejs')
 // STATICS AND PARSING POST DATA
-app.use(express.static('public'))
+app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: true }))
 // CORS
 app.use(cors({ origin: true, credentials: true }));
@@ -43,6 +43,7 @@ app.use(session({
         checkPeriod: 86400000 // prune expired entries every 24h
     }),
     resave: false,
+    saveUninitialized: true,
     secret: 'keyboard cat'
 }))
 

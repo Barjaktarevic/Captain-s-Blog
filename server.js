@@ -12,7 +12,6 @@ const authRouter = require('./routes/AuthenticationRoutes')
 const viewsRouter = require('./routes/ViewsRoutes')
 const cors = require('cors');
 
-const session = require('express-session')
 const MemoryStore = require('memorystore')(session)
 
 require('dotenv').config()

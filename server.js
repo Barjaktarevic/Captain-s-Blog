@@ -11,7 +11,9 @@ const AppError = require('./utils/AppError')
 const authRouter = require('./routes/AuthenticationRoutes')
 const viewsRouter = require('./routes/ViewsRoutes')
 const cors = require('cors');
-// const helmet = require('helmet')
+
+const session = require('express-session')
+const MemoryStore = require('memorystore')(session)
 
 require('dotenv').config()
 const PORT = process.env.PORT
@@ -37,15 +39,14 @@ app.use(cors({ origin: true, credentials: true }));
 
 // ============================== MIDDLEWARE START ==============================
 app.use(session({
-    secret: 'test123',
+    cookie: { maxAge: 86400000 },
+    store: new MemoryStore({
+        checkPeriod: 86400000 // prune expired entries every 24h
+    }),
     resave: false,
-    saveUninitialized: true,
-    cookie: {
-        httpOnly: true,
-        expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
-        maxAge: 1000 * 60 * 60 * 24 * 7
-    }
+    secret: 'keyboard cat'
 }))
+
 app.use(methodOverride('_method'))
 
 app.use(passport.initialize());

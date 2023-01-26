@@ -18,8 +18,11 @@ const PORT = process.env.PORT
 const MONGO_URI = process.env.MONGO_URI
 const MONGO_ATLAS_URI = process.env.MONGO_ATLAS_URI
 
-mongoose.connect(MONGO_URI)
+mongoose.connect(MONGO_ATLAS_URI)
     .then(console.log('Successfully connected to the database.'))
+    .then(app.listen(PORT, () => {
+        console.log(`Listening on port ${PORT}!`)
+    }))
     .catch(err => console.log(err));
 
 // VIEW ENGINE //
@@ -75,10 +78,6 @@ app.use(viewsRouter)
 app.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), (req, res) => {
     req.flash('success', 'Welcome back!')
     res.redirect('/home')
-})
-
-app.listen(PORT, () => {
-    console.log(`Listening on port ${PORT}!`)
 })
 
 // Catch-all 404 route

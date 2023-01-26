@@ -20,14 +20,14 @@ const userSchema = new mongoose.Schema({
     joinedAt: {
         type: Date,
         default: new Date()
-        },
+    },
     shipName: {
         type: String,
         default: 'Enterprise'
     },
     image: {
         type: String,
-        default: '/images/avatar1.jpg'
+        default: 'https://res.cloudinary.com/dsbyr3fhu/image/upload/v1674243158/Captain%27s%20Blog/Avatars/avatar1_xpy6ov.jpg'
     },
     rank: {
         type: String,
@@ -59,4 +59,3 @@ const User = mongoose.model('User', userSchema)
 module.exports = User
 const Blog = require('./blog')
 const Comment = require('./comment')
-// const Event = require('./event')

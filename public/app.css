@@ -42,7 +42,7 @@ body {
 
 /* TITLE PAGE START */
 .title-page {
-    background-image: url('/images/image-1.jpg');
+    background-image: url('https://res.cloudinary.com/dsbyr3fhu/image/upload/v1674252161/Captain%27s%20Blog/Backgrounds%20and%20Icons/image-1_sowsxu.jpg');
     width: 100vw;
     height: 100vh;
     background-size: cover;
@@ -230,7 +230,7 @@ body {
 }
 
 .home-background-div {
-    background-image: url('/images/image-3.jpg');
+    background-image: url('https://res.cloudinary.com/dsbyr3fhu/image/upload/v1674744570/Captain%27s%20Blog/Backgrounds%20and%20Icons/image-3_jikub7.jpg');
     background-size: cover;
     overflow-x: hidden;
     background-attachment: fixed;
@@ -719,7 +719,7 @@ body {
 }
 
 .auth-signup-div {
-    background: url('/images/image-5.jpg');
+    background: url('https://res.cloudinary.com/dsbyr3fhu/image/upload/v1674252174/Captain%27s%20Blog/Backgrounds%20and%20Icons/image-5_nglwk1.jpg');
     background-size: cover;
     width: 100vw;
     height: 100vh;
@@ -792,7 +792,7 @@ body {
 }
 
 .auth-login-div {
-    background: url('/images/image-6.jpg');
+    background: url('https://res.cloudinary.com/dsbyr3fhu/image/upload/v1674252228/Captain%27s%20Blog/Backgrounds%20and%20Icons/image-6_wwswej.jpg');
     background-size: cover;
     width: 100vw;
     height: 100vh;
@@ -896,7 +896,7 @@ body {
 
 /* 404 PAGE START */
 .not-found-div {
-    background: url('/images/compass-1.jpg');
+    background: url('https://res.cloudinary.com/dsbyr3fhu/image/upload/v1674252232/Captain%27s%20Blog/Backgrounds%20and%20Icons/compass-1_lilxhe.jpg');
     background-size: cover;
     width: 100vw;
     height: 92vh;
@@ -928,7 +928,7 @@ body {
 }
 
 .userpage-container-div {
-    background: url('/images/image-10.jpg');
+    background: url('https://res.cloudinary.com/dsbyr3fhu/image/upload/v1674252183/Captain%27s%20Blog/Backgrounds%20and%20Icons/image-10_svokkj.jpg');
     background-size: cover;
     background-attachment: fixed;
     background-position-y: 60%;
@@ -1308,7 +1308,7 @@ body {
 /* JUMP PAGE START */
 
 .jump-div {
-    background: url('/images/jump-background-2.jpg');
+    background: url('https://res.cloudinary.com/dsbyr3fhu/image/upload/v1674744563/Captain%27s%20Blog/Backgrounds%20and%20Icons/jump-background-2_yaqjgh.jpg');
     background-size: cover;
     background-attachment: scroll;
     background-position: 0 15%;
@@ -1399,7 +1399,7 @@ body {
 
 /* GALAXY PAGE START */
 .galaxy-div {
-    background: url('/images/jump-background-3.jpg');
+    background: url('https://res.cloudinary.com/dsbyr3fhu/image/upload/v1674252228/Captain%27s%20Blog/Backgrounds%20and%20Icons/jump-background-3_kpjwgh.jpg');
     background-size: cover;
     width: 100%;
     min-height: 120vh;
@@ -1511,7 +1511,7 @@ body {
 
 /* COMPOSE LOG PAGE START */
 .compose-log-div {
-    background: url('/images/jump-background-3.jpg');
+    background: url('https://res.cloudinary.com/dsbyr3fhu/image/upload/v1674252228/Captain%27s%20Blog/Backgrounds%20and%20Icons/jump-background-3_kpjwgh.jpg');
     background-size: cover;
     width: 100%;
     min-height: 135vmin;
@@ -1706,7 +1706,7 @@ body {
 
 /* SHOW ALL LOGS PAGE START */
 .show-logs-div {
-    background: url('/images/jump-background-3.jpg');
+    background: url('https://res.cloudinary.com/dsbyr3fhu/image/upload/v1674252228/Captain%27s%20Blog/Backgrounds%20and%20Icons/jump-background-3_kpjwgh.jpg');
     background-size: cover;
     width: 100%;
     min-height: 150vmin;
@@ -1829,7 +1829,7 @@ body {
 
 /* SHOW SINGLE LOG PAGE START */
 .show-blog-div {
-    background: url('/images/image-9.jpg');
+    background: url('https://res.cloudinary.com/dsbyr3fhu/image/upload/v1674744742/Captain%27s%20Blog/Backgrounds%20and%20Icons/image-9_q6zqfb.jpg');
     background-size: cover;
     width: 100%;
     min-height: 150vmin;
@@ -2165,6 +2165,6 @@ input[type=range]:focus::-ms-fill-upper {
 /* MEDIA QUERIES */
 @media screen and (max-width: 900px) {
     .title-page {
-        background-image: url('/images/image-2b.jpg')
+        background-image: url('https://res.cloudinary.com/dsbyr3fhu/image/upload/v1674744572/Captain%27s%20Blog/Backgrounds%20and%20Icons/image-2b_wtlzqb.jpg')
     }
 }

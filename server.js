@@ -31,7 +31,6 @@ app.set('views', 'views')
 app.set('view engine', 'ejs')
 // STATICS AND PARSING POST DATA
 app.use(express.static('public'))
-app.use('/images', express.static('images'));
 
 app.use(express.urlencoded({ extended: true }))
 // CORS
